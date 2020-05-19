@@ -6,6 +6,12 @@ import javax.swing.ImageIcon;
 
 public class ImageProvider {
 
+	/**
+	 * This is a Image-Provider for this application.
+	 * It consists out of a an Array with every Image so program features.
+	 * They are stored in a fitting Array and they can be accessed by the getImage-Method and the depending Enum.
+	 */
+	
 	private Image[] imageBuffer = new Image[15];
 	
 	public enum Imagefor {
@@ -29,6 +35,10 @@ public class ImageProvider {
 	public ImageProvider() {
 		loadImages();
 	}
+	
+	/**
+	 * Some Images still need to be added when they're available.
+	 */
 	
 	private void loadImages() {
 		imageBuffer[0] = new ImageIcon("src/images/building.png").getImage();
