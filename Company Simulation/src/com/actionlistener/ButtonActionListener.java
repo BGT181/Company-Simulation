@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import com.framemanagement.ContentPanel;
 import com.framemanagement.FrameComponents;
-import com.framemanagement.FrameComponents.optionPanel;
 
 public class ButtonActionListener implements ActionListener {
 	
@@ -19,28 +19,28 @@ public class ButtonActionListener implements ActionListener {
 	JButton buttonDashboard;
 	JButton buttonManagement;
 	JButton buttonEmployee;
-	private FrameComponents frameComponents;
+	private ContentPanel contentPanel;
 	
-	public ButtonActionListener(FrameComponents frameComponents, JButton buttonDashboard, JButton buttonManagement,JButton buttonEmployee) {
+	public ButtonActionListener(ContentPanel contentPanel, JButton buttonDashboard, JButton buttonManagement,JButton buttonEmployee) {
 		super();
 		this.buttonDashboard = buttonDashboard;
 		this.buttonManagement = buttonManagement;
 		this.buttonEmployee = buttonEmployee;
-		this.frameComponents = frameComponents;
+		this.contentPanel = contentPanel;
 	}
 	
 	public void actionPerformed(ActionEvent event) {
 		
 		if(event.getSource()==this.buttonDashboard) {
-			frameComponents.setCurrentOptionPanel(optionPanel.DASHBOARD);
+			contentPanel.setCurrentOptionPanel(com.framemanagement.ContentPanel.optionPanel.DASHBOARD);
 		}
 		
 		if(event.getSource()==this.buttonManagement) {
-			frameComponents.setCurrentOptionPanel(optionPanel.MANAGEMENT);
+			contentPanel.setCurrentOptionPanel(com.framemanagement.ContentPanel.optionPanel.MANAGEMENT);;
 		}
 		
 		if(event.getSource()==this.buttonEmployee) {
-			frameComponents.setCurrentOptionPanel(optionPanel.EMPLOYEE);
+			contentPanel.setCurrentOptionPanel(com.framemanagement.ContentPanel.optionPanel.EMPLOYEE);;
 		}
 	}
 }
