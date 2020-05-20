@@ -15,7 +15,9 @@ public class FrameComponents {
 	JButton buttonEmployees = new JButton("Employees");
 	
 	public void addComponents() {
-		addButton(buttonDashboard, 850, 0);
+		addButton(buttonDashboard,  800, 0);
+		addButton(buttonManagement, 931, 0);
+		addButton(buttonEmployees, 1062, 0);
 	}
 	
 	
