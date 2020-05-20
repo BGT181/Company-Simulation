@@ -30,5 +30,8 @@ public class ContentPanel extends JPanel{
         g2d.drawImage(ip.getImage(Imagefor.BUILDING), 0,0,null);
         g2d.drawImage(ip.getImage(Imagefor.TRUCK),80,75,null);
         
+        FrameComponents fc = new FrameComponents(this);
+        fc.addComponents();
+        
 	}
 }
