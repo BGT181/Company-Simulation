@@ -7,8 +7,8 @@ import javax.swing.ImageIcon;
 public class ImageProvider {
 
 	/**
-	 * This is a Image-Provider for this application.
-	 * It consists out of a an Array with every Image so program features.
+	 * This is an Image-Provider for this application.
+	 * It consists out of a an Array with every Image the program features.
 	 * They are stored in a fitting Array and they can be accessed by the getImage-Method and the depending Enum.
 	 */
 	
