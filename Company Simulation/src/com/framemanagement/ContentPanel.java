@@ -18,7 +18,7 @@ public class ContentPanel extends JPanel implements ActionListener{
 	 */
 	private static final long serialVersionUID = -2906000336360409527L;
 	ImageProvider ip = new ImageProvider();
-	Timer timer = new Timer(100, this);
+	Timer timer = new Timer(5000, this);
 	
 	public ContentPanel() {
 		super();

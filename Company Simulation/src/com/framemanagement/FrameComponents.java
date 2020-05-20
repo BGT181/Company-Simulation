@@ -1,8 +1,11 @@
 package com.framemanagement;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
-public class FrameComponents {
+public class FrameComponents implements ActionListener{
 
 	private ContentPanel contentPanel;
 	
@@ -24,5 +27,13 @@ public class FrameComponents {
 	private void addButton(JButton button, int x, int y) {
 		button.setBounds(x, y, 130, 50);
 		contentPanel.add(button);
+	}
+	
+	public void actionPerformed(ActionEvent event) {
+		if(event.getSource()==this.buttonDashboard) {
+			System.out.println("Dasbutton pressed");
+		} if (event.getSource()==this.buttonManagement) {
+			System.out.println("Managementbutton pressed");
+		}
 	}
 }
