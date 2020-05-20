@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-public class FrameComponents implements ActionListener{
+public class FrameComponents {
 
 	private ContentPanel contentPanel;
 	
@@ -28,7 +28,7 @@ public class FrameComponents implements ActionListener{
 		button.setBounds(x, y, 130, 50);
 		contentPanel.add(button);
 	}
-	
+	/*
 	public void actionPerformed(ActionEvent event) {
 		if(event.getSource()==this.buttonDashboard) {
 			System.out.println("Dasbutton pressed");
@@ -36,4 +36,5 @@ public class FrameComponents implements ActionListener{
 			System.out.println("Managementbutton pressed");
 		}
 	}
+	*/
 }
