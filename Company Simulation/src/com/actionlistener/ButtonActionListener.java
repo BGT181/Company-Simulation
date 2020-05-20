@@ -33,15 +33,16 @@ public class ButtonActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		
 		if(event.getSource()==this.buttonDashboard) {
-			contentPanel.setCurrentOptionPanel(optionPanel.DASHBOARD);
+			System.out.println("debug");
+			this.contentPanel.setCurrentOptionPanel(optionPanel.DASHBOARD);
 		}
 		
 		if(event.getSource()==this.buttonManagement) {
-			contentPanel.setCurrentOptionPanel(optionPanel.MANAGEMENT);;
+			this.contentPanel.setCurrentOptionPanel(optionPanel.MANAGEMENT);;
 		}
 		
 		if(event.getSource()==this.buttonEmployee) {
-			contentPanel.setCurrentOptionPanel(optionPanel.EMPLOYEE);;
+			this.contentPanel.setCurrentOptionPanel(optionPanel.EMPLOYEE);;
 		}
 	}
 }

@@ -18,7 +18,7 @@ public class FrameComponents {
 	JButton buttonDashboard = new JButton("Dashboard");
 	JButton buttonManagement = new JButton("Management"); 
 	JButton buttonEmployees = new JButton("Employees");
-	ButtonActionListener buttonActionListener = new ButtonActionListener(contentPanel, buttonDashboard,buttonManagement,buttonEmployees);
+	ButtonActionListener buttonActionListener = new ButtonActionListener(this.contentPanel, buttonDashboard,buttonManagement,buttonEmployees);
 	
 	
 	public void addComponents() {
