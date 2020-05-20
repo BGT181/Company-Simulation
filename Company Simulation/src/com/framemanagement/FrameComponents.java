@@ -16,11 +16,13 @@ public class FrameComponents {
 	JButton buttonDashboard = new JButton("Dashboard");
 	JButton buttonManagement = new JButton("Management"); 
 	JButton buttonEmployees = new JButton("Employees");
+	ButtonActionListener bal = new ButtonActionListener(buttonDashboard);
 	
 	public void addComponents() {
 		addButton(buttonDashboard,  800, 0);
 		addButton(buttonManagement, 931, 0);
 		addButton(buttonEmployees, 1062, 0);
+		buttonDashboard.addActionListener(bal);
 	}
 	
 	
@@ -28,13 +30,5 @@ public class FrameComponents {
 		button.setBounds(x, y, 130, 50);
 		contentPanel.add(button);
 	}
-	/*
-	public void actionPerformed(ActionEvent event) {
-		if(event.getSource()==this.buttonDashboard) {
-			System.out.println("Dasbutton pressed");
-		} if (event.getSource()==this.buttonManagement) {
-			System.out.println("Managementbutton pressed");
-		}
-	}
-	*/
+	
 }

@@ -11,27 +11,28 @@ import javax.swing.Timer;
 import com.gamelogic.ImageProvider;
 import com.gamelogic.ImageProvider.Imagefor;
 
-public class ContentPanel extends JPanel {
+public class ContentPanel extends JPanel implements ActionListener {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2906000336360409527L;
 	ImageProvider ip = new ImageProvider();
-	//Timer timer = new Timer(5000, this);
+	Timer timer = new Timer(5000, this);
 	
 	public ContentPanel() {
 		super();
-		//timer.start();
+		timer.start();
 	}
 	
-	/*
+	
 	public void actionPerformed(ActionEvent ev){
 	    if(ev.getSource()==timer){
-	      //repaint();
+	    	System.out.println(ev.getSource());
+	      repaint();
 	    }
 	}
-	*/
+	
 	public void paintComponent(Graphics g) {
 		
 		super.paintComponent(g);
@@ -45,7 +46,7 @@ public class ContentPanel extends JPanel {
         
         FrameComponents fc = new FrameComponents(this);
         fc.addComponents();
-        //System.out.println("Refreshed");
+        System.out.println("Refreshed");
         
 	}
 	
