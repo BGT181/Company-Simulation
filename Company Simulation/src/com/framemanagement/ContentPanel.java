@@ -22,12 +22,12 @@ public class ContentPanel extends JPanel implements ActionListener{
 	
 	public ContentPanel() {
 		super();
-		timer.start();
+		//timer.start();
 	}
 	
 	public void actionPerformed(ActionEvent ev){
 	    if(ev.getSource()==timer){
-	      repaint();
+	      //repaint();
 	    }
 	}
 	
@@ -44,7 +44,7 @@ public class ContentPanel extends JPanel implements ActionListener{
         
         FrameComponents fc = new FrameComponents(this);
         fc.addComponents();
-        System.out.println("Refreshed");
+        //System.out.println("Refreshed");
         
 	}
 	
