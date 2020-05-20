@@ -50,7 +50,7 @@ public class ContentPanel extends JPanel implements ActionListener {
         FrameComponents fc = new FrameComponents(this);
         fc.addComponents();
         System.out.println("Refreshed");
-        
+       
 	}
 
 

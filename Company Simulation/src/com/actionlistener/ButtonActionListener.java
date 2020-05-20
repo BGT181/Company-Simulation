@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import com.framemanagement.ContentPanel;
+import com.framemanagement.ContentPanel.optionPanel;
 import com.framemanagement.FrameComponents;
 
 public class ButtonActionListener implements ActionListener {
@@ -32,15 +33,15 @@ public class ButtonActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		
 		if(event.getSource()==this.buttonDashboard) {
-			contentPanel.setCurrentOptionPanel(com.framemanagement.ContentPanel.optionPanel.DASHBOARD);
+			contentPanel.setCurrentOptionPanel(optionPanel.DASHBOARD);
 		}
 		
 		if(event.getSource()==this.buttonManagement) {
-			contentPanel.setCurrentOptionPanel(com.framemanagement.ContentPanel.optionPanel.MANAGEMENT);;
+			contentPanel.setCurrentOptionPanel(optionPanel.MANAGEMENT);;
 		}
 		
 		if(event.getSource()==this.buttonEmployee) {
-			contentPanel.setCurrentOptionPanel(com.framemanagement.ContentPanel.optionPanel.EMPLOYEE);;
+			contentPanel.setCurrentOptionPanel(optionPanel.EMPLOYEE);;
 		}
 	}
 }
