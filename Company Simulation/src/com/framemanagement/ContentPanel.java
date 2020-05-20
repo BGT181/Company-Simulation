@@ -21,10 +21,11 @@ public class ContentPanel extends JPanel{
 	ImageProvider ip = new ImageProvider();
 	
 	public void paintComponent(Graphics g) {
+		
 		super.paintComponent(g);
-		this.setSize(1200, 720);
+		setSize(1200, 720);
         Graphics2D g2d = (Graphics2D) g;
- 
+        setLayout(null);
         //g2d.rotate(Math.toRadians(45));
         
         g2d.drawImage(ip.getImage(Imagefor.BUILDING), 0,0,null);
