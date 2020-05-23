@@ -7,7 +7,6 @@ import javax.swing.JButton;
 
 import com.framemanagement.ContentPanel;
 import com.framemanagement.ContentPanel.optionPanel;
-import com.framemanagement.FrameComponents;
 
 public class ButtonActionListener implements ActionListener {
 	
@@ -31,9 +30,7 @@ public class ButtonActionListener implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent event) {
-		
 		if(event.getSource()==this.buttonDashboard) {
-			System.out.println("debug");
 			this.contentPanel.setCurrentOptionPanel(optionPanel.DASHBOARD);
 		}
 		

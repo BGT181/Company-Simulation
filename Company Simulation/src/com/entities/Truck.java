@@ -5,6 +5,10 @@ import java.awt.Image;
 
 public class Truck extends Entity{
 
+	private boolean isArrived;
+
+	
+	
 	public Truck(Image image, int xPos, int yPos, Dimension orientation) {
 		super(image, xPos, yPos, orientation);
 		// TODO Auto-generated constructor stub
