@@ -15,7 +15,6 @@ public class Company {
 		
 	}
 	
-	
 	public void print() {
 		System.out.println("Company");
 	}
