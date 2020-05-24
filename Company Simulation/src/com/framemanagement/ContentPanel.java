@@ -36,6 +36,22 @@ public class ContentPanel extends JPanel implements ActionListener {
 	JButton buttonEmployees = new JButton("Employees");
 	ButtonActionListener buttonActionListener = new ButtonActionListener(this, buttonDashboard, buttonManagement, buttonEmployees);
 	
+	JButton 	buttonConfirm = new JButton("Confirm your Input");
+	
+	JTextField  textFieldBuyA = new JTextField("0"),
+				textFieldBuyB = new JTextField("0"),
+				textFieldPriceC = new JTextField("0"),
+				textFieldLoan = new JTextField("0");
+	
+	JLabel 	labelBuyA = new JLabel("Buying x of Product A (as integer)"),
+			labelBuyB = new JLabel("Buying x of Product B (as integer)"),
+			labelPriceC = new JLabel("Change selling-price of Product C (as double)"),
+			labelLoan = new JLabel("Increase loans by x percent (as double)"),
+			labelRevenue = new JLabel("Revenue: "),
+			labelProductsSold = new JLabel("Products sold:"),
+			labelEBIT = new JLabel("EBIT:"),
+			labelEmployees = new JLabel("Number of Employees:");
+	
 	public ContentPanel() {
 		super();
 		timer.start();
@@ -61,11 +77,12 @@ public class ContentPanel extends JPanel implements ActionListener {
 			switch (currentOptionPanel) {
 				case DASHBOARD:	
 					drawMenuDashboard();
-					System.out.println("Triggered");
+					repaint();
 					feedbackOptionPanel = currentOptionPanel;
 					break;
 				case MANAGEMENT:
-				
+					drawMenuManagement();
+					repaint();
 					feedbackOptionPanel = currentOptionPanel;
 					break;
 				case EMPLOYEE:
@@ -77,20 +94,15 @@ public class ContentPanel extends JPanel implements ActionListener {
 	}
 
 	private void drawMenuDashboard(){
-		JTextField textFieldBuyA = new JTextField("0");
-		JTextField textFieldBuyB = new JTextField("0");
-		JTextField textFieldPriceC = new JTextField("0");
-		JTextField textFieldLoan = new JTextField("0");
-		
-		JLabel labelBuyA = new JLabel("Buying x of Product A (as integer)");
-		JLabel labelBuyB = new JLabel("Buying x of Product B (as integer)");
-		JLabel labelPriceC = new JLabel("Change selling-price of Product C (as double)");
-		JLabel labelLoan = new JLabel("Increase loans by x percent (as double)");
-		
-		JButton buttonConfirm = new JButton("Confirm your Input");
-		buttonConfirm.setBounds(825, 500, 350, 50);
-		add(buttonConfirm);
-		
+		removeComponents();
+		drawLabel(labelRevenue, 60);
+		drawLabel(labelProductsSold, 100);
+		drawLabel(labelEBIT, 140);
+		drawLabel(labelEmployees, 180);
+	}
+	
+	private void drawMenuManagement() {
+		removeComponents();
 		drawTextField(textFieldBuyA, 100);
 		drawTextField(textFieldBuyB, 200);
 		drawTextField(textFieldPriceC, 300);
@@ -100,6 +112,25 @@ public class ContentPanel extends JPanel implements ActionListener {
 		drawLabel(labelBuyB, 160);
 		drawLabel(labelPriceC, 260);
 		drawLabel(labelLoan, 360);
+		
+		buttonConfirm.setBounds(825, 500, 350, 50);
+		add(buttonConfirm);
+	}
+	
+	private void removeComponents() {
+		remove(buttonConfirm);
+		remove(textFieldBuyA);
+		remove(textFieldBuyB);
+		remove(textFieldPriceC);
+		remove(textFieldLoan);
+		remove(labelBuyA);
+		remove(labelBuyB);
+		remove(labelEBIT);
+		remove(labelEmployees);
+		remove(labelLoan);
+		remove(labelPriceC);
+		remove(labelProductsSold);
+		remove(labelRevenue);
 	}
 	
 	private void drawTextField(JTextField textField, int y) {
