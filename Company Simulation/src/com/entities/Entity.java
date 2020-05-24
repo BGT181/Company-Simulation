@@ -7,10 +7,10 @@ public class Entity {
 
 	private Image image;
 	private int xPos,yPos;
-	private Dimension orientation;
+	private int orientation;
 	private boolean isMoveable;
 	
-	public Entity(Image image, int xPos, int yPos, Dimension orientation) {
+	public Entity(Image image, int xPos, int yPos, int orientation) {
 		this.image = image;
 		this.xPos = xPos;
 		this.yPos = yPos;

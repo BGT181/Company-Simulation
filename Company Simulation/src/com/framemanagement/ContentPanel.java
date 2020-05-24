@@ -36,21 +36,24 @@ public class ContentPanel extends JPanel implements ActionListener {
 	JButton buttonEmployees = new JButton("Employees");
 	ButtonActionListener buttonActionListener = new ButtonActionListener(this, buttonDashboard, buttonManagement, buttonEmployees);
 	
-	JButton 	buttonConfirm = new JButton("Confirm your Input");
+	JButton 	buttonConfirm = new JButton("Confirm your input");
 	
 	JTextField  textFieldBuyA = new JTextField("0"),
 				textFieldBuyB = new JTextField("0"),
 				textFieldPriceC = new JTextField("0"),
 				textFieldLoan = new JTextField("0");
 	
-	JLabel 	labelBuyA = new JLabel("Buying x of Product A (as integer)"),
-			labelBuyB = new JLabel("Buying x of Product B (as integer)"),
-			labelPriceC = new JLabel("Change selling-price of Product C (as double)"),
+	JLabel 	labelBuyA = new JLabel("Buying x of product A (as integer)✓"),
+			labelBuyB = new JLabel("Buying x of product B (as integer)"),
+			labelPriceC = new JLabel("Change selling-price of product C (as double)"),
 			labelLoan = new JLabel("Increase loans by x percent (as double)"),
 			labelRevenue = new JLabel("Revenue: "),
 			labelProductsSold = new JLabel("Products sold:"),
 			labelEBIT = new JLabel("EBIT:"),
-			labelEmployees = new JLabel("Number of Employees:");
+			labelEmployees = new JLabel("Number of employees:"),
+			labelLoansCombined = new JLabel("Combined loans of employees:"),
+			labelCash = new JLabel("Cashflow:"),
+			labelRunningCosts = new JLabel("Running costs:");
 	
 	public ContentPanel() {
 		super();
@@ -58,9 +61,9 @@ public class ContentPanel extends JPanel implements ActionListener {
 		setLayout(null);
 		setSize(1200,720);
 		
-		addButton(buttonDashboard, 800, 0);
-		addButton(buttonManagement, 931, 0);
-		addButton(buttonEmployees, 1062, 0);
+			addButton(buttonDashboard, 800, 0);
+			addButton(buttonManagement, 931, 0);
+			addButton(buttonEmployees, 1062, 0);
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -96,9 +99,13 @@ public class ContentPanel extends JPanel implements ActionListener {
 	private void drawMenuDashboard(){
 		removeComponents();
 		drawLabel(labelRevenue, 60);
-		drawLabel(labelProductsSold, 100);
-		drawLabel(labelEBIT, 140);
-		drawLabel(labelEmployees, 180);
+		drawLabel(labelCash, 100);
+		drawLabel(labelProductsSold, 140);
+		drawLabel(labelEBIT, 180);
+		drawLabel(labelRunningCosts, 220);
+		drawLabel(labelEmployees, 260);
+		drawLabel(labelLoansCombined, 300);
+		
 	}
 	
 	private void drawMenuManagement() {
@@ -131,6 +138,9 @@ public class ContentPanel extends JPanel implements ActionListener {
 		remove(labelPriceC);
 		remove(labelProductsSold);
 		remove(labelRevenue);
+		remove(labelLoansCombined);
+		remove(labelCash);
+		remove(labelRunningCosts);
 	}
 	
 	private void drawTextField(JTextField textField, int y) {

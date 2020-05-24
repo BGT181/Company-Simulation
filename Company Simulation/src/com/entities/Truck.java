@@ -10,7 +10,7 @@ public class Truck extends Entity{
 	
 	
 	public Truck(Image image, int xPos, int yPos, Dimension orientation) {
-		super(image, xPos, yPos, orientation);
+		super(image, xPos, yPos, 0);
 		// TODO Auto-generated constructor stub
 	}
 
