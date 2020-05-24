@@ -16,7 +16,6 @@ public class Company {
 	private ArrayList<Storage> storages = new ArrayList<Storage>();
 	private ArrayList<Employee> employees = new ArrayList<Employee>();
 	
-	
 	public Company() {
 		
 	}

@@ -4,8 +4,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -38,22 +40,9 @@ public class ContentPanel extends JPanel implements ActionListener {
 	
 	JButton 	buttonConfirm = new JButton("Confirm your input");
 	
-	JTextField  textFieldBuyA = new JTextField("0"),
-				textFieldBuyB = new JTextField("0"),
-				textFieldPriceC = new JTextField("0"),
-				textFieldLoan = new JTextField("0");
-	
-	JLabel 	labelBuyA = new JLabel("Buying x of product A (as integer)✓"),
-			labelBuyB = new JLabel("Buying x of product B (as integer)"),
-			labelPriceC = new JLabel("Change selling-price of product C (as double)"),
-			labelLoan = new JLabel("Increase loans by x percent (as double)"),
-			labelRevenue = new JLabel("Revenue: "),
-			labelProductsSold = new JLabel("Products sold:"),
-			labelEBIT = new JLabel("EBIT:"),
-			labelEmployees = new JLabel("Number of employees:"),
-			labelLoansCombined = new JLabel("Combined loans of employees:"),
-			labelCash = new JLabel("Cashflow:"),
-			labelRunningCosts = new JLabel("Running costs:");
+	private ArrayList<JComponent> menuDashboard = new ArrayList<JComponent>();
+	private ArrayList<JComponent> menuManagement = new ArrayList<JComponent>();
+	private ArrayList<JComponent> menuEmployee = new ArrayList<JComponent>();
 	
 	public ContentPanel() {
 		super();
@@ -77,80 +66,95 @@ public class ContentPanel extends JPanel implements ActionListener {
 	
 	private void drawMenu() {
 		if(currentOptionPanel!=feedbackOptionPanel) {
+			removeComponents();
 			switch (currentOptionPanel) {
 				case DASHBOARD:	
-					drawMenuDashboard();
+					initMenuDasboard();
+					addArrayListToPanel(menuDashboard);
 					repaint();
 					feedbackOptionPanel = currentOptionPanel;
 					break;
 				case MANAGEMENT:
-					drawMenuManagement();
+					initMenuManagement();
+					addArrayListToPanel(menuManagement);
 					repaint();
 					feedbackOptionPanel = currentOptionPanel;
 					break;
 				case EMPLOYEE:
-				
+					initMenuEmployee();
+					addArrayListToPanel(menuEmployee);
 				    feedbackOptionPanel = currentOptionPanel;
 					break;			
 			}
 		}
 	}
-
-	private void drawMenuDashboard(){
-		removeComponents();
-		drawLabel(labelRevenue, 60);
-		drawLabel(labelCash, 100);
-		drawLabel(labelProductsSold, 140);
-		drawLabel(labelEBIT, 180);
-		drawLabel(labelRunningCosts, 220);
-		drawLabel(labelEmployees, 260);
-		drawLabel(labelLoansCombined, 300);
+	
+	private void initMenuEmployee() {
+		// TODO Auto-generated method stub
 		
 	}
 	
-	private void drawMenuManagement() {
-		removeComponents();
-		drawTextField(textFieldBuyA, 100);
-		drawTextField(textFieldBuyB, 200);
-		drawTextField(textFieldPriceC, 300);
-		drawTextField(textFieldLoan, 400);
+	private void initMenuDasboard() {
+		menuDashboard.add(createLabel("Revenue:", 825, 60));			//#0
+		menuDashboard.add(createLabel("EBIT:", 825 , 100));				//#1
+		menuDashboard.add(createLabel("Cash:", 825 , 140));				//#2
+		menuDashboard.add(createLabel("Products sold:", 825 , 180));	//#3
+		menuDashboard.add(createLabel("Employees:", 825 , 220));		//#4
+		menuDashboard.add(createLabel("Monthly loans:", 825 , 260));	//#5
+	}
+	
+	private void initMenuManagement() {
+		menuManagement.add(createLabel("Buy x items of product A (as integer)", 825, 60));						//#0
+		menuManagement.add(createLabel("Buy x items of product B (as integer)", 825, 160));						//#1
+		menuManagement.add(createLabel("Set selling-price of product C (as double)", 825, 260));				//#2
+		menuManagement.add(createLabel("Increasing loan of all employees by x percent (as double)", 825, 360));	//#3
 		
-		drawLabel(labelBuyA, 60);
-		drawLabel(labelBuyB, 160);
-		drawLabel(labelPriceC, 260);
-		drawLabel(labelLoan, 360);
-		
-		buttonConfirm.setBounds(825, 500, 350, 50);
-		add(buttonConfirm);
+		menuManagement.add(createTextField(0, 100));					//#4 - Buy product A
+		menuManagement.add(createTextField(0, 200));					//#5 - Buy product B
+		menuManagement.add(createTextField(0, 300));					//#6 - Price for C
+ 		menuManagement.add(createTextField(0, 400));					//#7 - Increase loans
+ 		
+ 		buttonConfirm.setBounds(825, 500, 350, 50);
+		menuManagement.add(buttonConfirm);								//#8
+	}
+	
+	private JLabel createLabel(String text, int xPos, int yPos) {
+		JLabel label = new JLabel(text);
+		label.setBounds(xPos, yPos, 400, 50);
+		return label;
+	}
+	
+	private JTextField createTextField(int val, int yPos) {
+		JTextField textfield = new JTextField(val);
+		textfield.setBounds(825, yPos, 150, 30);
+		return textfield;
+	}
+	
+	private void addArrayListToPanel(ArrayList<JComponent> arrayList) {
+		for(JComponent component : arrayList) {
+			add(component);
+		}
 	}
 	
 	private void removeComponents() {
-		remove(buttonConfirm);
-		remove(textFieldBuyA);
-		remove(textFieldBuyB);
-		remove(textFieldPriceC);
-		remove(textFieldLoan);
-		remove(labelBuyA);
-		remove(labelBuyB);
-		remove(labelEBIT);
-		remove(labelEmployees);
-		remove(labelLoan);
-		remove(labelPriceC);
-		remove(labelProductsSold);
-		remove(labelRevenue);
-		remove(labelLoansCombined);
-		remove(labelCash);
-		remove(labelRunningCosts);
-	}
-	
-	private void drawTextField(JTextField textField, int y) {
-		textField.setBounds(825, y, 200, 30);
-		add(textField);
-	}
-	
-	private void drawLabel(JLabel label, int y) {
-		label.setBounds(825, y, 300, 50);
-		add(label);
+		System.out.println("Checkpoint");
+		if(feedbackOptionPanel==optionPanel.DASHBOARD) {
+			System.out.println("Checkpoint2");
+			for(JComponent component : menuDashboard) {
+				remove(component);
+			} 
+		}
+		if(feedbackOptionPanel==optionPanel.MANAGEMENT) {
+			System.out.println("Checkpoint3");
+			for(JComponent component : menuManagement) {
+				remove(component);
+			}
+		}
+		if(feedbackOptionPanel==optionPanel.EMPLOYEE) {
+			for(JComponent component : menuEmployee) {
+				remove(component);
+			}
+		}
 	}
 	
 	private void drawImages(Graphics2D g2d) {
