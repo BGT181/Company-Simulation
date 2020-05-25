@@ -29,6 +29,7 @@ public class JEmployeeMenubar extends JComponent{
 	
 	public JEmployeeMenubar(Employee employee, String name, int x, int y, ContentPanel contentP) {
 		super();
+		this.employee = employee;
 		this.name = name;
 		this.x = x;
 		this.y = y;
@@ -41,27 +42,26 @@ public class JEmployeeMenubar extends JComponent{
 	private void initComponents() {
 		
 		labelName = new JLabel(name);
-		checkboxLogistic = new JCheckBox("",false);
-		/*System.out.println("debug");
-		
-		System.out.println("debug5");
-		
-		System.out.println("debug4");
+		checkboxLogistic = new JCheckBox("", employee.getQualification(0));
 		checkboxPreprocessing = new JCheckBox("",employee.getQualification(1));
 		checkboxProcessing = new JCheckBox("",employee.getQualification(2));
 		checkboxQualitycheck = new JCheckBox("",employee.getQualification(3));
 		labelEfficiency = new JLabel(Double.toString(employee.getEfficiencyLvl()));
-		*/
 	}
 	
 	
 	private void placeComponents() {
-		System.out.println("debug2");
 		labelName.setBounds(x, y, 20, 50);
-		checkboxLogistic.setBounds(900, 60, 20, 20);
+		checkboxLogistic.setBounds(x+50, y, 25, 25);
+		checkboxPreprocessing.setBounds(x+100, y, 25, 25);
+		checkboxProcessing.setBounds(x+150, y, 25, 25);
+		checkboxQualitycheck.setBounds(x+200, y, 25, 25);
 		
 		contentP.add(labelName);
 		contentP.add(checkboxLogistic);
+		contentP.add(checkboxPreprocessing);
+		contentP.add(checkboxProcessing);
+		contentP.add(checkboxQualitycheck);
 	}
 	
 }
