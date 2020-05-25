@@ -3,7 +3,6 @@ package com.framemanagement;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import com.entities.Employee;
 
@@ -36,7 +35,6 @@ public class JEmployeeMenubar extends JComponent{
 		this.contentP = contentP;
 		initComponents();
 		placeComponents();
-		
 	}
 	
 	private void initComponents() {	

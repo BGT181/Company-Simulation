@@ -19,9 +19,6 @@ public class Company {
 	 * 
 	 */
 	
-	
-	
-	
 	private double revenue;
 	private double cash;
 	private double ebit;

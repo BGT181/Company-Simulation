@@ -8,7 +8,7 @@ public class Entity {
 	private Image image;
 	private int xPos,yPos;
 	private int orientation;
-	private boolean isMoveable;
+	private boolean isAvailable;
 	
 	public Entity(Image image, int xPos, int yPos, int orientation) {
 		this.image = image;

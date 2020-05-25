@@ -12,7 +12,7 @@ public class Employee extends Entity{
 		QUALITYCHECK	//#3
 	}
 	
-	private boolean[] qualification = new boolean[4];// {false,false,false,false};
+	private boolean[] qualification = new boolean[4];
 	private double loan = 3000;
 	private double efficiencyLvl = 1; 
 	private boolean isAvailable = true;
