@@ -146,7 +146,6 @@ public class ContentPanel extends JPanel implements ActionListener {
 			} 
 		}
 		if(feedbackOptionPanel==optionPanel.MANAGEMENT) {
-			System.out.println("Checkpoint3");
 			for(JComponent component : menuManagement) {
 				remove(component);
 			}

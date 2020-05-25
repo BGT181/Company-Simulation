@@ -39,8 +39,7 @@ public class JEmployeeMenubar extends JComponent{
 		
 	}
 	
-	private void initComponents() {
-		
+	private void initComponents() {	
 		labelName = new JLabel(name);
 		checkboxLogistic = new JCheckBox("", employee.getQualification(0));
 		checkboxPreprocessing = new JCheckBox("",employee.getQualification(1));
@@ -48,7 +47,6 @@ public class JEmployeeMenubar extends JComponent{
 		checkboxQualitycheck = new JCheckBox("",employee.getQualification(3));
 		labelEfficiency = new JLabel(Double.toString(employee.getEfficiencyLvl()));
 	}
-	
 	
 	private void placeComponents() {
 		labelName.setBounds(x, y, 20, 50);
