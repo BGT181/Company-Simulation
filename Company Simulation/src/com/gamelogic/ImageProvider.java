@@ -42,6 +42,7 @@ public class ImageProvider {
 	
 	private void loadImages() {
 		imageBuffer[0] = new ImageIcon("src/images/building.png").getImage();
+		imageBuffer[4] = new ImageIcon("src/images/storage.png").getImage();
 		imageBuffer[5] = new ImageIcon("src/images/truck.png").getImage();
 	}
 	

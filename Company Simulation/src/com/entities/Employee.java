@@ -6,10 +6,10 @@ import java.awt.Image;
 public class Employee extends Entity{
 
 	public enum Qualification {
-		LOGISTICS,
-		PREPROCESSING,
-		PROCESSING,
-		QUALITYCHECK
+		LOGISTICS,		//#0
+		PREPROCESSING,	//#1
+		PROCESSING,		//#2
+		QUALITYCHECK	//#3
 	}
 	
 	private boolean[] qualification = new boolean[4];
@@ -51,8 +51,8 @@ public class Employee extends Entity{
 		super.setOrientation(orientation);
 	}
 
-	public boolean[] getQualification() {
-		return qualification;
+	public boolean getQualification(int x) {
+		return qualification[x];
 	}
 
 	public void setQualification(boolean[] qualification) {

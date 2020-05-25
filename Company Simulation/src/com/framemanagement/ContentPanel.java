@@ -26,6 +26,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = -2906000336360409527L;
 	ImageProvider ip = new ImageProvider();
 	Timer timer = new Timer(5000, this);
+	Company company = new Company();
 	
 	//Logic for the Menu. An Enum to provide the values for the specific Design
 	public enum optionPanel { DASHBOARD, MANAGEMENT, EMPLOYEE }
@@ -83,6 +84,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 				case EMPLOYEE:
 					initMenuEmployee();
 					addArrayListToPanel(menuEmployee);
+					repaint();
 				    feedbackOptionPanel = currentOptionPanel;
 					break;			
 			}
@@ -91,7 +93,8 @@ public class ContentPanel extends JPanel implements ActionListener {
 	
 	private void initMenuEmployee() {
 		// TODO Auto-generated method stub
-		
+		JEmployeeMenubar menubar = new JEmployeeMenubar(company.getEmployee(0), "E1", 825, 60,this);
+		menuEmployee.add(menubar);
 	}
 	
 	private void initMenuDasboard() {
@@ -137,9 +140,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 	}
 	
 	private void removeComponents() {
-		System.out.println("Checkpoint");
 		if(feedbackOptionPanel==optionPanel.DASHBOARD) {
-			System.out.println("Checkpoint2");
 			for(JComponent component : menuDashboard) {
 				remove(component);
 			} 
@@ -160,6 +161,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 	private void drawImages(Graphics2D g2d) {
 		g2d.drawImage(ip.getImage(Imagefor.BUILDING), 0,0,null);
         g2d.drawImage(ip.getImage(Imagefor.TRUCK), 80,75,null);
+        g2d.drawImage(ip.getImage(Imagefor.STORAGE), 100, 100,null);
 	}
 	
 	private void addButton(JButton button, int x, int y) {
