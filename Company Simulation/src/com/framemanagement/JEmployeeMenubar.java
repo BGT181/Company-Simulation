@@ -11,6 +11,7 @@ public class JEmployeeMenubar extends JComponent{
 	/**
 	 * 
 	 */
+	
 	private static final long serialVersionUID = 2931214101722167232L;
 	private Employee employee;
 	private int x;
