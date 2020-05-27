@@ -12,13 +12,15 @@ public class Employee extends Entity{
 		QUALITYCHECK	//#3
 	}
 	
+	private String name;
 	private boolean[] qualification = new boolean[4];
 	private double loan = 3000;
 	private double efficiencyLvl = 1; 
 	private boolean isAvailable = true;
 	
-	public Employee(Image image, int xPos, int yPos, int orientation) {
+	public Employee(Image image, int xPos, int yPos, int orientation, String name) {
 		super(image, xPos, yPos, orientation);
+		this.name = name;
 	}
 	
 	public void increaseLoan(double increasementLoan) {
@@ -57,6 +59,10 @@ public class Employee extends Entity{
 
 	public void setQualification(boolean[] qualification) {
 		this.qualification = qualification;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 }

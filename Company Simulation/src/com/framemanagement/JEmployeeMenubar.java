@@ -27,11 +27,11 @@ public class JEmployeeMenubar extends JComponent{
 	
 	ContentPanel contentP;
 	
-	public JEmployeeMenubar(Employee employee, String name, int x, int y, ContentPanel contentP) {
+	public JEmployeeMenubar(ContentPanel contentP, Employee employee, String name, int y) {
 		super();
 		this.employee = employee;
 		this.name = name;
-		this.x = x;
+		this.x = 825;
 		this.y = y;
 		this.contentP = contentP;
 		initComponents();
@@ -49,16 +49,27 @@ public class JEmployeeMenubar extends JComponent{
 	
 	private void placeComponents() {
 		labelName.setBounds(x, y, 20, 50);
-		checkboxLogistic.setBounds(x+50, y, 25, 25);
-		checkboxPreprocessing.setBounds(x+100, y, 25, 25);
-		checkboxProcessing.setBounds(x+150, y, 25, 25);
-		checkboxQualitycheck.setBounds(x+200, y, 25, 25);
+		checkboxLogistic.setBounds(x+75, y+10, 25, 25);
+		checkboxPreprocessing.setBounds(x+125, y+10, 25, 25);
+		checkboxProcessing.setBounds(x+175, y+10, 25, 25);
+		checkboxQualitycheck.setBounds(x+225, y+10, 25, 25);
+		labelEfficiency.setBounds(x+300, y, 20, 50);
 		
 		contentP.add(labelName);
 		contentP.add(checkboxLogistic);
 		contentP.add(checkboxPreprocessing);
 		contentP.add(checkboxProcessing);
 		contentP.add(checkboxQualitycheck);
+		contentP.add(labelEfficiency);
+	}
+	
+	public void removeComponents() {
+		contentP.remove(labelName);
+		contentP.remove(checkboxLogistic);
+		contentP.remove(checkboxPreprocessing);
+		contentP.remove(checkboxProcessing);
+		contentP.remove(checkboxQualitycheck);
+		contentP.remove(labelEfficiency);
 	}
 	
 }

@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.Timer;
 
 import com.actionlistener.ButtonActionListener;
+import com.entities.Employee;
 import com.gamelogic.Company;
 import com.gamelogic.ImageProvider;
 import com.gamelogic.ImageProvider.Imagefor;
@@ -92,9 +93,17 @@ public class ContentPanel extends JPanel implements ActionListener {
 	}
 	
 	private void initMenuEmployee() {
-		// TODO Auto-generated method stub
-		JEmployeeMenubar menubar = new JEmployeeMenubar(company.getEmployee(0), "E1", 825, 60,this);
-		menuEmployee.add(menubar);
+		
+	menuEmployee.add(createLabel("Logistics", 875, 51));
+	menuEmployee.add(createLabel("Preprocessing", 925, 71));
+	menuEmployee.add(createLabel("Processing", 975, 91));
+	menuEmployee.add(createLabel("Qualtycheck", 1025, 111));
+		
+		int i = 140;
+		for (Employee employee : company.getArrayListEmployee()) {
+			menuEmployee.add(new JEmployeeMenubar(this,employee, employee.getName(),i));
+			i+=20;
+		}
 	}
 	
 	private void initMenuDasboard() {
@@ -152,7 +161,11 @@ public class ContentPanel extends JPanel implements ActionListener {
 		}
 		if(feedbackOptionPanel==optionPanel.EMPLOYEE) {
 			for(JComponent component : menuEmployee) {
-				remove(component);
+				if(component instanceof JLabel) {
+					remove(component);
+				} else  {
+					((JEmployeeMenubar) component).removeComponents();
+				}
 			}
 		}
 	}

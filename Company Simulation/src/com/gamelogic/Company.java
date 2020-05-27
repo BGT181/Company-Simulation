@@ -29,13 +29,14 @@ public class Company {
 	private ArrayList<Employee> employees = new ArrayList<Employee>();
 	
 	public Company() {
-		hireEmployee();
-		hireEmployee();
-		hireEmployee();
+		hireEmployee(0);
+		hireEmployee(1);
+		hireEmployee(2);
 	}
 	
-	public void hireEmployee() {
-		employees.add(new Employee(null, 0, 0, 0));
+	public void hireEmployee(int val) {
+		String name = "E"+val;
+		employees.add(new Employee(null, 0, 0, 0, name));
 	}
 	
 	public ArrayList<Employee> getArrayListEmployee() {
