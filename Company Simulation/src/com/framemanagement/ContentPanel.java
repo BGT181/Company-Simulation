@@ -174,6 +174,12 @@ public class ContentPanel extends JPanel implements ActionListener {
 		g2d.drawImage(ip.getImage(Imagefor.BUILDING), 0,0,null);
         g2d.drawImage(ip.getImage(Imagefor.TRUCK), 80,75,null);
         g2d.drawImage(ip.getImage(Imagefor.STORAGE), 100, 100,null);
+        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_A), 150, 150,null);
+        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_A_PROCESSED), 200, 150,null);
+        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_B), 150, 250,null);
+        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_B_PROCESSED), 150, 300,null);
+        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_C), 150, 350,null);
+        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_C_CERTIFIED), 150, 400,null);
 	}
 	
 	private void addButton(JButton button, int x, int y) {

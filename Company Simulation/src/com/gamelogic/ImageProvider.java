@@ -24,12 +24,12 @@ public class ImageProvider {
 		EMPLOYEE_A,			//#6 -
 		EMPLOYEE_B,			//#7
 		EMPLOYEE_C,			//#8
-		PRODUCT_A, 			//#9
-		PRODUCT_A_PROCESSED,//#10
-		PRODUCT_B,  		//#11
-		PRODUCT_B_PROCESSED,//#12
-		PRODUCT_C,			//#13
-		PRODUCT_C_CERTIFIED //#14
+		PRODUCT_A, 			//#9 -
+		PRODUCT_A_PROCESSED,//#10 -
+		PRODUCT_B,  		//#11 -
+		PRODUCT_B_PROCESSED,//#12 -
+		PRODUCT_C,			//#13 -
+		PRODUCT_C_CERTIFIED //#14 -
 	}
 	
 	public ImageProvider() {
@@ -44,6 +44,12 @@ public class ImageProvider {
 		imageBuffer[0] = new ImageIcon("src/images/building.png").getImage();
 		imageBuffer[4] = new ImageIcon("src/images/storage.png").getImage();
 		imageBuffer[5] = new ImageIcon("src/images/truck.png").getImage();
+		imageBuffer[9] = new ImageIcon("src/images/product_a.png").getImage();
+		imageBuffer[10] = new ImageIcon("src/images/product_a_processed.png").getImage();
+		imageBuffer[11] = new ImageIcon("src/images/product_b.png").getImage();
+		imageBuffer[12] = new ImageIcon("src/images/product_b_processed.png").getImage();
+		imageBuffer[13] = new ImageIcon("src/images/product_c.png").getImage();
+		imageBuffer[14] = new ImageIcon("src/images/product_c_certified.png").getImage();
 	}
 	
 	public Image getImage(Imagefor image) {
