@@ -22,8 +22,8 @@ public class ImageProvider {
 		STORAGE, 			//#4
 		TRUCK,				//#5 -
 		EMPLOYEE_A,			//#6 -
-		EMPLOYEE_B,			//#7
-		EMPLOYEE_C,			//#8
+		EMPLOYEE_B,			//#7 -
+		EMPLOYEE_C,			//#8 -
 		PRODUCT_A, 			//#9 -
 		PRODUCT_A_PROCESSED,//#10 -
 		PRODUCT_B,  		//#11 -
@@ -42,8 +42,12 @@ public class ImageProvider {
 	
 	private void loadImages() {
 		imageBuffer[0] = new ImageIcon("src/images/building.png").getImage();
+		imageBuffer[1] = new ImageIcon("src/images/machine_a.png").getImage();
 		imageBuffer[4] = new ImageIcon("src/images/storage.png").getImage();
 		imageBuffer[5] = new ImageIcon("src/images/truck.png").getImage();
+		imageBuffer[6] = new ImageIcon("src/images/employee_a.png").getImage();
+		imageBuffer[7] = new ImageIcon("src/images/employee_b.png").getImage();
+		imageBuffer[8] = new ImageIcon("src/images/employee_c.png").getImage();
 		imageBuffer[9] = new ImageIcon("src/images/product_a.png").getImage();
 		imageBuffer[10] = new ImageIcon("src/images/product_a_processed.png").getImage();
 		imageBuffer[11] = new ImageIcon("src/images/product_b.png").getImage();

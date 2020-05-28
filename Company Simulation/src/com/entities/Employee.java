@@ -57,8 +57,8 @@ public class Employee extends Entity{
 		return qualification[x];
 	}
 
-	public void setQualification(boolean[] qualification) {
-		this.qualification = qualification;
+	public void setQualification(int qualificationNum) {
+		this.qualification[qualificationNum] ^= true;
 	}
 
 	public String getName() {

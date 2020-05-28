@@ -97,7 +97,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 	menuEmployee.add(createLabel("Logistics", 875, 51));
 	menuEmployee.add(createLabel("Preprocessing", 925, 71));
 	menuEmployee.add(createLabel("Processing", 975, 91));
-	menuEmployee.add(createLabel("Qualtycheck", 1025, 111));
+	menuEmployee.add(createLabel("Qualitycheck", 1025, 111));
 		
 		int i = 140;
 		for (Employee employee : company.getArrayListEmployee()) {
@@ -175,11 +175,15 @@ public class ContentPanel extends JPanel implements ActionListener {
         g2d.drawImage(ip.getImage(Imagefor.TRUCK), 80,75,null);
         g2d.drawImage(ip.getImage(Imagefor.STORAGE), 100, 100,null);
         g2d.drawImage(ip.getImage(Imagefor.PRODUCT_A), 150, 150,null);
-        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_A_PROCESSED), 200, 150,null);
+        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_A_PROCESSED), 150, 200,null);
         g2d.drawImage(ip.getImage(Imagefor.PRODUCT_B), 150, 250,null);
         g2d.drawImage(ip.getImage(Imagefor.PRODUCT_B_PROCESSED), 150, 300,null);
         g2d.drawImage(ip.getImage(Imagefor.PRODUCT_C), 150, 350,null);
         g2d.drawImage(ip.getImage(Imagefor.PRODUCT_C_CERTIFIED), 150, 400,null);
+        g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_A), 150, 450,null);
+        g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_B), 150, 500,null);
+        g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_C), 150, 550,null);
+        g2d.drawImage(ip.getImage(Imagefor.MACHINE_A), 600, 275,null);
 	}
 	
 	private void addButton(JButton button, int x, int y) {

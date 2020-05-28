@@ -4,6 +4,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 
+import com.actionlistener.CheckBoxActionListener;
 import com.entities.Employee;
 
 public class JEmployeeMenubar extends JComponent{
@@ -36,6 +37,7 @@ public class JEmployeeMenubar extends JComponent{
 		this.contentP = contentP;
 		initComponents();
 		placeComponents();
+		//CheckBoxActionListener boxActionListener = new CheckBoxActionListener(employee, checkboxLogistic, checkboxPreprocessing, checkboxProcessing, checkboxQualitycheck);
 	}
 	
 	private void initComponents() {	
@@ -54,6 +56,13 @@ public class JEmployeeMenubar extends JComponent{
 		checkboxProcessing.setBounds(x+175, y+10, 25, 25);
 		checkboxQualitycheck.setBounds(x+225, y+10, 25, 25);
 		labelEfficiency.setBounds(x+300, y, 20, 50);
+		
+		CheckBoxActionListener boxActionListener = new CheckBoxActionListener(employee, checkboxLogistic, checkboxPreprocessing, checkboxProcessing, checkboxQualitycheck);
+
+		checkboxLogistic.addActionListener(boxActionListener);
+		checkboxPreprocessing.addActionListener(boxActionListener);
+		checkboxProcessing.addActionListener(boxActionListener);
+		checkboxQualitycheck.addActionListener(boxActionListener);
 		
 		contentP.add(labelName);
 		contentP.add(checkboxLogistic);
