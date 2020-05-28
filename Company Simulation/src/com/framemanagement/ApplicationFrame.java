@@ -16,6 +16,7 @@ public class ApplicationFrame extends JFrame{
 		super("Company Simulation");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1200, 740);
+		setResizable(false);
 		
 		Dimension dm = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation((int) Math.round((dm.getWidth()/2)-500), (int) Math.round((dm.getHeight()/2)-350));

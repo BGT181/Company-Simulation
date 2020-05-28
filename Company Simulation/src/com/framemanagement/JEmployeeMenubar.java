@@ -37,7 +37,6 @@ public class JEmployeeMenubar extends JComponent{
 		this.contentP = contentP;
 		initComponents();
 		placeComponents();
-		//CheckBoxActionListener boxActionListener = new CheckBoxActionListener(employee, checkboxLogistic, checkboxPreprocessing, checkboxProcessing, checkboxQualitycheck);
 	}
 	
 	private void initComponents() {	
