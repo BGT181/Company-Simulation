@@ -183,7 +183,8 @@ public class ContentPanel extends JPanel implements ActionListener {
         g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_A), 150, 450,null);
         g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_B), 150, 500,null);
         g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_C), 150, 550,null);
-        g2d.drawImage(ip.getImage(Imagefor.MACHINE_A), 600, 275,null);
+        g2d.drawImage(ip.getImage(Imagefor.MACHINE_A), 625, 100,null);
+        g2d.drawImage(ip.getImage(Imagefor.MACHINE_B), 600, 275,null);
 	}
 	
 	private void addButton(JButton button, int x, int y) {
