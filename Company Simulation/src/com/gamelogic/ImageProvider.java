@@ -36,10 +36,6 @@ public class ImageProvider {
 		loadImages();
 	}
 	
-	/**
-	 * Some Images still need to be added when they're available.
-	 */
-	
 	private void loadImages() {
 		imageBuffer[0] = new ImageIcon("src/images/building.png").getImage();
 		imageBuffer[1] = new ImageIcon("src/images/machine_a.png").getImage();

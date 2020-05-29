@@ -173,19 +173,19 @@ public class ContentPanel extends JPanel implements ActionListener {
 	private void drawImages(Graphics2D g2d) {
 		g2d.drawImage(ip.getImage(Imagefor.BUILDING), 0,0,null);
         g2d.drawImage(ip.getImage(Imagefor.TRUCK), 80,75,null);
-        g2d.drawImage(ip.getImage(Imagefor.STORAGE), 100, 100,null);
-        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_A), 150, 150,null);
-        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_A_PROCESSED), 150, 200,null);
-        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_B), 150, 250,null);
-        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_B_PROCESSED), 150, 300,null);
-        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_C), 150, 350,null);
+        g2d.drawImage(ip.getImage(Imagefor.STORAGE), 130, 225,null);
+        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_A), 135, 230,null);
+        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_A_PROCESSED), 172, 230,null);
+        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_B), 209, 230,null);
+        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_B_PROCESSED), 246, 230,null);
+        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_C), 283, 230,null);
         g2d.drawImage(ip.getImage(Imagefor.PRODUCT_C_CERTIFIED), 150, 400,null);
         g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_A), 150, 450,null);
         g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_B), 150, 500,null);
         g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_C), 150, 550,null);
-        g2d.drawImage(ip.getImage(Imagefor.MACHINE_A), 625, 100,null);
+        g2d.drawImage(ip.getImage(Imagefor.MACHINE_A), 625, 80,null);
         g2d.drawImage(ip.getImage(Imagefor.MACHINE_B), 600, 275,null);
-        g2d.drawImage(ip.getImage(Imagefor.MACHINE_C), 625, 500,null);
+        g2d.drawImage(ip.getImage(Imagefor.MACHINE_C), 625, 520,null);
 	}
 	
 	private void addButton(JButton button, int x, int y) {
