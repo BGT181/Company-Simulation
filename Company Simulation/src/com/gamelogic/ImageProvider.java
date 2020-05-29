@@ -17,9 +17,9 @@ public class ImageProvider {
 	public enum Imagefor {
 		BUILDING,			//#0 -
 		MACHINE_A, 			//#1 -
-		MACHINE_B,			//#2
-		MACHINE_C,			//#3
-		STORAGE, 			//#4
+		MACHINE_B,			//#2 -
+		MACHINE_C,			//#3 -
+		STORAGE, 			//#4 -
 		TRUCK,				//#5 -
 		EMPLOYEE_A,			//#6 -
 		EMPLOYEE_B,			//#7 -
@@ -44,6 +44,7 @@ public class ImageProvider {
 		imageBuffer[0] = new ImageIcon("src/images/building.png").getImage();
 		imageBuffer[1] = new ImageIcon("src/images/machine_a.png").getImage();
 		imageBuffer[2] = new ImageIcon("src/images/machine_b.png").getImage();
+		imageBuffer[3] = new ImageIcon("src/images/machine_c.png").getImage();
 		imageBuffer[4] = new ImageIcon("src/images/storage.png").getImage();
 		imageBuffer[5] = new ImageIcon("src/images/truck.png").getImage();
 		imageBuffer[6] = new ImageIcon("src/images/employee_a.png").getImage();
