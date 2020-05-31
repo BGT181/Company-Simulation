@@ -40,7 +40,10 @@ public class Entity {
 	public void setOrientation(int orientation) {
 		this.orientation = orientation;
 	}
-
+	
+	public void setImage(Image image) {
+		this.image = image;
+	}
 	public Image getImage() {
 		return image;
 	}
