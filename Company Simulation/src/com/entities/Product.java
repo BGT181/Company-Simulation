@@ -8,7 +8,12 @@ public class Product extends Entity {
 	private productType type;
 
 	public enum productType {
-		PRODUCT_A, PRODUCT_A_PROCESSED, PRODUCT_B, PRODUCT_B_PROCESSED, PRODUCT_C, PRODUCT_C_CERTIFIED
+		PRODUCT_A,
+		PRODUCT_A_PROCESSED,
+		PRODUCT_B, 
+		PRODUCT_B_PROCESSED,
+		PRODUCT_C, 
+		PRODUCT_C_CERTIFIED
 	}
 
 	private boolean recyclingStatus = false;
