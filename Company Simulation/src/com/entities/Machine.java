@@ -10,7 +10,7 @@ import com.entities.Product.productType;
 
 public class Machine extends Entity {
 
-	private enum MachineType {
+	public enum MachineType {
 		MACHINE_A, // #0
 		MACHINE_B, // #1
 		MACHINE_C, // #2
@@ -74,10 +74,9 @@ public class Machine extends Entity {
 
 	private int calculateduration() {
 		int duration;
-		duration = durationFactor * standardDuration
-				+ randomNumber(durationDifferenceRange[0], durationDifferenceRange[1]);
+		duration = durationFactor * standardDuration + randomNumber(durationDifferenceRange[0], durationDifferenceRange[1]);
 		for (int i = 0; i < assignedEmployees; i++) {
-			duration *= employee[i].getEfficiencyLvl();
+			duration -= employee[i].getEfficiencyLvl() * 2;
 		}
 		return duration;
 	}
