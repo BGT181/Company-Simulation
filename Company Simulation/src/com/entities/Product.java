@@ -3,6 +3,9 @@ package com.entities;
 import java.awt.Dimension;
 import java.awt.Image;
 
+import com.gamelogic.ImageProvider;
+import com.gamelogic.ImageProvider.Imagefor;
+
 public class Product extends Entity {
 
 	private productType type;
@@ -16,8 +19,8 @@ public class Product extends Entity {
 		PRODUCT_C_CERTIFIED
 	}
 
-	private boolean recyclingStatus = false;
-
+	private ImageProvider images = new ImageProvider();
+	
 	// _______________________________________________________________________________________________________________________
 	public Product(Image image, int xPos, int yPos, productType type) {
 		super(image, xPos, yPos, 0);
@@ -25,48 +28,37 @@ public class Product extends Entity {
 	}
 
 	// _______________________________________________________________________________________________________________________
-	public void deleteProduct() {
-		this.type = null;
-		super.setImage(null);
-		super.setxPos(0);
-		super.setyPos(0);
-		recyclingStatus = true;
-	}
-
-	public void recycle(Image image, int xPos, int yPos, productType type) {
-		super.setImage(image);
-		super.setxPos(xPos);
-		super.setyPos(yPos);
-		this.type = type;
-		recyclingStatus = false;
-	}
-
 	public void process() {
 		switch (type) {
 		case PRODUCT_A:
 			type = productType.PRODUCT_A_PROCESSED;
-//			super.setImage();
+			super.setImage(images.getImage(Imagefor.PRODUCT_A_PROCESSED));
 			break;
 
 		case PRODUCT_B:
 			type = productType.PRODUCT_B_PROCESSED;
+			super.setImage(images.getImage(Imagefor.PRODUCT_B_PROCESSED));
 			break;
 		
 		case PRODUCT_C:
 		 	type = productType.PRODUCT_C_CERTIFIED;
-			break;
-			
-		case PRODUCT_A_PROCESSED:
-			type = productType.PRODUCT_C;
-			break;
+		 	super.setImage(images.getImage(Imagefor.PRODUCT_C_CERTIFIED));
+		 	break;
 			
 		case PRODUCT_B_PROCESSED:
-			deleteProduct();
+			type = productType.PRODUCT_C;
+			super.setImage(images.getImage(Imagefor.PRODUCT_C));
 			break;
 		}
 	}
 
 	// _______________________________________________________________________________________________________________________
+	public void setPosition(int xPos, int yPos, int orientation) {
+		super.setxPos(xPos);
+		super.setyPos(yPos);
+		super.setOrientation(orientation);
+	}
+	
 	public void setType(productType type) {
 		this.type = type;
 	}
