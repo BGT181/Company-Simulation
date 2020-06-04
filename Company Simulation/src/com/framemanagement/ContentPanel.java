@@ -180,15 +180,15 @@ public class ContentPanel extends JPanel implements ActionListener {
         g2d.drawImage(ip.getImage(Imagefor.PRODUCT_B_PROCESSED), 246, 230,null);
         g2d.drawImage(ip.getImage(Imagefor.PRODUCT_C), 283, 230,null);
         g2d.drawImage(ip.getImage(Imagefor.PRODUCT_C_CERTIFIED), 150, 400,null);
-//        g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_A), 150, 450,null);
-//        g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_B), 150, 500,null);
-//        g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_C), 150, 550,null);
+        g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_A), 150, 450,null);
+        g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_B), 150, 500,null);
+        g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_C), 150, 550,null);
 //        g2d.drawImage(ip.getImage(Imagefor.MACHINE_A), 625, 80,null);
 //        g2d.drawImage(ip.getImage(Imagefor.MACHINE_B), 600, 275,null);
 //        g2d.drawImage(ip.getImage(Imagefor.MACHINE_C), 625, 520,null);
-        for (int i = 0; i < company.getArrayListEmployee().size(); i++) {
-			g2d.drawImage(company.getArrayListEmployee().get(i).getImage(), company.getArrayListEmployee().get(i).getxPos(), company.getArrayListEmployee().get(i).getyPos(), null);
-		}
+//        for (int i = 0; i < company.getArrayListEmployee().size(); i++) {
+//			g2d.drawImage(company.getArrayListEmployee().get(i).getImage(), company.getArrayListEmployee().get(i).getxPos(), company.getArrayListEmployee().get(i).getyPos(), null);
+//		}
         for (int i = 0; i < company.getMachines().length; i++) {
         	g2d.drawImage(company.getMachines()[i].getImage(), company.getMachines()[i].getxPos(), company.getMachines()[i].getyPos(), null);
 		}
