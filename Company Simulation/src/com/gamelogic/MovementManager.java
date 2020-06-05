@@ -57,7 +57,12 @@ public class MovementManager {
 	}
 	
 	private void calculatePosition() {
-		
+		/*
+		 * Getting the Task
+		 * Check the Milestones he needs to get next
+		 * Setting new xPos, yPos
+		 * Setting the Orientation
+		 */
 	}
 	
 	
