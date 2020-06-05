@@ -3,9 +3,9 @@ package com.gamelogic;
 public class MovementManager {
 
 	enum Milestone {
-		TRUCK_ENTRANCE, CHECKPOINT_A ,MASCHINE_A,	//#0 #1 #2
-		STORAGE, CHECKPOINT_B, MACHINE_B,			//#3 #4 #5
-		TRUCK_EXIT, CHECKPOINT_C, MACHINE_C 		//#6 #7 #8
+		TRUCK_ENTRANCE, CHECKPOINT_A,	MASCHINE_A,	//#0 #1 #2
+		STORAGE, 		CHECKPOINT_B, 	MACHINE_B,	//#3 #4 #5
+		TRUCK_EXIT, 	CHECKPOINT_C, 	MACHINE_C 	//#6 #7 #8
 	}
 	
 	public MovementManager() {
@@ -42,7 +42,6 @@ public class MovementManager {
 	 * 	MACHINE_A -> MACHINE_B		via CHECKPOINT_A, CHECKPOINT_B
 	 *  MACHINE_B -> MACHINE_C		via CHECKPOINT_B, CHECKPOINT_C
 	 *  
-	 */
-	
+	 */ 
 }
 

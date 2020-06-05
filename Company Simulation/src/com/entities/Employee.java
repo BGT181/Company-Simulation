@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Image;
 
 import com.gamelogic.Company.Tasks;
+import com.gamelogic.Task;
 
 public class Employee extends Entity {
 
@@ -20,7 +21,8 @@ public class Employee extends Entity {
 	private double efficiencyLvl = 1;
 	private boolean isAvailable = true;
 	private boolean isArrived = false;
-	private Tasks task;
+	private Task task;
+	//xxsprivate Tasks task;
 
 	public Employee(Image image, int xPos, int yPos, int orientation, String name) {
 		super(image, xPos, yPos, orientation);
@@ -106,11 +108,11 @@ public class Employee extends Entity {
 		return name;
 	}
 
-	public Tasks getTask() {
+	public Task getTask() {
 		return task;
 	}
 
-	public void setTask(Tasks task) {
+	public void setTask(Task task) {
 		this.task = task;
 	}
 

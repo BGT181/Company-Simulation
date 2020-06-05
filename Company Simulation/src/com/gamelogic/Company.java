@@ -80,7 +80,7 @@ public class Company {
 			} else if(employee.getQualification(3) && tasklist.contains(Tasks.PROCESS_MACHINE_C)) {
 				toReturnTask = Tasks.PROCESS_MACHINE_C;
 			}
-		}else {
+		} else {
 			if(tasklist.contains(Tasks.GET_PRODUCT_A_TO_MACHINE_A) && storage.testProductAvailability(productType.PRODUCT_A)) {
 				toReturnTask = Tasks.GET_PRODUCT_A_TO_MACHINE_A;
 			} else if(tasklist.contains(Tasks.GET_PRODUCT_B_TO_MACHINE_A) && storage.testProductAvailability(productType.PRODUCT_B)) {
