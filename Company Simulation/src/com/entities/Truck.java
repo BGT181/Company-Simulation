@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 import com.entities.Product.productType;
 import com.gamelogic.Company;
-import com.gamelogic.Company.Tasks;
 import com.gamelogic.ImageProvider;
+import com.gamelogic.Task;
 
 public class Truck extends Entity{
 
@@ -26,7 +26,7 @@ public class Truck extends Entity{
 		for (int i = 0; i < number; i++) {
 			orderedProducts.add(new Product(null, 0, 0, type));
 		}
-		company.addTask(Tasks.GET_PRODUCTS_FROM_TRUCK);
+		company.addTask(Task.Tasks.GET_PRODUCTS_FROM_TRUCK);
 	}
 	
 	public void addProductsToSell(Product productToSell) {

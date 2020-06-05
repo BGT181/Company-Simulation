@@ -6,6 +6,7 @@ import com.entities.*;
 import com.entities.Machine.MachineType;
 import com.entities.Product.productType;
 import com.gamelogic.ImageProvider.Imagefor;
+import com.gamelogic.Task.Tasks;
 
 
 public class Company {
@@ -21,20 +22,6 @@ public class Company {
 	 * 	1 year ingame = 3600 seconds realtime = 3600000 ms realtime
 	 * 
 	 */
-	public enum Tasks{
-		GET_PRODUCT_A_TO_MACHINE_A,
-		GET_PRODUCT_B_TO_MACHINE_A,
-		GET_PRODUCT_FROM_MACHINE_A,
-		GET_PRODUCT_A_PROCESSED_TO_MACHINE_B,
-		GET_PRODUCT_B_PROCESSED_TO_MACHINE_B,
-		GET_PRODUCT_FROM_MACHINE_B,
-		GET_PRODUCT_C_TO_MACHINE_C,
-		GET_PRODUCT_FROM_MACHINE_C,
-		GET_PRODUCTS_FROM_TRUCK,
-		PROCESS_MACHINE_A,
-		PROCESS_MACHINE_B,
-		PROCESS_MACHINE_C
-	}
 	
 	private double revenue;
 	private double cash;
@@ -64,7 +51,7 @@ public class Company {
 	public void checkEmployeesTasks() {
 		for (int i = 0; i < employees.size(); i++) {
 			if(employees.get(i).getTask() == null) {
-				employees.get(i).setTask(mostImportantTask(employees.get(i)));
+				//employees.get(i).setTask(mostImportantTask(employees.get(i)));
 				tasklist.remove(mostImportantTask(employees.get(i)));
 			}
 		}	

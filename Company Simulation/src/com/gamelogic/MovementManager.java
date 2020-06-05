@@ -1,5 +1,7 @@
 package com.gamelogic;
 
+import com.entities.Employee;
+
 public class MovementManager {
 
 	enum Milestone {
@@ -8,7 +10,10 @@ public class MovementManager {
 		TRUCK_EXIT, 	CHECKPOINT_C, 	MACHINE_C 	//#6 #7 #8
 	}
 	
-	public MovementManager() {
+	private Employee employee;
+	
+	public MovementManager(Employee employee) {
+		this.employee = employee;
 		loadCoordinates();
 	}
 	

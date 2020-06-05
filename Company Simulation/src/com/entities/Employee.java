@@ -3,16 +3,15 @@ package com.entities;
 import java.awt.Dimension;
 import java.awt.Image;
 
-import com.gamelogic.Company.Tasks;
 import com.gamelogic.Task;
 
 public class Employee extends Entity {
 
 	public enum Qualification {
-		LOGISTICS, // #0
-		PREPROCESSING, // #1
-		PROCESSING, // #2
-		QUALITYCHECK // #3
+		LOGISTICS, 		// #0
+		PREPROCESSING, 	// #1
+		PROCESSING, 	// #2
+		QUALITYCHECK 	// #3
 	}
 
 	private String name;
@@ -22,7 +21,6 @@ public class Employee extends Entity {
 	private boolean isAvailable = true;
 	private boolean isArrived = false;
 	private Task task;
-	//xxsprivate Tasks task;
 
 	public Employee(Image image, int xPos, int yPos, int orientation, String name) {
 		super(image, xPos, yPos, orientation);
@@ -74,18 +72,22 @@ public class Employee extends Entity {
 		return this.efficiencyLvl;
 	}
 
+	//Depends on Movement and Task
 	public void setAvailability(boolean availability) {
 		this.isAvailable = availability;
 	}
 
+	//Depends on Movement and Task
 	public boolean getAvailability() {
 		return isAvailable;
 	}
 
+	//Depends on Movement and Task
 	public boolean isArrived() {
 		return isArrived;
 	}
 
+	//Depends on Movement and Task
 	public void setArrived(boolean isArrived) {
 		this.isArrived = isArrived;
 	}
@@ -108,10 +110,12 @@ public class Employee extends Entity {
 		return name;
 	}
 
+	//Depends on Movement and Task
 	public Task getTask() {
 		return task;
 	}
 
+	//Depends on Movement and Task
 	public void setTask(Task task) {
 		this.task = task;
 	}

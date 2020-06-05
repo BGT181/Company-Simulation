@@ -8,7 +8,6 @@ import java.util.TimerTask;
 
 import com.entities.Product.productType;
 import com.gamelogic.*;
-import com.gamelogic.Company.Tasks;
 
 
 public class Machine extends Entity {
@@ -71,15 +70,15 @@ public class Machine extends Entity {
 				addNeededProductsToTasklist();
 				switch (machineType) {
 				case MACHINE_A:
-					company.addTask(Tasks.GET_PRODUCT_FROM_MACHINE_A);
+					company.addTask(Task.Tasks.GET_PRODUCT_FROM_MACHINE_A);
 					break;
 
 				case MACHINE_B:
-					company.addTask(Tasks.GET_PRODUCT_FROM_MACHINE_B);
+					company.addTask(Task.Tasks.GET_PRODUCT_FROM_MACHINE_B);
 					break;
 
 				case MACHINE_C:
-					company.addTask(Tasks.GET_PRODUCT_FROM_MACHINE_C);
+					company.addTask(Task.Tasks.GET_PRODUCT_FROM_MACHINE_C);
 					break;
 
 				}
@@ -135,20 +134,20 @@ public class Machine extends Entity {
 		switch (machineType) {
 		case MACHINE_A:
 			if(processableProduct == productType.PRODUCT_A) {
-				company.addTask(Tasks.GET_PRODUCT_A_TO_MACHINE_A);
+				company.addTask(Task.Tasks.GET_PRODUCT_A_TO_MACHINE_A);
 			}else if(processableProduct == productType.PRODUCT_B) {
-				company.addTask(Tasks.GET_PRODUCT_B_TO_MACHINE_A);
+				company.addTask(Task.Tasks.GET_PRODUCT_B_TO_MACHINE_A);
 			}
 			break;
 
 		case MACHINE_B:
-			company.addTask(Tasks.GET_PRODUCT_A_PROCESSED_TO_MACHINE_B);
-			company.addTask(Tasks.GET_PRODUCT_A_PROCESSED_TO_MACHINE_B);
-			company.addTask(Tasks.GET_PRODUCT_B_PROCESSED_TO_MACHINE_B);
+			company.addTask(Task.Tasks.GET_PRODUCT_A_PROCESSED_TO_MACHINE_B);
+			company.addTask(Task.Tasks.GET_PRODUCT_A_PROCESSED_TO_MACHINE_B);
+			company.addTask(Task.Tasks.GET_PRODUCT_B_PROCESSED_TO_MACHINE_B);
 			break;
 
 		case MACHINE_C:
-			company.addTask(Tasks.GET_PRODUCT_C_TO_MACHINE_C);
+			company.addTask(Task.Tasks.GET_PRODUCT_C_TO_MACHINE_C);
 			break;
 
 		}
