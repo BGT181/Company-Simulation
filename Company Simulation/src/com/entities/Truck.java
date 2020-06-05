@@ -5,14 +5,17 @@ import java.awt.Image;
 import java.util.ArrayList;
 
 import com.entities.Product.productType;
+import com.gamelogic.Company;
+import com.gamelogic.Company.Tasks;
 import com.gamelogic.ImageProvider;
 
 public class Truck extends Entity{
 
-	private static boolean isArrived = false;
-	private static boolean isIdling = false;
+	private boolean isArrived = false;
+	private boolean isIdling = false;
 	private static ArrayList<Product> orderedProducts = new ArrayList<Product>();
 	private static ArrayList<Product> productsToSell = new ArrayList<Product>();
+	private Company company = new Company(false);
 	
 	public Truck(Image image, int xPos, int yPos, Dimension orientation) {
 		super(image, xPos, yPos, 0);
@@ -23,6 +26,7 @@ public class Truck extends Entity{
 		for (int i = 0; i < number; i++) {
 			orderedProducts.add(new Product(null, 0, 0, type));
 		}
+		company.addTask(Tasks.GET_PRODUCTS_FROM_TRUCK);
 	}
 	
 	public void addProductsToSell(Product productToSell) {

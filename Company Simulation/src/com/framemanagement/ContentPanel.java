@@ -27,7 +27,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = -2906000336360409527L;
 	ImageProvider ip = new ImageProvider();
 	Timer timer = new Timer(5000, this);
-	Company company = new Company();
+	Company company = new Company(true);
 	
 	//Logic for the Menu. An Enum to provide the values for the specific Design
 	public enum optionPanel { DASHBOARD, MANAGEMENT, EMPLOYEE }
@@ -183,10 +183,16 @@ public class ContentPanel extends JPanel implements ActionListener {
         g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_A), 150, 450,null);
         g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_B), 150, 500,null);
         g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_C), 150, 550,null);
-        g2d.drawImage(ip.getImage(Imagefor.MACHINE_A), 625, 80,null);
-        g2d.drawImage(ip.getImage(Imagefor.MACHINE_B), 600, 275,null);
-        g2d.drawImage(ip.getImage(Imagefor.MACHINE_C), 625, 520,null);
-	}
+//        g2d.drawImage(ip.getImage(Imagefor.MACHINE_A), 625, 80,null);
+//        g2d.drawImage(ip.getImage(Imagefor.MACHINE_B), 600, 275,null);
+//        g2d.drawImage(ip.getImage(Imagefor.MACHINE_C), 625, 520,null);
+//        for (int i = 0; i < company.getArrayListEmployee().size(); i++) {
+//			g2d.drawImage(company.getArrayListEmployee().get(i).getImage(), company.getArrayListEmployee().get(i).getxPos(), company.getArrayListEmployee().get(i).getyPos(), null);
+//		}
+        for (int i = 0; i < company.getMachines().length; i++) {
+        	g2d.drawImage(company.getMachines()[i].getImage(), company.getMachines()[i].getxPos(), company.getMachines()[i].getyPos(), null);
+		}
+      }
 	
 	private void addButton(JButton button, int x, int y) {
 		button.setBounds(x, y, 130, 50);
@@ -197,6 +203,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent ev){
 	    if(ev.getSource()==timer){
 	    	System.out.println(ev.getSource());
+	    	company.process();
 	      repaint();
 	    }
 	}

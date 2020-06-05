@@ -7,6 +7,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import com.entities.Product.productType;
+import com.gamelogic.*;
+import com.gamelogic.Company.Tasks;
+
 
 public class Machine extends Entity {
 
@@ -31,29 +34,32 @@ public class Machine extends Entity {
 	private productType processableProduct = productType.PRODUCT_A;
 	private MachineType machineType;
 	private ArrayList<productType> neededProduct = new ArrayList<productType>();
-	
-	// __________________________________________________________________________________ _____________________________________
+	private Company company = new Company(false);
+
+	// __________________________________________________________________________________
+	// _____________________________________
 	public Machine(Image image, int xPos, int yPos, int orientation, MachineType machineType) {
 		super(image, xPos, yPos, 0);
 		this.durationFactor = durationFactors[machineType.ordinal()];
 		this.machineType = machineType;
 		updateNeededProducts();
+		addNeededProductsToTasklist();
 	}
 
 	// _______________________________________________________________________________________________________________________
-	public void startProcessing() {
+	public void process() {
 		TimerTask process = new TimerTask() {
 			public void run() {
-				if(machineType == MachineType.MACHINE_A|| machineType == MachineType.MACHINE_C) {
+				if (machineType == MachineType.MACHINE_A || machineType == MachineType.MACHINE_C) {
 					product[0].process();
 					processedProduct = product[0];
 					product[0] = null;
-				}else if(machineType == MachineType.MACHINE_B) {
+				} else if (machineType == MachineType.MACHINE_B) {
 					for (int i = 0; i < product.length; i++) {
-						if(product[i].getType() == productType.PRODUCT_B_PROCESSED) {
+						if (product[i].getType() == productType.PRODUCT_B_PROCESSED) {
 							product[i].process();
 							processedProduct = product[i];
-						}else {
+						} else {
 							product[i] = null;
 						}
 					}
@@ -62,19 +68,39 @@ public class Machine extends Entity {
 				inputPossible = true;
 				outputPossible = true;
 				updateNeededProducts();
-				// start event
+				addNeededProductsToTasklist();
+				switch (machineType) {
+				case MACHINE_A:
+					company.addTask(Tasks.GET_PRODUCT_FROM_MACHINE_A);
+					break;
+
+				case MACHINE_B:
+					company.addTask(Tasks.GET_PRODUCT_FROM_MACHINE_B);
+					break;
+
+				case MACHINE_C:
+					company.addTask(Tasks.GET_PRODUCT_FROM_MACHINE_C);
+					break;
+
+				}
+				
 			}
 		};
 		workingduration.schedule(process, calculateduration());
 	}
-	
-	public boolean checkAvailableProducts() {
-		return !inputPossible;
+
+	public boolean checkIfReadyToProcess() {
+		if(!inputPossible && !outputPossible && assignedEmployees > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	private int calculateduration() {
 		int duration;
-		duration = durationFactor * standardDuration + randomNumber(durationDifferenceRange[0], durationDifferenceRange[1]);
+		duration = durationFactor * standardDuration
+				+ randomNumber(durationDifferenceRange[0], durationDifferenceRange[1]);
 		for (int i = 0; i < assignedEmployees; i++) {
 			duration -= employee[i].getEfficiencyLvl() * 2;
 		}
@@ -86,7 +112,7 @@ public class Machine extends Entity {
 		random = min + (int) (Math.random() * ((max - min) + 1));
 		return random;
 	}
-	
+
 	private void updateNeededProducts() {
 		switch (machineType) {
 		case MACHINE_A:
@@ -98,19 +124,42 @@ public class Machine extends Entity {
 			neededProduct.add(productType.PRODUCT_A_PROCESSED);
 			neededProduct.add(productType.PRODUCT_B_PROCESSED);
 			break;
-		
+
 		case MACHINE_C:
 			neededProduct.add(productType.PRODUCT_C);
 			break;
 		}
 	}
-	
+
+	public void addNeededProductsToTasklist() {
+		switch (machineType) {
+		case MACHINE_A:
+			if(processableProduct == productType.PRODUCT_A) {
+				company.addTask(Tasks.GET_PRODUCT_A_TO_MACHINE_A);
+			}else if(processableProduct == productType.PRODUCT_B) {
+				company.addTask(Tasks.GET_PRODUCT_B_TO_MACHINE_A);
+			}
+			break;
+
+		case MACHINE_B:
+			company.addTask(Tasks.GET_PRODUCT_A_PROCESSED_TO_MACHINE_B);
+			company.addTask(Tasks.GET_PRODUCT_A_PROCESSED_TO_MACHINE_B);
+			company.addTask(Tasks.GET_PRODUCT_B_PROCESSED_TO_MACHINE_B);
+			break;
+
+		case MACHINE_C:
+			company.addTask(Tasks.GET_PRODUCT_C_TO_MACHINE_C);
+			break;
+
+		}
+	}
+
 	// _______________________________________________________________________________________________________________________
 	public void setProcessableProduct(productType processableProduct) {
 		this.processableProduct = processableProduct;
 		updateNeededProducts();
 	}
-	
+
 	public int getAssignedEmployees() {
 		return assignedEmployees;
 	}
@@ -164,27 +213,43 @@ public class Machine extends Entity {
 			// Fehler: Die Maschine ist nicht besetzt
 		}
 	}
-	
+
 	public void addProduct(Product toAddProduct) {
 		outerloop: for (int i = 0; i < product.length; i++) {
-			if(product[i] == null) {
+			if (product[i] == null) {
 				product[i] = toAddProduct;
 				break outerloop;
 			}
 		}
 		numberOfProducts++;
-		if(machineType == MachineType.MACHINE_B) {
+		if (machineType == MachineType.MACHINE_B) {
 			inputPossible = numberOfProducts < product.length;
-		}else {
+		} else {
 			inputPossible = false;
 		}
 		neededProduct.remove(toAddProduct.getType());
 	}
-	
+
 	public Product getProcessedProduct() {
+		return processedProduct;
+	}
+
+	public Product getProcessedProductFromMachine() {
 		Product toReturnProduct = processedProduct;
 		processedProduct = null;
 		return toReturnProduct;
 	}
 
+	public boolean isInputPossible() {
+		return inputPossible;
+	}
+
+	public boolean isOutputPossible() {
+		return outputPossible;
+	}
+
+	public MachineType getMachineType() {
+		return machineType;
+	}
+	
 }
