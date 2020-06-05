@@ -25,9 +25,7 @@ public class CheckBoxActionListener implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		System.out.println("triggered1");
 		if(event.getSource()==this.checkBox1) {
-			System.out.println("triggered");
 			employee.setQualification(0);
 		}
 		if(event.getSource()==this.checkBox2) {
