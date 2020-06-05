@@ -1,6 +1,7 @@
 package com.gamelogic;
 
 import com.entities.Employee;
+import com.gamelogic.Task.MovementTasks;
 
 public class MovementManager {
 
@@ -11,13 +12,33 @@ public class MovementManager {
 	}
 	
 	private Employee employee;
+	private MovementTasks task;
+	private int xPos;
+	private int yPos;
+	private int orientation;
+	private int[][] coordinates = new int[9][2]; 
 	
 	public MovementManager(Employee employee) {
 		this.employee = employee;
+		this.task = employee.getTask().getMovementTasks();
+		this.xPos = employee.getxPos();
+		this.yPos = employee.getyPos();
+		this.orientation = employee.getOrientation();
+		
 		loadCoordinates();
 	}
 	
-	private int[][] coordinates = new int[9][2]; 
+	public void updatePosition() {
+		fetchTasks();										//Fetches the new Task of the Employee's Task
+		calculatePosition();								//Calculates the new Position 
+															//Changes states of the employee e.g. Avadiable
+		employee.setPosition(xPos, yPos, orientation);		//Updates the attributes of the employee
+	}
+	
+	private void addToArray(Milestone milestone, int x, int y) {
+		coordinates[milestone.ordinal()][0] = x;
+		coordinates[milestone.ordinal()][1] = x;
+	}
 	
 	private void loadCoordinates() {
 		addToArray(Milestone.TRUCK_ENTRANCE	, 280, 120);
@@ -31,10 +52,14 @@ public class MovementManager {
 		addToArray(Milestone.MACHINE_C		, 625, 575);
 	}
 	
-	private void addToArray(Milestone milestone, int x, int y) {
-		coordinates[milestone.ordinal()][0] = x;
-		coordinates[milestone.ordinal()][1] = x;
+	private void fetchTasks() {
+		this.task = employee.getTask().getMovementTasks();
 	}
+	
+	private void calculatePosition() {
+		
+	}
+	
 	
 	/*
 	 *	TRUCK_ENTRANCE -> STORAGE 	via CHECKPOINT_A, CHECKPOINT_B

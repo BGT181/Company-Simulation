@@ -2,7 +2,8 @@ package com.gamelogic;
 
 public class Task {
 
-	private Task currentTask; 
+	private Tasks currentTasks;
+	private MovementTasks currentMovementTasks;
 	
 	public enum Tasks{
 		GET_PRODUCT_A_TO_MACHINE_A,
@@ -16,19 +17,27 @@ public class Task {
 		GET_PRODUCTS_FROM_TRUCK,
 		PROCESS_MACHINE_A,
 		PROCESS_MACHINE_B,
-		PROCESS_MACHINE_C
+		PROCESS_MACHINE_C,
+		IDLE
+	}
+	
+	public enum MovementTasks{
+		STAY,
+		A,B
 	}
 	
 	public Task() {
 		
 	}
 	
-	public Task getCurrentTask() {
-		return currentTask;
+	public Tasks getCurrentTask() {
+		return currentTasks;
 	}
-	public void setCurrentTask(Task currentTask) {
-		this.currentTask = currentTask;
+	public void setCurrentTask(Tasks currentTask) {
+		this.currentTasks = currentTask;
 	}
 	
-	
+	public MovementTasks getMovementTasks() {
+		return null;
+	}
 }
