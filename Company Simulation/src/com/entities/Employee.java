@@ -3,6 +3,7 @@ package com.entities;
 import java.awt.Dimension;
 import java.awt.Image;
 
+import com.gamelogic.MovementManager;
 import com.gamelogic.Task;
 
 public class Employee extends Entity {
@@ -21,10 +22,12 @@ public class Employee extends Entity {
 	private boolean isAvailable = true;
 	private boolean isArrived = false;
 	private Task task;
+	private MovementManager movementManager;
 
 	public Employee(Image image, int xPos, int yPos, int orientation, String name) {
 		super(image, xPos, yPos, orientation);
 		this.name = name;
+		movementManager = new MovementManager(null);
 	}
 
 //	public void process() {
