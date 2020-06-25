@@ -65,7 +65,7 @@ public class MovementManager {
 		 */
 	}
 	
-	
+	//TEST
 	/*
 	 *	TRUCK_ENTRANCE -> STORAGE 	via CHECKPOINT_A, CHECKPOINT_B
 	 * 	TRUCK_ENTRANCE -> MACHINE_A	via CHECKPOINT_A
