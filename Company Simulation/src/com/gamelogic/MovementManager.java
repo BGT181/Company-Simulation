@@ -1,82 +1,82 @@
 package com.gamelogic;
 
 import com.entities.Employee;
-import com.gamelogic.Task.MovementTasks;
+import com.gamelogic.MovementTask.Move;
 
 public class MovementManager {
-
-	enum Milestone {
-		TRUCK_ENTRANCE, CHECKPOINT_A,	MASCHINE_A,	//#0 #1 #2
-		STORAGE, 		CHECKPOINT_B, 	MACHINE_B,	//#3 #4 #5
-		TRUCK_EXIT, 	CHECKPOINT_C, 	MACHINE_C 	//#6 #7 #8
-	}
 	
 	private Employee employee;
-	private MovementTasks task;
-	private int xPos;
-	private int yPos;
-	private int orientation;
-	private int[][] coordinates = new int[9][2]; 
+	private MovementTask movementTask;
+	
+	private int dirX;
+	private int dirY;
 	
 	public MovementManager(Employee employee) {
 		this.employee = employee;
-		this.task = employee.getTask().getMovementTasks();
-		this.xPos = employee.getxPos();
-		this.yPos = employee.getyPos();
-		this.orientation = employee.getOrientation();
+		movementTask = new MovementTask(Move.TRUCK_ENTRANCE_TO_STORAGE);
+		employee.setxPos((int)movementTask.getVector(0).elementAt(0));
+		employee.setyPos((int)movementTask.getVector(0).elementAt(1));
+		movementTask.increaseCurrentIndex();
+		calculateMovement();
 		
-		loadCoordinates();
+	}
+	
+	private void calculateMovement() { //Calculates dirX and dirY
+		//Caluculates dirX in respect of the movmentTasks current Index.
+		if(employee.getxPos() > (int) movementTask.getVector(movementTask.getCurrentIndex()).elementAt(0)) {
+			dirX = -1;
+		} else {
+			if(employee.getxPos() < (int) movementTask.getVector(movementTask.getCurrentIndex()).elementAt(0)) {
+				dirX = 1;
+			} else {
+				dirX = 0;
+			}
+		}
+	
+		//Calucaltes dirY in respect of the movementTasks current Index.
+		if(employee.getyPos() > (int) movementTask.getVector(movementTask.getCurrentIndex()).elementAt(1)) {
+			dirY = -1;
+		} else {
+			if(employee.getyPos() < (int) movementTask.getVector(movementTask.getCurrentIndex()).elementAt(1)) {
+				dirY = 1;
+			} else {
+				dirY=0;
+				}
+		}	
+	}
+	
+	public void setMovementTask(Move move) {
+		movementTask.setMovementTask(move);
+		employee.setxPos((int)movementTask.getVector(0).elementAt(0));
+		employee.setyPos((int)movementTask.getVector(0).elementAt(1));
 	}
 	
 	public void updatePosition() {
-		fetchTasks();										//Fetches the new Task of the Employee's Task
-		calculatePosition();								//Calculates the new Position 
-															//Changes states of the employee e.g. Avadiable
-		employee.setPosition(xPos, yPos, orientation);		//Updates the attributes of the employee
+		if(!employee.isArrived()) {
+			employee.setxPos(employee.getxPos()+dirX);
+			employee.setyPos(employee.getyPos()+dirY);
+		
+			if(isEqual(employee.getxPos(), employee.getyPos(), (int) movementTask.getVector(movementTask.getCurrentIndex()).elementAt(0), (int) movementTask.getVector(movementTask.getCurrentIndex()).elementAt(1))) {
+				fetchNextIndex();
+			} 
+		}
 	}
 	
-	private void addToArray(Milestone milestone, int x, int y) {
-		coordinates[milestone.ordinal()][0] = x;
-		coordinates[milestone.ordinal()][1] = x;
+	private boolean isEqual(int ax, int ay, int bx, int by) {	//Checks if all x-coords and y-coords are equal.
+		if((ax==bx)&&(ay==by)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
-	
-	private void loadCoordinates() {
-		addToArray(Milestone.TRUCK_ENTRANCE	, 280, 120);
-		addToArray(Milestone.CHECKPOINT_A	, 450, 120);
-		addToArray(Milestone.MASCHINE_A		, 625, 120);
-		addToArray(Milestone.STORAGE		, 200, 375);
-		addToArray(Milestone.CHECKPOINT_B	, 450, 375);
-		addToArray(Milestone.MACHINE_B		, 600, 375);
-		addToArray(Milestone.TRUCK_EXIT		, 280, 575);
-		addToArray(Milestone.CHECKPOINT_C	, 450, 575);
-		addToArray(Milestone.MACHINE_C		, 625, 575);
+
+	private void fetchNextIndex() {
+		if((int)movementTask.getVector(movementTask.getCurrentIndex()+1).elementAt(0)!=0) {
+			movementTask.increaseCurrentIndex();
+			calculateMovement();
+		} else {
+			employee.setArrived(true);
+		}
 	}
-	
-	private void fetchTasks() {
-		this.task = employee.getTask().getMovementTasks();
-	}
-	
-	private void calculatePosition() {
-		/*
-		 * Getting the Task
-		 * Check the Milestones he needs to get next
-		 * Setting new xPos, yPos
-		 * Setting the Orientation
-		 */
-	}
-	
-	//TEST
-	/*
-	 *	TRUCK_ENTRANCE -> STORAGE 	via CHECKPOINT_A, CHECKPOINT_B
-	 * 	TRUCK_ENTRANCE -> MACHINE_A	via CHECKPOINT_A
-	 * 	STORAGE <-> MACHINE_A		via CHECKPOINT_B, CHECKPOINT_A
-	 *  STORAGE <-> MACHINE_B		via CHECKPOINT_B
-	 * 	STORAGE <-> MACHINE_C		via CHECKPOINT_B, CHECKPOINT_C
-	 * 	STORAGE -> TRUCK_EXIT		via CHECKPOINT_B, CHECKPOINT_C
-	 * 	MACHINE_C -> TRUCK_EXIT		via CHECKPOINT_C
-	 * 	MACHINE_A -> MACHINE_B		via CHECKPOINT_A, CHECKPOINT_B
-	 *  MACHINE_B -> MACHINE_C		via CHECKPOINT_B, CHECKPOINT_C
-	 *  
-	 */ 
 }
 

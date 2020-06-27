@@ -3,7 +3,6 @@ package com.gamelogic;
 public class Task {
 
 	private Tasks currentTasks;
-	private MovementTasks currentMovementTasks;
 	
 	public enum Tasks{
 		GET_PRODUCT_A_TO_MACHINE_A,
@@ -21,10 +20,8 @@ public class Task {
 		IDLE
 	}
 	
-	public enum MovementTasks{
-		STAY,
-		A,B
-	}
+	
+
 	
 	public Task() {
 		
@@ -37,7 +34,4 @@ public class Task {
 		this.currentTasks = currentTask;
 	}
 	
-	public MovementTasks getMovementTasks() {
-		return null;
-	}
 }

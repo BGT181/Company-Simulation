@@ -31,7 +31,7 @@ public class Employee extends Entity {
 	public Employee(Image image, int xPos, int yPos, int orientation, String name) {
 		super(image, xPos, yPos, orientation);
 		this.name = name;
-		movementManager = new MovementManager(null);
+		movementManager = new MovementManager(this);
 	}
 
 	//Increases the loan of this object by (double) x percent.
@@ -110,6 +110,10 @@ public class Employee extends Entity {
 	//Depends on Movement and Task
 	public void setTask(Task task) {
 		this.task = task;
+	}
+
+	public MovementManager getMovementManager() {
+		return movementManager;
 	}
 
 }

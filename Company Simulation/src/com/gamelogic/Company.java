@@ -6,6 +6,7 @@ import com.entities.*;
 import com.entities.Machine.MachineType;
 import com.entities.Product.productType;
 import com.gamelogic.ImageProvider.Imagefor;
+import com.gamelogic.MovementTask.Move;
 import com.gamelogic.Task.Tasks;
 
 
@@ -51,7 +52,8 @@ public class Company {
 	public void setupCompany() {
 		hireEmployee(0, Imagefor.EMPLOYEE_A);
 		hireEmployee(1, Imagefor.EMPLOYEE_B);
-		hireEmployee(2, Imagefor.EMPLOYEE_C);
+		employees.get(1).getMovementManager().setMovementTask(Move.STORAGE_TO_TRUCK_EXIT);
+		//hireEmployee(2, Imagefor.EMPLOYEE_C);
 		setupMachines();
 	}
 	
