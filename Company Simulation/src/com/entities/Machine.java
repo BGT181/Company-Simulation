@@ -41,8 +41,8 @@ public class Machine extends Entity {
 		super(image, xPos, yPos, 0);
 		this.durationFactor = durationFactors[machineType.ordinal()];
 		this.machineType = machineType;
-		updateNeededProducts();
-		addNeededProductsToTasklist();
+		//updateNeededProducts();
+		//addNeededProductsToTasklist();
 	}
 
 	// _______________________________________________________________________________________________________________________

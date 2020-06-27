@@ -23,88 +23,77 @@ public class Employee extends Entity {
 	private boolean isArrived = false;
 	private Task task;
 	private MovementManager movementManager;
-
+	
+	/*
+	 * Constructor for the Employee-Class.
+	 * Requires multiple argument, the only special is name.
+	 */
 	public Employee(Image image, int xPos, int yPos, int orientation, String name) {
 		super(image, xPos, yPos, orientation);
 		this.name = name;
 		movementManager = new MovementManager(null);
 	}
 
-//	public void process() {
-//		switch (task) {
-//		case GET_PRODUCT_A_TO_MACHINE_A:
-//			
-//			break;
-//case GET_PRODUCT_B_TO_MACHINE_A:
-//			
-//			break;
-//
-//
-//case GET_PRODUCT_A_PROCESSED_TO_MACHINE_B:
-//	
-//	break;
-//
-//
-//case GET_PRODUCT_B_PROCESSED_TO_MACHINE_B:
-//	
-//	break;
-//
-//
-//case :
-//	
-//	break;
-//
-//
-//		
-//		}
-//	}
-
+	//Increases the loan of this object by (double) x percent.
 	public void increaseLoan(double increasementLoan) {
 		this.loan = loan * increasementLoan;
 	}
 
+	//Getter for the loan.
 	public double getLoan() {
 		return this.loan;
 	}
 
+	//The efficiency-level of this employee object.
 	public void increaseEfficiencyLvl(double increasementEfficiency) {
 		this.efficiencyLvl = efficiencyLvl * increasementEfficiency;
 	}
 
+	//Getter for the efficiency-level.
 	public double getEfficiencyLvl() {
 		return this.efficiencyLvl;
 	}
 
-	//Depends on Movement and Task
+	//###Depends on Movement and Task
+	//Setter for the availability of an employee.
 	public void setAvailability(boolean availability) {
 		this.isAvailable = availability;
 	}
 
-	//Depends on Movement and Task
+	//###Depends on Movement and Task
+	//Getter for the availability of an employee.
 	public boolean getAvailability() {
 		return isAvailable;
 	}
 
-	//Depends on Movement and Task
+	//###Depends on Movement and Task
+	//Getter for the arrived-parameter.
 	public boolean isArrived() {
 		return isArrived;
 	}
 
-	//Depends on Movement and Task
+	//###Depends on Movement and Task
+	//Setter for the arrived-parameter.
 	public void setArrived(boolean isArrived) {
 		this.isArrived = isArrived;
 	}
 
+	//Setter for the position of an employee. 
 	public void setPosition(int xPos, int yPos, int orientation) {
 		super.setxPos(xPos);
 		super.setyPos(yPos);
 		super.setOrientation(orientation);
 	}
 
+	//Getter for the qualifications of an employee.
+	//The parameter depends on the var of the boolean-array. Returns true or false.
 	public boolean getQualification(int x) {
 		return qualification[x];
 	}
 
+	
+	//Setter for the qualification of an employee.
+	//The parameter represents the slot an switch it, when called.
 	public void setQualification(int qualificationNum) {
 		this.qualification[qualificationNum] ^= true;
 	}

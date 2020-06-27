@@ -48,57 +48,6 @@ public class Company {
 		
 	}
 	
-	public void checkEmployeesTasks() {
-		for (int i = 0; i < employees.size(); i++) {
-			if(employees.get(i).getTask() == null) {
-				//employees.get(i).setTask(mostImportantTask(employees.get(i)));
-				tasklist.remove(mostImportantTask(employees.get(i)));
-			}
-		}	
-	}
-	
-	public Tasks mostImportantTask(Employee employee) {
-		Tasks toReturnTask = null;
-		if(!employee.getQualification(0)) {
-			if(employee.getQualification(1) && tasklist.contains(Tasks.PROCESS_MACHINE_A)) {
-				toReturnTask = Tasks.PROCESS_MACHINE_A;
-			} else if(employee.getQualification(2) && tasklist.contains(Tasks.PROCESS_MACHINE_B)) {
-				toReturnTask = Tasks.PROCESS_MACHINE_B;
-			} else if(employee.getQualification(3) && tasklist.contains(Tasks.PROCESS_MACHINE_C)) {
-				toReturnTask = Tasks.PROCESS_MACHINE_C;
-			}
-		} else {
-			if(tasklist.contains(Tasks.GET_PRODUCT_A_TO_MACHINE_A) && storage.testProductAvailability(productType.PRODUCT_A)) {
-				toReturnTask = Tasks.GET_PRODUCT_A_TO_MACHINE_A;
-			} else if(tasklist.contains(Tasks.GET_PRODUCT_B_TO_MACHINE_A) && storage.testProductAvailability(productType.PRODUCT_B)) {
-				toReturnTask = Tasks.GET_PRODUCT_B_TO_MACHINE_A;
-			} //weitere tausende else if methoden
-			
-		}
-		
-		return toReturnTask;
-	}
-	
-	public void checkIfMachineNeedEmployee() {
-		for (int i = 0; i < machines.length; i++) {
-			if(!machines[i].isInputPossible() && !machines[i].isOutputPossible()) {
-				switch (machines[i].getMachineType()) {
-				case MACHINE_A:
-					tasklist.add(Tasks.PROCESS_MACHINE_A);
-					break;
-
-				case MACHINE_B:
-					tasklist.add(Tasks.PROCESS_MACHINE_B);
-					break;
-					
-				case MACHINE_C:
-					tasklist.add(Tasks.PROCESS_MACHINE_C);
-					break;
-				}
-			}
-		}
-	}
-	
 	public void setupCompany() {
 		hireEmployee(0, Imagefor.EMPLOYEE_A);
 		hireEmployee(1, Imagefor.EMPLOYEE_B);
@@ -115,10 +64,6 @@ public class Company {
 	public void hireEmployee(int val, Imagefor image) {
 		String name = "E"+val;
 		employees.add(new Employee(imageProvider.getImage(image), 0, 0, 0, name));
-	}
-	
-	public void print() {
-		System.out.println("Company");
 	}
 
 	public void addTask(Tasks task) {

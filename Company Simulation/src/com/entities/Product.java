@@ -53,11 +53,6 @@ public class Product extends Entity {
 	}
 
 	// _______________________________________________________________________________________________________________________
-	public void setPosition(int xPos, int yPos, int orientation) {
-		super.setxPos(xPos);
-		super.setyPos(yPos);
-		super.setOrientation(orientation);
-	}
 	
 	public void setType(productType type) {
 		this.type = type;
