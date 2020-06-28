@@ -52,8 +52,9 @@ public class Company {
 	public void setupCompany() {
 		hireEmployee(0, Imagefor.EMPLOYEE_A);
 		hireEmployee(1, Imagefor.EMPLOYEE_B);
-		employees.get(1).getMovementManager().setMovementTask(Move.STORAGE_TO_TRUCK_EXIT);
-		//hireEmployee(2, Imagefor.EMPLOYEE_C);
+		employees.get(1).getMovementManager().setMovementTask(Move.STORAGE_TO_MACHINE_B);
+		hireEmployee(2, Imagefor.EMPLOYEE_C);
+		employees.get(2).getMovementManager().setMovementTask(Move.MACHINE_A_TO_MACHINE_B);
 		setupMachines();
 	}
 	
