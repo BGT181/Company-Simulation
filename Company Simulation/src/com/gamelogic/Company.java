@@ -32,7 +32,7 @@ public class Company {
 	
 	private ImageProvider imageProvider = new ImageProvider();
 	
-	private Storage storage = new Storage(imageProvider.getImage(Imagefor.STORAGE), 130, 225, null); 
+	private Storage storage = new Storage( 120, 230, null); 
 	private ArrayList<Employee> employees = new ArrayList<Employee>();
 	private Machine[] machines = new Machine[3];
 	public static ArrayList<Tasks> tasklist = new ArrayList<Tasks>();
@@ -83,6 +83,11 @@ public class Company {
 
 	public Machine[] getMachines() {
 		return machines;
+	}
+
+
+	public Storage getStorage() {
+		return storage;
 	}
 	
 }

@@ -1,91 +1,73 @@
 package com.entities;
 
 import java.awt.Dimension;
-import java.awt.Image;
+import java.awt.Graphics2D;
+
+
+import com.entities.Product.productType;
+import com.gamelogic.ImageProvider;
+import com.gamelogic.ImageProvider.Imagefor;
 
 public class Storage extends Entity {
 
+	ImageProvider imageProvider = new ImageProvider();
+	
 	private Product[] storedProducts = new Product[20];
 	private int numberOfStoredProducts = 0;
 	private boolean storageAvailable = true;
+	private int offset = 85;
 
-	// _______________________________________________________________________________________________________________________
-	public Storage(Image image, int xPos, int yPos, Dimension orientation) {
-		super(image, xPos, yPos, 0);
-		// TODO Auto-generated constructor stub
+	public Storage(int xPos, int yPos, Dimension orientation) {
+		super(null, xPos, yPos, 0);
+		
 	}
 
-	// _______________________________________________________________________________________________________________________
-	private void testAvailableStorage() {
-		storageAvailable = numberOfStoredProducts < storedProducts.length;
+	public void drawImage(Graphics2D g2d) {
+		g2d.drawImage(imageProvider.getImage(Imagefor.STORAGE), super.getxPos(), super.getyPos(), null);
+		g2d.drawImage(imageProvider.getImage(Imagefor.STORAGE), super.getxPos(), (super.getyPos()+offset), null);
+		g2d.drawImage(imageProvider.getImage(Imagefor.STORAGE), super.getxPos(), (super.getyPos()+2*offset), null);
+		g2d.drawImage(imageProvider.getImage(Imagefor.STORAGE), super.getxPos(), (super.getyPos()+3*offset), null);
+	}
+
+	public void storeProduct(Product product) {
+		if(isStorageAvailable()) {
+			storedProducts[findSpace()] = product;
+			product.setxPos(0);
+			product.setyPos(0);
+		}
 	}
 	
-	public boolean testProductAvailability(Product.productType type) {
-		boolean result = false;
-			outerloop: for (int i = 0; i < storedProducts.length; i++) {
-				if(type == storedProducts[i].getType()) {
-					result = true;
-					break outerloop;
-				}
+	public int checkForProductType(productType productType) {
+		for (int i = 0; i < storedProducts.length; i++) {
+			if(storedProducts[i].getType()==productType) {
+				return i;	
 			}
-		return result;
+		}
+		return -1;
 	}
-
-	public void storeProduct(Product toStoreProduct) {
-		outerloop: if (storageAvailable) {
-			for (int i = 0; i < storedProducts.length; i++) {
-				if (storedProducts[i] == null) {
-					storedProducts[i] = toStoreProduct;
-					numberOfStoredProducts++;
-					testAvailableStorage();
-					break outerloop;
-				}
-			}
+	
+	public boolean isStorageAvailable() {
+		if(numberOfStoredProducts<=20) {
+			return false;
 		} else {
-			// Fehler: Kein Platz im Lager
+			return true;
 		}
 	}
-
-	public Product extractProduct(Product.productType type) {
-		Product extractedProduct = null;
-		outerloop: if(numberOfStoredProducts > 0 && testProductAvailability(type)) {
-			for (int i = 0; i < storedProducts.length; i++) {
-				if(type == storedProducts[i].getType()) {
-					extractedProduct = storedProducts[i];
-					storedProducts[i] = null;
-					numberOfStoredProducts--;
-					testAvailableStorage();
-					break outerloop;
-				}
+	
+	public int findSpace() {
+		for (int i = 0; i < storedProducts.length; i++) {
+			if(storedProducts[i] == null) {
+				return i;
 			}
-		} else {
-			// Fehler: Das Lager ist leer
 		}
-		return extractedProduct;
+		return 0;
 	}
-	// _______________________________________________________________________________________________________________________
-	public Product[] getStoredProducts() {
+	
+	public Product[] getProducts() {
 		return storedProducts;
 	}
-
-	public void setStoredProducts(Product[] storedProducts) {
-		this.storedProducts = storedProducts;
-	}
-
-	public int getNumberOfStoredProducts() {
-		return numberOfStoredProducts;
-	}
-
-	public void setNumberOfStoredProducts(int numberOfStoredProducts) {
-		this.numberOfStoredProducts = numberOfStoredProducts;
-	}
-
-	public boolean isStorageAvailable() {
-		return storageAvailable;
-	}
-
-	public void setStorageAvailable(boolean storageAvailable) {
-		this.storageAvailable = storageAvailable;
-	}
-
+	
+	
+	
+	
 }

@@ -61,7 +61,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 		super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         
-        //g2d.rotate(Math.toRadians(45));
+        
         drawMenu();
     	drawImages(g2d);
 	}
@@ -173,23 +173,21 @@ public class ContentPanel extends JPanel implements ActionListener {
 	private void drawImages(Graphics2D g2d) {
 		g2d.drawImage(ip.getImage(Imagefor.BUILDING), 0,0,null);
         g2d.drawImage(ip.getImage(Imagefor.TRUCK), 80,75,null);
-        g2d.drawImage(ip.getImage(Imagefor.STORAGE), 130, 225,null);
-        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_A), 135, 230,null);
-        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_A_PROCESSED), 172, 230,null);
-        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_B), 209, 230,null);
-        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_B_PROCESSED), 246, 230,null);
-        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_C), 283, 230,null);
-        g2d.drawImage(ip.getImage(Imagefor.PRODUCT_C_CERTIFIED), 150, 400,null);
-        g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_A), 160, 450,null);
- //       g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_B), 150, 500,null);
-//        g2d.drawImage(ip.getImage(Imagefor.EMPLOYEE_C), 150, 550,null);
-
-        for (int i = 0; i < company.getArrayListEmployee().size(); i++) {
-			g2d.drawImage(company.getArrayListEmployee().get(i).getImage(), company.getArrayListEmployee().get(i).getxPos(), company.getArrayListEmployee().get(i).getyPos(), null);
-		}
+        
+        
+        company.getStorage().drawImage(g2d);
+        
         for (int i = 0; i < company.getMachines().length; i++) {
         	g2d.drawImage(company.getMachines()[i].getImage(), company.getMachines()[i].getxPos(), company.getMachines()[i].getyPos(), null);
 		}
+        
+        for(Employee employee : company.getArrayListEmployee()){
+        	//g2d.rotate(Math.toRadians(45));
+        	g2d.drawImage(employee.getImage(), employee.getxPos(), employee.getyPos(), null);
+        	//g2d.rotate(Math.toRadians(0));
+        }
+        
+        
       }
 	
 	private void addButton(JButton button, int x, int y) {

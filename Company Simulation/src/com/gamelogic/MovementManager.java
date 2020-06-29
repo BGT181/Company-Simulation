@@ -10,9 +10,11 @@ public class MovementManager {
 	
 	private int dirX;
 	private int dirY;
+	private int orientation;
 	
 	public MovementManager(Employee employee) {
 		this.employee = employee;
+		orientation = 0;
 		movementTask = new MovementTask(Move.TRUCK_ENTRANCE_TO_STORAGE);
 		employee.setxPos((int)movementTask.getVector(0).elementAt(0));
 		employee.setyPos((int)movementTask.getVector(0).elementAt(1));
@@ -32,7 +34,6 @@ public class MovementManager {
 				dirX = 0;
 			}
 		}
-	
 		//Calucaltes dirY in respect of the movementTasks current Index.
 		if(employee.getyPos() > (int) movementTask.getVector(movementTask.getCurrentIndex()).elementAt(1)) {
 			dirY = -1;
@@ -42,13 +43,28 @@ public class MovementManager {
 			} else {
 				dirY=0;
 				}
-		}	
+		}
+		
+		if((dirX==1)&&(dirY==0)) {
+			orientation = 90;
+		} 
+		if((dirX==0)&&(dirY==1)) {
+			orientation = 180;
+		}
+		if((dirX==-1)&&(dirY==0)) {
+			orientation = 270;
+		}
+		if((dirX==0)&&(dirY==-1)) {
+			orientation = 0;
+		}
+		employee.setOrientation(orientation);
 	}
 	
 	public void setMovementTask(Move move) {
 		movementTask.setMovementTask(move);
 		employee.setxPos((int)movementTask.getVector(0).elementAt(0));
 		employee.setyPos((int)movementTask.getVector(0).elementAt(1));
+		calculateMovement();
 	}
 	
 	public void updatePosition() {

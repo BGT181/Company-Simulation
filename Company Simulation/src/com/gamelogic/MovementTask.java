@@ -73,12 +73,12 @@ public class MovementTask {
 		TRUCK_ENTRANCE.add(0, 250);TRUCK_ENTRANCE.add(1, 120);
 		CHECKPOINT_A.add(0, 450);CHECKPOINT_A.add(1, 120);
 		MACHINE_A.add(0, 625);MACHINE_A.add(1, 120);
-		STORAGE.add(0, 300);STORAGE.add(1, 375);
-		CHECKPOINT_B.add(0, 450);CHECKPOINT_B.add(1, 375);
-		MACHINE_B.add(0, 600);MACHINE_B.add(1, 375);
+		STORAGE.add(0, 300);STORAGE.add(1, 350);
+		CHECKPOINT_B.add(0, 450);CHECKPOINT_B.add(1, 350);
+		MACHINE_B.add(0, 600);MACHINE_B.add(1, 350);
 		TRUCK_EXIT.add(0, 250);TRUCK_EXIT.add(1, 575);
 		CHECKPOINT_C.add(0, 450);CHECKPOINT_C.add(1, 575);
-		MACHINE_B.add(0, 625);MACHINE_B.add(1, 575);
+		MACHINE_C.add(0, 625);MACHINE_C.add(1, 575);
 		STOP.add(0, 0);
 		
 		taskOrder[Move.TRUCK_ENTRANCE_TO_STORAGE.ordinal()][0] = TRUCK_ENTRANCE; 	//#0
