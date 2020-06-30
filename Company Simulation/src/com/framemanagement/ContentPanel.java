@@ -184,7 +184,7 @@ public class ContentPanel extends JPanel implements ActionListener {
         for(Employee employee : company.getArrayListEmployee()){
         	//g2d.rotate(Math.toRadians(45));
         	g2d.drawImage(employee.getImage(), employee.getxPos(), employee.getyPos(), null);
-        	//g2d.rotate(Math.toRadians(0));
+        	//g2d.rotate(Math.toRadians(-45));
         }
         
         

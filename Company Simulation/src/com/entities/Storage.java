@@ -31,9 +31,9 @@ public class Storage extends Entity {
 
 	public void storeProduct(Product product) {
 		if(isStorageAvailable()) {
+			updatePosition(product, findSpace());
 			storedProducts[findSpace()] = product;
-			product.setxPos(0);
-			product.setyPos(0);
+			numberOfStoredProducts++;
 		}
 	}
 	
@@ -67,7 +67,44 @@ public class Storage extends Entity {
 		return storedProducts;
 	}
 	
-	
+	public void updatePosition(Product product, int i) {
+		if((i>=0)&&(i<=4)) {
+			product.setxPos(super.getxPos());
+		} else { 
+			if((i>=5)&&(i<=9)) {
+				product.setxPos(super.getxPos()+offset);
+			} else {
+				if((i>=10)&&(i<=14)) {
+					product.setxPos(super.getxPos()+(2*offset));
+				} else {
+					if((i>=15)&&(i<=19)) {
+						product.setxPos(super.getxPos()+(3*offset));
+					}
+				}
+				
+			}
+		}
+		
+		if((i == 0)||(i==5) || (i==10) || (i==15)) {
+			product.setyPos(super.getyPos());
+		} else {
+			if((i == 1)||(i==6) || (i==11) || (i==16)) {
+				product.setyPos(super.getyPos()+36);
+			} else {
+				if((i == 2)||(i==7) || (i==12) || (i==17)) {
+					product.setyPos(super.getyPos()+(2*36));
+				} else {
+					if((i == 3)||(i==8) || (i==13) || (i==18)) {
+						product.setyPos(super.getyPos()+(3*36));
+					} else {
+						if((i == 4)||(i==9) || (i==14) || (i==19)) {
+							product.setyPos(super.getyPos()+(4*36));
+						}
+					}
+				}
+			}
+		}
+	}
 	
 	
 }
