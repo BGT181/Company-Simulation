@@ -22,6 +22,7 @@ public class Employee extends Entity {
 	private boolean isAvailable = true;
 	private boolean isArrived = false;
 	private Task task;
+	private Product carryProduct;
 	private MovementManager movementManager;
 	
 	/*

@@ -15,6 +15,7 @@ import javax.swing.Timer;
 
 import com.actionlistener.ButtonActionListener;
 import com.entities.Employee;
+import com.entities.Product;
 import com.gamelogic.Company;
 import com.gamelogic.ImageProvider;
 import com.gamelogic.ImageProvider.Imagefor;
@@ -26,7 +27,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 	 */
 	private static final long serialVersionUID = -2906000336360409527L;
 	ImageProvider ip = new ImageProvider();
-	Timer timer = new Timer(50, this);
+	Timer timer = new Timer(30, this);
 	Company company = new Company(true);
 	
 	//Logic for the Menu. An Enum to provide the values for the specific Design
@@ -172,10 +173,19 @@ public class ContentPanel extends JPanel implements ActionListener {
 	
 	private void drawImages(Graphics2D g2d) {
 		g2d.drawImage(ip.getImage(Imagefor.BUILDING), 0,0,null);
-        g2d.drawImage(ip.getImage(Imagefor.TRUCK), 80,75,null);
+       // g2d.drawImage(ip.getImage(Imagefor.TRUCK), 80,75,null);
         
         
         company.getStorage().drawImage(g2d);
+        company.getTruckEntrence().moveToDestination();
+        g2d.drawImage(company.getTruckEntrence().getImage(), company.getTruckEntrence().getxPos(),company.getTruckEntrence().getyPos(), null);
+        for(Product product : company.getStorage().getProducts()) {
+        	if(product != null) {
+        		g2d.drawImage(product.getImage(), product.getxPos(), product.getyPos(),null);
+        	}
+        	
+        }
+        
         
         for (int i = 0; i < company.getMachines().length; i++) {
         	g2d.drawImage(company.getMachines()[i].getImage(), company.getMachines()[i].getxPos(), company.getMachines()[i].getyPos(), null);

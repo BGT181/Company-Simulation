@@ -32,6 +32,9 @@ public class Company {
 	
 	private ImageProvider imageProvider = new ImageProvider();
 	
+	private Truck truckEntrence;
+	private Truck truckExit;
+	
 	private Storage storage = new Storage( 120, 230, null); 
 	private ArrayList<Employee> employees = new ArrayList<Employee>();
 	private Machine[] machines = new Machine[3];
@@ -54,8 +57,21 @@ public class Company {
 		hireEmployee(1, Imagefor.EMPLOYEE_B);
 		employees.get(1).getMovementManager().setMovementTask(Move.STORAGE_TO_MACHINE_B);
 		hireEmployee(2, Imagefor.EMPLOYEE_C);
-		employees.get(2).getMovementManager().setMovementTask(Move.MACHINE_A_TO_MACHINE_B);
+		employees.get(2).getMovementManager().setMovementTask(Move.MACHINE_C_TO_TRUCK_EXIT);
 		setupMachines();
+		
+		Product product = new Product(imageProvider.getImage(Imagefor.PRODUCT_A), 100, 100, productType.PRODUCT_A);
+		Product producta = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 100, 100, productType.PRODUCT_B);
+		Product productb = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 100, 100, productType.PRODUCT_B);
+		storage.storeProduct(product);
+		storage.storeProduct(producta);
+		storage.storeProduct(productb);
+		
+		
+		
+		
+		truckEntrence = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 75, null);
+		truckEntrence.orderProducts(productType.PRODUCT_A, 3);
 	}
 	
 	public void setupMachines() {
@@ -88,6 +104,16 @@ public class Company {
 
 	public Storage getStorage() {
 		return storage;
+	}
+
+
+	public Truck getTruckEntrence() {
+		return truckEntrence;
+	}
+
+
+	public void setTruckEntrence(Truck truckEntrence) {
+		this.truckEntrence = truckEntrence;
 	}
 	
 }

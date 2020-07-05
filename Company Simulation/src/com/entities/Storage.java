@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 
 
 import com.entities.Product.productType;
+import com.gamelogic.Company;
 import com.gamelogic.ImageProvider;
 import com.gamelogic.ImageProvider.Imagefor;
 
@@ -48,9 +49,9 @@ public class Storage extends Entity {
 	
 	public boolean isStorageAvailable() {
 		if(numberOfStoredProducts<=20) {
-			return false;
-		} else {
 			return true;
+		} else {
+			return false;
 		}
 	}
 	
@@ -69,16 +70,16 @@ public class Storage extends Entity {
 	
 	public void updatePosition(Product product, int i) {
 		if((i>=0)&&(i<=4)) {
-			product.setxPos(super.getxPos());
+			product.setyPos((super.getyPos()+5));
 		} else { 
 			if((i>=5)&&(i<=9)) {
-				product.setxPos(super.getxPos()+offset);
+				product.setyPos(super.getyPos()+offset+5);
 			} else {
 				if((i>=10)&&(i<=14)) {
-					product.setxPos(super.getxPos()+(2*offset));
+					product.setyPos(super.getyPos()+(2*offset)+5);
 				} else {
 					if((i>=15)&&(i<=19)) {
-						product.setxPos(super.getxPos()+(3*offset));
+						product.setyPos(super.getyPos()+(3*offset)+5);
 					}
 				}
 				
@@ -86,19 +87,22 @@ public class Storage extends Entity {
 		}
 		
 		if((i == 0)||(i==5) || (i==10) || (i==15)) {
-			product.setyPos(super.getyPos());
+			product.setxPos((super.getxPos()+5));
 		} else {
 			if((i == 1)||(i==6) || (i==11) || (i==16)) {
-				product.setyPos(super.getyPos()+36);
+				product.setxPos(super.getxPos()+42);
 			} else {
 				if((i == 2)||(i==7) || (i==12) || (i==17)) {
-					product.setyPos(super.getyPos()+(2*36));
+					product.setxPos(super.getxPos()+(2*37)+5);
+					
 				} else {
 					if((i == 3)||(i==8) || (i==13) || (i==18)) {
-						product.setyPos(super.getyPos()+(3*36));
+						product.setxPos(super.getxPos()+(3*37)+5);
+						
 					} else {
 						if((i == 4)||(i==9) || (i==14) || (i==19)) {
-							product.setyPos(super.getyPos()+(4*36));
+							
+							product.setxPos(super.getxPos()+(4*37)+5);
 						}
 					}
 				}
@@ -106,5 +110,7 @@ public class Storage extends Entity {
 		}
 	}
 	
-	
-}
+	public int getAmount() {
+		return numberOfStoredProducts;
+		}
+	}

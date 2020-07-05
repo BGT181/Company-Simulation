@@ -21,38 +21,10 @@ public class Product extends Entity {
 
 	private ImageProvider images = new ImageProvider();
 	
-	// _______________________________________________________________________________________________________________________
 	public Product(Image image, int xPos, int yPos, productType type) {
 		super(image, xPos, yPos, 0);
 		this.type = type;
 	}
-
-	// _______________________________________________________________________________________________________________________
-	public void process() {
-		switch (type) {
-		case PRODUCT_A:
-			type = productType.PRODUCT_A_PROCESSED;
-			super.setImage(images.getImage(Imagefor.PRODUCT_A_PROCESSED));
-			break;
-
-		case PRODUCT_B:
-			type = productType.PRODUCT_B_PROCESSED;
-			super.setImage(images.getImage(Imagefor.PRODUCT_B_PROCESSED));
-			break;
-		
-		case PRODUCT_C:
-		 	type = productType.PRODUCT_C_CERTIFIED;
-		 	super.setImage(images.getImage(Imagefor.PRODUCT_C_CERTIFIED));
-		 	break;
-			
-		case PRODUCT_B_PROCESSED:
-			type = productType.PRODUCT_C;
-			super.setImage(images.getImage(Imagefor.PRODUCT_C));
-			break;
-		}
-	}
-
-	// _______________________________________________________________________________________________________________________
 	
 	public void setType(productType type) {
 		this.type = type;

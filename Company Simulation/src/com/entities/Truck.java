@@ -7,59 +7,126 @@ import java.util.ArrayList;
 import com.entities.Product.productType;
 import com.gamelogic.Company;
 import com.gamelogic.ImageProvider;
+import com.gamelogic.ImageProvider.Imagefor;
 import com.gamelogic.Task;
 
 public class Truck extends Entity{
 
-	private boolean isArrived = false;
-	private boolean isIdling = false;
-	private static ArrayList<Product> orderedProducts = new ArrayList<Product>();
-	private static ArrayList<Product> productsToSell = new ArrayList<Product>();
-	private Company company = new Company(false);
+	private boolean isArrived = true;
+	private boolean isFinished = false;
+	private Product[] container;
+	private ImageProvider ip = new ImageProvider();
+	private int amount;
+	
+	private int xStart = -250;
+	private int xEnd = 80;
 	
 	public Truck(Image image, int xPos, int yPos, Dimension orientation) {
 		super(image, xPos, yPos, 0);
-		// TODO Auto-generated constructor stub
 	}
 
-	public void orderProducts(productType type, int number) {
-		for (int i = 0; i < number; i++) {
-			orderedProducts.add(new Product(null, 0, 0, type));
+	public void orderProducts(productType type, int amount) {
+		container = new Product[amount];
+		
+		Imagefor img = null;
+		if(type==productType.PRODUCT_A) {
+			img = Imagefor.PRODUCT_A;
 		}
-		company.addTask(Task.Tasks.GET_PRODUCTS_FROM_TRUCK);
+		if(type==productType.PRODUCT_B) {
+			img = Imagefor.PRODUCT_B;
+		}
+		
+		for (int i = 0; i < container.length; i++) {
+			container[i] = new Product(ip.getImage(img), 0, 0, type);
+		}
+		
+		isArrived = false;
 	}
 	
-	public void addProductsToSell(Product productToSell) {
-		productsToSell.add(productToSell);
+	public void moveToDestination() {
+		if(!isArrived) {
+			if(isFinished) {
+				
+				if(super.getxPos()==xStart) {
+					isArrived = true;
+					isFinished = false;
+				} else {
+					super.setxPos(super.getxPos()-2);
+				}
+				
+			} else {
+				
+				if(!isFinished) {
+					if(super.getxPos()==xEnd) {
+						isArrived = true;
+					} else {
+						super.setxPos(super.getxPos()+2);
+					}
+				}
+			}
+		}
 	}
 	
-	public double sell(double pricePerProduct) {
-		double profit = productsToSell.size() * pricePerProduct;
-		productsToSell.clear();
-		isIdling = false;
-		return profit;
-	}
 	
-	public Product getProduct() {
-		Product toReturnProduct = orderedProducts.get(0);
-		orderedProducts.remove(0);
-		isIdling = orderedProducts.size() > 0;
-		return toReturnProduct;
-	}
+	
+	/*
+	 * 	orderProducts() //isArrived = false
+	 *  ->
+	 * 	moveToDesination() //direction depends
+	 * 	->
+	 * 	isArrived = true;
+	 * 	->
+	 * 	Call Events to clear the Truck;
+	 * 	->
+	 * 	exportProduct //!= null
+	 * 	->
+	 * 	container[i] = null; 
+	 * 	->
+	 * 	isArrived = false; 
+	 * 	isFinished = true; 
+	 * 	->
+	 * 	moveToDesition //depends on isFinished
+	 * 	-> 
+	 *	 //Clear for next Order
+	 * 	isFinished = false; //isArrived = true;
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * importSoldProducts() // isArrived = false;
+	 * -> 
+	 * moveToDestination()
+	 * -> 
+	 * isArrived = true;
+	 * ->
+	 * loadTruck() // i++
+	 * -> 
+	 * i = orderAmount
+	 * ->
+	 * isFinished = true;
+	 * isArrived = false;
+	 * ->
+	 * moveToDestination()
+	 * ->
+	 * isFinished = false //Cleared for next Task
+	 * isArrived = true;
+	 * 
+	 */
+	
+	
+	
+	
 
-	public boolean getIsArrived() {
+	public boolean isArrived() {
 		return isArrived;
 	}
 
-	public void setIsArrived(boolean isArrived) {
+	public void setArrived(boolean isArrived) {
 		this.isArrived = isArrived;
-		if(isArrived) {
-			isIdling = true;
-		}
 	}
-
-	public boolean getIsIdling() {
-		return isIdling;
-	}
-	
 }
+
+
