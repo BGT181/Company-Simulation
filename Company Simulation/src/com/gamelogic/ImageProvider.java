@@ -12,7 +12,7 @@ public class ImageProvider {
 	 * They are stored in a fitting Array and they can be accessed by the getImage-Method and the depending Enum.
 	 */
 	
-	private Image[] imageBuffer = new Image[15];
+	private Image[] imageBuffer = new Image[24];
 	
 	public enum Imagefor {
 		BUILDING,			//#0 -
