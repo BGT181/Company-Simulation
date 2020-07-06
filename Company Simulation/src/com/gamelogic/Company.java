@@ -3,10 +3,11 @@ package com.gamelogic;
 import java.util.ArrayList;
 
 import com.entities.*;
+import com.entities.Employee.ImageType;
 import com.entities.Machine.MachineType;
 import com.entities.Product.productType;
 import com.gamelogic.ImageProvider.Imagefor;
-import com.gamelogic.MovementTask.Move;
+import com.gamelogic.MovementTask.Position;
 import com.gamelogic.Task.Tasks;
 
 
@@ -53,11 +54,9 @@ public class Company {
 	}
 	
 	public void setupCompany() {
-		hireEmployee(0, Imagefor.EMPLOYEE_A);
-		hireEmployee(1, Imagefor.EMPLOYEE_B);
-		employees.get(1).getMovementManager().setMovementTask(Move.STORAGE_TO_MACHINE_B);
-		hireEmployee(2, Imagefor.EMPLOYEE_C);
-		employees.get(2).getMovementManager().setMovementTask(Move.MACHINE_C_TO_TRUCK_EXIT);
+		hireEmployee(0, ImageType.EMPLOYEE_A);
+		employees.get(0).getMovementManager().getMovementTask().setDestination(Position.CHECKPOINT_A);
+
 		setupMachines();
 		
 		Product product = new Product(imageProvider.getImage(Imagefor.PRODUCT_A), 100, 100, productType.PRODUCT_A);
@@ -80,9 +79,10 @@ public class Company {
 		machines[2] = new Machine(imageProvider.getImage(Imagefor.MACHINE_C), 625, 520, 0, MachineType.MACHINE_C);
 	}
 	
-	public void hireEmployee(int val, Imagefor image) {
+	public void hireEmployee(int val, ImageType imageType) {
 		String name = "E"+val;
-		employees.add(new Employee(imageProvider.getImage(image), 0, 0, 0, name));
+		employees.add(new Employee(imageType, Position.TRUCK_ENTRANCE, name));
+
 	}
 
 	public void addTask(Tasks task) {

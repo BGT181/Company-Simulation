@@ -1,12 +1,14 @@
 package com.gamelogic;
 
 import com.entities.Employee;
-import com.gamelogic.MovementTask.Move;
+import com.gamelogic.MovementTask.Position;
 
 public class MovementManager {
 	
 	private Employee employee;
 	private MovementTask movementTask;
+	private ImageProvider ip = new ImageProvider();
+	private int step;
 	
 	private int dirX;
 	private int dirY;
@@ -14,85 +16,74 @@ public class MovementManager {
 	
 	public MovementManager(Employee employee) {
 		this.employee = employee;
-		orientation = 0;
-		movementTask = new MovementTask(Move.TRUCK_ENTRANCE_TO_STORAGE);
-		employee.setxPos((int)movementTask.getVector(0).elementAt(0));
-		employee.setyPos((int)movementTask.getVector(0).elementAt(1));
-		movementTask.increaseCurrentIndex();
-		calculateMovement();
-		
-	}
-	
-	private void calculateMovement() { //Calculates dirX and dirY
-		//Caluculates dirX in respect of the movmentTasks current Index.
-		if(employee.getxPos() > (int) movementTask.getVector(movementTask.getCurrentIndex()).elementAt(0)) {
-			dirX = -1;
-		} else {
-			if(employee.getxPos() < (int) movementTask.getVector(movementTask.getCurrentIndex()).elementAt(0)) {
-				dirX = 1;
-			} else {
-				dirX = 0;
-			}
-		}
-		//Calucaltes dirY in respect of the movementTasks current Index.
-		if(employee.getyPos() > (int) movementTask.getVector(movementTask.getCurrentIndex()).elementAt(1)) {
-			dirY = -1;
-		} else {
-			if(employee.getyPos() < (int) movementTask.getVector(movementTask.getCurrentIndex()).elementAt(1)) {
-				dirY = 1;
-			} else {
-				dirY=0;
-				}
-		}
-		
-		if((dirX==1)&&(dirY==0)) {
-			orientation = 90;
-		} 
-		if((dirX==0)&&(dirY==1)) {
-			orientation = 180;
-		}
-		if((dirX==-1)&&(dirY==0)) {
-			orientation = 270;
-		}
-		if((dirX==0)&&(dirY==-1)) {
-			orientation = 0;
-		}
-		employee.setOrientation(orientation);
-	}
-	
-	public void setMovementTask(Move move) {
-		movementTask.setMovementTask(move);
-		employee.setxPos((int)movementTask.getVector(0).elementAt(0));
-		employee.setyPos((int)movementTask.getVector(0).elementAt(1));
-		calculateMovement();
 	}
 	
 	public void updatePosition() {
-		if(!employee.isArrived()) {
+		if(!employee.isArrived()){
+		
 			employee.setxPos(employee.getxPos()+dirX);
 			employee.setyPos(employee.getyPos()+dirY);
+			fetchDirection();
+		}
 		
-			if(isEqual(employee.getxPos(), employee.getyPos(), (int) movementTask.getVector(movementTask.getCurrentIndex()).elementAt(0), (int) movementTask.getVector(movementTask.getCurrentIndex()).elementAt(1))) {
-				fetchNextIndex();
-			} 
-		}
-	}
-	
-	private boolean isEqual(int ax, int ay, int bx, int by) {	//Checks if all x-coords and y-coords are equal.
-		if((ax==bx)&&(ay==by)) {
-			return true;
-		} else {
-			return false;
-		}
 	}
 
-	private void fetchNextIndex() {
-		if((int)movementTask.getVector(movementTask.getCurrentIndex()+1).elementAt(0)!=0) {
-			movementTask.increaseCurrentIndex();
-			calculateMovement();
-		} else {
-			employee.setArrived(true);
+	private void fetchDirection() {
+		int oldDirX = dirX;
+		int oldDirY = dirY;
+		
+		switch(step ) {
+		
+		case 1: //Go to the next Checkpoint 
+			if(employee.getxPos()==movementTask.getXofPosition(Position.CHECKPOINT_A)) {
+				step++;
+				dirX = 0;
+			} else {
+				if(employee.getxPos()>movementTask.getXofPosition(Position.CHECKPOINT_A)) {
+					dirX = -1;
+				} else {
+					dirX = 1;
+				}
+			}
+			break;
+		
+		case 2:	//Alternate y until it reaches the y-level of the destination
+			if(employee.getyPos()==movementTask.getYofPosition(movementTask.getDestination())) {
+				step++;
+				dirY = 0;
+			} else {
+				if(employee.getyPos()>movementTask.getXofPosition(movementTask.getDestination())) {
+					dirX = 1;
+				} else {
+					dirX = -1;
+				}
+			}
+			
+			break;
+			
+		case 3:	//Alternate x until it reaches the x-level of the destination
+			if(employee.getxPos()==movementTask.getXofPosition(movementTask.getDestination())) {
+				step = 0;
+				employee.setArrived(true);
+			} else {
+				if(employee.getxPos()>movementTask.getXofPosition(movementTask.getDestination())) {
+					dirX = -1;
+				} else {
+					dirX = 1;
+				}
+			}
+			break;	
 		}
+		
+		if((dirX!=oldDirX)||(dirY!=oldDirY)) {
+			employee.changeImage(dirX, dirY);
+		}	
 	}
+
+	public MovementTask getMovementTask() {
+		return this.movementTask;
+	}
+
+
 }
 
