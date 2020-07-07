@@ -173,29 +173,25 @@ public class ContentPanel extends JPanel implements ActionListener {
 	
 	private void drawImages(Graphics2D g2d) {
 		g2d.drawImage(ip.getImage(Imagefor.BUILDING), 0,0,null);
-       // g2d.drawImage(ip.getImage(Imagefor.TRUCK), 80,75,null);
         
-        
-        company.getStorage().drawImage(g2d);
         company.getTruckEntrence().moveToDestination();
         g2d.drawImage(company.getTruckEntrence().getImage(), company.getTruckEntrence().getxPos(),company.getTruckEntrence().getyPos(), null);
-        for(Product product : company.getStorage().getProducts()) {
-        	if(product != null) {
-        		g2d.drawImage(product.getImage(), product.getxPos(), product.getyPos(),null);
+    
+        company.getMachineA().drawImage(g2d);
+        company.getMachineB().drawImage(g2d);
+        company.getMachineC().drawImage(g2d);
+        
+        
+        	company.getStorage().drawImage(g2d);
+        	for(Product product : company.getStorage().getProducts()) {
+        		if(product != null) {
+        			g2d.drawImage(product.getImage(), product.getxPos(), product.getyPos(),null);
+        		}
         	}
-        	
-        }
         
-        
-        for (int i = 0; i < company.getMachines().length; i++) {
-        	g2d.drawImage(company.getMachines()[i].getImage(), company.getMachines()[i].getxPos(), company.getMachines()[i].getyPos(), null);
-		}
-        
-        for(Employee employee : company.getArrayListEmployee()){
-        	//g2d.rotate(Math.toRadians(45));
-        	g2d.drawImage(employee.getImage(), employee.getxPos(), employee.getyPos(), null);
-        	//g2d.rotate(Math.toRadians(-45));
-        }
+        	for(Employee employee : company.getArrayListEmployee()){
+        		g2d.drawImage(employee.getImage(), employee.getxPos(), employee.getyPos(), null);
+        	}
         
         
       }

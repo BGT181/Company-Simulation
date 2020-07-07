@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.entities.*;
 import com.entities.Employee.ImageType;
-import com.entities.Machine.MachineType;
 import com.entities.Product.productType;
 import com.gamelogic.ImageProvider.Imagefor;
 import com.gamelogic.MovementTask.Position;
@@ -35,10 +34,12 @@ public class Company {
 	
 	private Truck truckEntrence;
 	private Truck truckExit;
+	private MachineA machineA;
+	private MachineB machineB;
+	private MachineC machineC;
 	
 	private Storage storage = new Storage( 120, 230, null); 
 	private ArrayList<Employee> employees = new ArrayList<Employee>();
-	private Machine[] machines = new Machine[3];
 	public static ArrayList<Tasks> tasklist = new ArrayList<Tasks>();
 	
 	
@@ -74,9 +75,9 @@ public class Company {
 	}
 	
 	public void setupMachines() {
-		machines[0] = new Machine(imageProvider.getImage(Imagefor.MACHINE_A), 625, 80, 0, MachineType.MACHINE_A);
-		machines[1] = new Machine(imageProvider.getImage(Imagefor.MACHINE_B), 600, 275, 0, MachineType.MACHINE_B);
-		machines[2] = new Machine(imageProvider.getImage(Imagefor.MACHINE_C), 625, 520, 0, MachineType.MACHINE_C);
+		machineA = new MachineA(null, 625, 80);
+		machineB = new MachineB(null, 600, 275);
+		machineC = new MachineC(null, 625, 520);
 	}
 	
 	public void hireEmployee(int val, ImageType imageType) {
@@ -97,10 +98,6 @@ public class Company {
 		return employees.get(index);
 	}
 
-	public Machine[] getMachines() {
-		return machines;
-	}
-
 
 	public Storage getStorage() {
 		return storage;
@@ -114,6 +111,36 @@ public class Company {
 
 	public void setTruckEntrence(Truck truckEntrence) {
 		this.truckEntrence = truckEntrence;
+	}
+
+
+	public MachineA getMachineA() {
+		return machineA;
+	}
+
+
+	public void setMachineA(MachineA machineA) {
+		this.machineA = machineA;
+	}
+
+
+	public MachineB getMachineB() {
+		return machineB;
+	}
+
+
+	public void setMachineB(MachineB machineB) {
+		this.machineB = machineB;
+	}
+
+
+	public MachineC getMachineC() {
+		return machineC;
+	}
+
+
+	public void setMachineC(MachineC machineC) {
+		this.machineC = machineC;
 	}
 	
 }
