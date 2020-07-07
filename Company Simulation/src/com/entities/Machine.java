@@ -35,14 +35,11 @@ public class Machine extends Entity {
 	private ArrayList<productType> neededProduct = new ArrayList<productType>();
 	private Company company = new Company(false);
 
-	// __________________________________________________________________________________
-	// _____________________________________
+	
 	public Machine(Image image, int xPos, int yPos, int orientation, MachineType machineType) {
 		super(image, xPos, yPos, 0);
 		this.durationFactor = durationFactors[machineType.ordinal()];
 		this.machineType = machineType;
-		//updateNeededProducts();
-		//addNeededProductsToTasklist();
 	}
 
 	// _______________________________________________________________________________________________________________________
@@ -50,13 +47,13 @@ public class Machine extends Entity {
 		TimerTask process = new TimerTask() {
 			public void run() {
 				if (machineType == MachineType.MACHINE_A || machineType == MachineType.MACHINE_C) {
-					product[0].process();
+					
 					processedProduct = product[0];
 					product[0] = null;
 				} else if (machineType == MachineType.MACHINE_B) {
 					for (int i = 0; i < product.length; i++) {
 						if (product[i].getType() == productType.PRODUCT_B_PROCESSED) {
-							product[i].process();
+							
 							processedProduct = product[i];
 						} else {
 							product[i] = null;

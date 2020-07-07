@@ -6,13 +6,14 @@ public class MovementTask {
 
 	private Position start;
 	private Position destination;
+	private MovementManager movementManager;
 	
 	//position [i][0] =	xPos
 	//position [i][1] =	yPos
 	//position [i][2] =	dirX
 	//position [i][3] =	dirY
 	private int[][] positions = new int[21][4];
-	
+		
 	public enum Position  {
 		TRUCK_ENTRANCE,		//#0
 		STORAGE,			//#1
@@ -39,15 +40,15 @@ public class MovementTask {
 	}
 	
 	public MovementTask() {
-		setupPosition(Position.TRUCK_ENTRANCE, 230, 120, -1, 0);
-		setupPosition(Position.STORAGE, 250, 350, -1, 0);
-		setupPosition(Position.TRUCK_EXIT, 230, 600, -1, 0);
-		setupPosition(Position.CHECKPOINT_A, 400, 120, 0, 0);
-		setupPosition(Position.CHECKPOINT_B, 400, 350, 0, 0);
-		setupPosition(Position.CHECKPOINT_C, 400, 600, 0, 0);
-		setupPosition(Position.MACHINE_A, 650, 120, -1, 0);
-		setupPosition(Position.MACHINE_B, 650, 350, -1, 0);
-		setupPosition(Position.MACHINE_C, 650, 600, -1, 0);
+		setupPosition(Position.TRUCK_ENTRANCE, 	210, 100, -1, 0);
+		setupPosition(Position.STORAGE, 		320, 350, -1, 0);
+		setupPosition(Position.TRUCK_EXIT, 		210, 600, -1, 0);
+		setupPosition(Position.CHECKPOINT_A, 	450, 100, 0, 0);
+		setupPosition(Position.CHECKPOINT_B, 	450, 350, 0, 0);
+		setupPosition(Position.CHECKPOINT_C, 	450, 600, 0, 0);
+		setupPosition(Position.MACHINE_A, 		580, 100, -1, 0);
+		setupPosition(Position.MACHINE_B, 		550, 350, -1, 0);
+		setupPosition(Position.MACHINE_C, 		580, 600, -1, 0);
 		
 		
 		setupPosition(Position.MACHINE_A_SLOT1, 0, 0, 0, 0);

@@ -16,11 +16,12 @@ public class MovementManager {
 	
 	public MovementManager(Employee employee) {
 		this.employee = employee;
+		step = 1;
+		movementTask = new MovementTask();
 	}
 	
 	public void updatePosition() {
 		if(!employee.isArrived()){
-		
 			employee.setxPos(employee.getxPos()+dirX);
 			employee.setyPos(employee.getyPos()+dirY);
 			fetchDirection();
@@ -52,10 +53,10 @@ public class MovementManager {
 				step++;
 				dirY = 0;
 			} else {
-				if(employee.getyPos()>movementTask.getXofPosition(movementTask.getDestination())) {
-					dirX = 1;
+				if(employee.getyPos()>movementTask.getYofPosition(movementTask.getDestination())) {
+					dirY = -1;
 				} else {
-					dirX = -1;
+					dirY = 1;
 				}
 			}
 			
@@ -82,6 +83,15 @@ public class MovementManager {
 
 	public MovementTask getMovementTask() {
 		return this.movementTask;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+	
+	public void setMovementTask(Position start, Position destination) {
+		movementTask.setMovementTask(start, destination);
+		employee.setPosition(start);
 	}
 
 

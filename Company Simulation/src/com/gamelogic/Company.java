@@ -55,9 +55,11 @@ public class Company {
 	
 	public void setupCompany() {
 		hireEmployee(0, ImageType.EMPLOYEE_A);
-		employees.get(0).getMovementManager().getMovementTask().setDestination(Position.CHECKPOINT_A);
-
+		employees.get(0).getMovementManager().setMovementTask(Position.MACHINE_C, Position.TRUCK_ENTRANCE);
+		hireEmployee(1, ImageType.EMPLOYEE_B);
+		employees.get(1).getMovementManager().setMovementTask(Position.TRUCK_ENTRANCE, Position.TRUCK_EXIT);
 		setupMachines();
+		
 		
 		Product product = new Product(imageProvider.getImage(Imagefor.PRODUCT_A), 100, 100, productType.PRODUCT_A);
 		Product producta = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 100, 100, productType.PRODUCT_B);
@@ -65,8 +67,6 @@ public class Company {
 		storage.storeProduct(product);
 		storage.storeProduct(producta);
 		storage.storeProduct(productb);
-		
-		
 		
 		
 		truckEntrence = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 75, null);
@@ -81,7 +81,7 @@ public class Company {
 	
 	public void hireEmployee(int val, ImageType imageType) {
 		String name = "E"+val;
-		employees.add(new Employee(imageType, Position.TRUCK_ENTRANCE, name));
+		employees.add(new Employee(imageType, Position.STORAGE, name));
 
 	}
 

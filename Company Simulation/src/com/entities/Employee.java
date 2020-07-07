@@ -56,11 +56,11 @@ public class Employee extends Entity {
 	}
 	
 	public Employee(ImageType imageType, Position position, String name) {
-		super(null, 0, 0 ,0);
-		//super.setxPos(movementManager.getMovementTask().getXofPosition(position));
-		//super.setyPos(movementManager.getMovementTask().getYofPosition(position));
+		super(null, 1, 1 ,0);		
+		super.setxPos(movementManager.getMovementTask().getXofPosition(position));
+		super.setyPos(movementManager.getMovementTask().getYofPosition(position));
 		this.name = name;
-		changeImage(0,-1);
+		this.imageType = imageType;
 	}
 	
 	public void changeImage(int dirX, int dirY) {
@@ -180,4 +180,10 @@ public class Employee extends Entity {
 		return movementManager;
 	}
 
+	public void setPosition(Position position) {
+		System.out.println(position);
+		System.out.println("Debug "+movementManager.getMovementTask().getXofPosition(position));
+		setxPos(movementManager.getMovementTask().getXofPosition(position));
+		setyPos(movementManager.getMovementTask().getYofPosition(position));
+	}
 }
