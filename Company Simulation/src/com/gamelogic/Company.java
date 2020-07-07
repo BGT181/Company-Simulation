@@ -142,5 +142,15 @@ public class Company {
 	public void setMachineC(MachineC machineC) {
 		this.machineC = machineC;
 	}
+
+
+	public Truck getTruckExit() {
+		return truckExit;
+	}
+
+
+	public void setTruckExit(Truck truckExit) {
+		this.truckExit = truckExit;
+	}
 	
 }
