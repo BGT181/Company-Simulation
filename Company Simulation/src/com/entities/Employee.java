@@ -7,7 +7,7 @@ import com.gamelogic.ImageProvider;
 import com.gamelogic.ImageProvider.Imagefor;
 import com.gamelogic.MovementManager;
 import com.gamelogic.MovementTask.Position;
-import com.gamelogic.Task;
+
 
 public class Employee extends Entity {
 
@@ -24,7 +24,6 @@ public class Employee extends Entity {
 		EMPLOYEE_C
 	}
 
-	private Task task;
 	private Product carryProduct;
 	private MovementManager movementManager = new MovementManager(this);
 	private ImageType imageType;

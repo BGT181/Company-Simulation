@@ -7,7 +7,6 @@ import com.entities.Employee.ImageType;
 import com.entities.Product.productType;
 import com.gamelogic.ImageProvider.Imagefor;
 import com.gamelogic.MovementTask.Position;
-import com.gamelogic.Task.Tasks;
 
 
 public class Company {

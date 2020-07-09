@@ -8,7 +8,6 @@ import com.entities.Product.productType;
 import com.gamelogic.Company;
 import com.gamelogic.ImageProvider;
 import com.gamelogic.ImageProvider.Imagefor;
-import com.gamelogic.Task;
 
 public class Truck extends Entity{
 
