@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.entities.*;
 import com.entities.Employee.ImageType;
 import com.entities.Product.productType;
+import com.event.CEventListenerController;
 import com.gamelogic.ImageProvider.Imagefor;
 import com.gamelogic.MovementTask.Position;
 
@@ -29,8 +30,6 @@ public class Company {
 	private int productssold;
 	private double runningcosts;
 	
-	private ImageProvider imageProvider = new ImageProvider();
-	
 	private Truck truckEntrence;
 	private Truck truckExit;
 	private MachineA machineA;
@@ -40,10 +39,13 @@ public class Company {
 	private Storage storage = new Storage( 120, 230, null); 
 	private ArrayList<Employee> employees = new ArrayList<Employee>();
 
-	
+
+	private ImageProvider imageProvider = new ImageProvider();
+	private CEventListenerController ELC = new CEventListenerController();
 	
 	public Company(boolean check) {
 		if(check) {
+			
 			setupCompany();
 			setupMachines();
 		}

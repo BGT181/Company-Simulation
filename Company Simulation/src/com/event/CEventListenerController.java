@@ -21,7 +21,7 @@ public class CEventListenerController {
 			for (int i = 0; i < eventListenerList.getListenerList().size(); i++) {
 				if(checkEmployee(event,eventListenerList.getListenerList().get(i))) {
 					
-				
+					
 					
 					
 				}
@@ -38,21 +38,9 @@ public class CEventListenerController {
 			default: 						if(employee.getQualification(0)) { 	return true;	}	break; 
 			}
 		}
-	
 		return false;
 	}
 	
-	
-	public void orderMovement(Employee employee, Position destionation) {
-	/*
-	 * TODO
-	 * Wenn Employee frei ist
-	 * Wenn Employee an einer Position ist (also Arrived ist)
-	 * Dann setze ihn eine neue Destination
-	 * 
-	 * 	
-	 */
-	}
 	
 	
 	
