@@ -11,4 +11,10 @@ public class CEventListenerList {
 	public void addListener(Entity entity) {
 		listenerList.add(entity);
 	}
+	
+	public void removeListener(Entity entity) {
+		listenerList.remove(entity);
+	}
+	
+	
 }
