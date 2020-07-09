@@ -3,13 +3,11 @@ package com.event;
 import java.util.ArrayList;
 
 import com.entities.Employee;
-import com.gamelogic.MovementTask.Position;
 
 public class CEventListenerController {
 
 	private CEventListener eventListener;
 	private CEventListenerList eventListenerList;
-	
 	
 	public CEventListenerController() {
 		eventListener = new CEventListener();
@@ -20,10 +18,8 @@ public class CEventListenerController {
 		for(CEvent event : eventListener.getEventListener()) {
 			for (int i = 0; i < eventListenerList.getListenerList().size(); i++) {
 				if(checkEmployee(event,eventListenerList.getListenerList().get(i))) {
-					
-					
-					
-					
+					eventListenerList.getListenerList().get(i).setAssignedEvent(event);
+					eventListenerList.getListenerList().remove(i);
 				}
 			}
 		}
@@ -40,10 +36,6 @@ public class CEventListenerController {
 		}
 		return false;
 	}
-	
-	
-	
-	
 	
 	public void cEventOccurred(CEvent cEvent) {
 		eventListener.cEventOccurred(cEvent);

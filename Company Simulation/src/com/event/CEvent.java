@@ -5,6 +5,7 @@ import com.entities.Entity;
 public class CEvent {
 
 	private Event currentEvent;
+	private int eventStep = 0;
 	
 	public enum Event {
 		MACHINE_A_REFILL,
@@ -34,6 +35,14 @@ public class CEvent {
 
 	public void setCurrentEvent(Event currentEvent) {
 		this.currentEvent = currentEvent;
+	}
+
+	public int getEventStep() {
+		return eventStep;
+	}
+
+	public void setEventStep(int eventStep) {
+		this.eventStep = eventStep;
 	}
 	
 	

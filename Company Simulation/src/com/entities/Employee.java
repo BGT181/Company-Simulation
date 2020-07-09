@@ -1,13 +1,10 @@
 package com.entities;
 
-import java.awt.Dimension;
-import java.awt.Image;
-
+import com.event.CEvent;
 import com.gamelogic.ImageProvider;
 import com.gamelogic.ImageProvider.Imagefor;
 import com.gamelogic.MovementManager;
 import com.gamelogic.MovementTask.Position;
-
 
 public class Employee extends Entity {
 
@@ -25,17 +22,18 @@ public class Employee extends Entity {
 	}
 
 	private String name;
-	private boolean[] qualification = new boolean[4];
 	private double loan = 3000;
 	private double efficiencyLvl = 1;
 	private boolean isAvailable = true;
 	private boolean isArrived = false;
-	
 	private Product carryProduct;
-	private MovementManager movementManager = new MovementManager(this);
 	private ImageType imageType;
-	private ImageProvider ip = new ImageProvider();
+	private CEvent assignedEvent;
 	
+	
+	private MovementManager movementManager = new MovementManager(this);
+	private ImageProvider ip = new ImageProvider();
+	private boolean[] qualification = new boolean[4];
 	
 	public Employee(ImageType imageType, Position position, String name) {
 		super(null, 1, 1 ,0);		
@@ -118,5 +116,13 @@ public class Employee extends Entity {
 	}
 	public MovementManager getMovementManager() {
 		return movementManager;
+	}
+
+	public CEvent getAssignedEvent() {
+		return assignedEvent;
+	}
+
+	public void setAssignedEvent(CEvent assignedEvent) {
+		this.assignedEvent = assignedEvent;
 	}
 }
