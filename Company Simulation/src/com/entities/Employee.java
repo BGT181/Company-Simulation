@@ -29,30 +29,12 @@ public class Employee extends Entity {
 	private ImageType imageType;
 	private ImageProvider ip = new ImageProvider();
 	
-	
 	private String name;
 	private boolean[] qualification = new boolean[4];
 	private double loan = 3000;
 	private double efficiencyLvl = 1;
 	private boolean isAvailable = true;
 	private boolean isArrived = false;
-
-	
-	/*
-	 * Constructor for the Employee-Class.
-	 * Requires multiple argument, the only special is name.
-	 */
-	public Employee(Image image, int xPos, int yPos, int orientation, String name) {
-		super(image, xPos, yPos, orientation);
-		this.name = name;
-	}
-	
-	public Employee(ImageType imageType, int xPos, int yPos, int orientation, String name) {
-		super(null, xPos, yPos, orientation);
-		changeImage(0,-1);
-		this.imageType = imageType;
-		this.name = name;
-	}
 	
 	public Employee(ImageType imageType, Position position, String name) {
 		super(null, 1, 1 ,0);		
@@ -165,23 +147,11 @@ public class Employee extends Entity {
 		return name;
 	}
 
-	//Depends on Movement and Task
-	public Task getTask() {
-		return task;
-	}
-
-	//Depends on Movement and Task
-	public void setTask(Task task) {
-		this.task = task;
-	}
-
 	public MovementManager getMovementManager() {
 		return movementManager;
 	}
 
 	public void setPosition(Position position) {
-		System.out.println(position);
-		System.out.println("Debug "+movementManager.getMovementTask().getXofPosition(position));
 		setxPos(movementManager.getMovementTask().getXofPosition(position));
 		setyPos(movementManager.getMovementTask().getYofPosition(position));
 	}

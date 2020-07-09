@@ -20,7 +20,7 @@ public class Truck extends Entity{
 	private int xStart = -250;
 	private int xEnd = 80;
 	
-	public Truck(Image image, int xPos, int yPos, Dimension orientation) {
+	public Truck(Image image, int xPos, int yPos) {
 		super(image, xPos, yPos, 0);
 	}
 

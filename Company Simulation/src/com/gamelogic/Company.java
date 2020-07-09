@@ -70,7 +70,7 @@ public class Company {
 		storage.storeProduct(productb);
 		
 		
-		truckEntrence = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 75, null);
+		truckEntrence = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 75);
 		truckEntrence.orderProducts(productType.PRODUCT_A, 3);
 	}
 	
