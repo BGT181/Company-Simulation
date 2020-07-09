@@ -2,19 +2,21 @@ package com.event;
 
 import java.util.ArrayList;
 
-import com.entities.Entity;
+import com.entities.Employee;
 
 public class CEventListenerList {
 
-	private ArrayList<Entity> listenerList = new ArrayList();
+	private ArrayList<Employee> listenerList = new ArrayList<Employee>();
 	
-	public void addListener(Entity entity) {
-		listenerList.add(entity);
+	public void addListener(Employee employee) {
+		listenerList.add(employee);
 	}
 	
-	public void removeListener(Entity entity) {
-		listenerList.remove(entity);
+	public void removeListener(Employee employee) {
+		listenerList.remove(employee);
 	}
 	
-	
+	public ArrayList<Employee> getListenerList() {
+		return listenerList;
+	}
 }

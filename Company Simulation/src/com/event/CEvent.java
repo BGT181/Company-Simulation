@@ -4,9 +4,7 @@ import com.entities.Entity;
 
 public class CEvent {
 
-	private Entity entity;
 	private Event currentEvent;
-	
 	
 	public enum Event {
 		MACHINE_A_REFILL,
@@ -26,17 +24,8 @@ public class CEvent {
 		TRUCK_EXIT_LOAD
 	}
 	
-	public CEvent(Entity entity, Event currentEvent) {
-		this.setEntity(entity);
+	public CEvent( Event currentEvent) {
 		this.setCurrentEvent(currentEvent);
-	}
-
-	public Entity getEntity() {
-		return entity;
-	}
-
-	public void setEntity(Entity entity) {
-		this.entity = entity;
 	}
 
 	public Event getCurrentEvent() {

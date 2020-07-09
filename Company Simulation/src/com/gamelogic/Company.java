@@ -40,12 +40,13 @@ public class Company {
 	
 	private Storage storage = new Storage( 120, 230, null); 
 	private ArrayList<Employee> employees = new ArrayList<Employee>();
-	public static ArrayList<Tasks> tasklist = new ArrayList<Tasks>();
+
 	
 	
 	public Company(boolean check) {
 		if(check) {
 			setupCompany();
+			setupMachines();
 		}
 	}
 	
@@ -59,7 +60,7 @@ public class Company {
 		employees.get(0).getMovementManager().setMovementTask(Position.MACHINE_C, Position.TRUCK_ENTRANCE);
 		hireEmployee(1, ImageType.EMPLOYEE_B);
 		employees.get(1).getMovementManager().setMovementTask(Position.TRUCK_ENTRANCE, Position.TRUCK_EXIT);
-		setupMachines();
+		
 		
 		
 		Product product = new Product(imageProvider.getImage(Imagefor.PRODUCT_A), 100, 100, productType.PRODUCT_A);
@@ -86,9 +87,16 @@ public class Company {
 
 	}
 
-	public void addTask(Tasks task) {
-		tasklist.add(task);
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public ArrayList<Employee> getArrayListEmployee() {
 		return this.employees;
