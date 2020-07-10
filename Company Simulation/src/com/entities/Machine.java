@@ -27,20 +27,28 @@ public class Machine extends Entity {
 	 */
 	
 	
-	private Employee[] dedicatedStaff;
-	public int standardTaskPoints;
-	public int randomTaskPoints;
-	public int taskPoints;
-	public boolean isWorking;
-	public double efficiency;
-	public ImageProvider imageProvider = new ImageProvider();
-	private Company company;
+	protected Employee[] dedicatedStaff;
+	protected int standardTaskPoints;
+	protected int taskPoints;
+	protected boolean isWorking;
+	protected boolean isSetup;
+	protected double efficiency;
+	protected ImageProvider imageProvider = new ImageProvider();
+	protected Company company;
 	
 	public Machine(Image image, int xPos, int yPos, Company company) {
 		super(image, xPos, yPos, 0);
 	}
 	
+	public boolean checkProductsAvailable() {
+		return false;
+	}
+	
 	public void process() {
+		
+	}
+	
+	protected void setupMachine() {
 		
 	}
 	
@@ -56,26 +64,29 @@ public class Machine extends Entity {
 		g2d.drawImage(super.getImage(), super.getxPos(),super.getyPos(),null);
 	}
 	
-	public void loadMachine(Product product) {
+	public void loadMachine(Employee employee) {
 		
 	}
 	
-	public Product unloadMachine() {
-		return null;
+	public void unloadMachine(Employee empolyee) {
+		
 	}
 	
-	private void throwEvent(CEvent event) {
+	protected void throwEvent(CEvent event) {
 		company.getELC().cEventOccurred(event);
 	}
 	
-	private int calculateTaskPoints() {
-		return 0;
+	protected void calculateTaskPoints() {
+		
 	}
 	
-	private int getRandomInt() {
+	protected int getRandomInt() {
 		Random ran = new Random();
 		return ran.nextInt(20)*10;
 	}
 	
+	protected void calculateEfficiency() {
+		
+	}
 	
 }

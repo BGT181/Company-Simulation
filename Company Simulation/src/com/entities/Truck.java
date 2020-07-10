@@ -36,6 +36,9 @@ public class Truck extends Entity{
 		if(type==productType.PRODUCT_B) {
 			img = Imagefor.PRODUCT_B;
 		}
+		if(type==productType.PRODUCT_A_PROCESSED) {
+			img = Imagefor.PRODUCT_A_PROCESSED;
+		}
 		//Call Events
 		isArrived = false;
 		return true;

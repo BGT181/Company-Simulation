@@ -84,7 +84,8 @@ public class Company {
 		hireEmployee(13, ImageType.EMPLOYEE_B, Position.MACHINE_C_SLOT1);
 		hireEmployee(14, ImageType.EMPLOYEE_C, Position.MACHINE_C_SLOT2);
 		
-		employees.get(2).setAssignedEvent(new CEvent(Event.TRUCK_EXIT_LOAD));
+		employees.get(2).setAssignedEvent(new CEvent(Event.TRUCK_ENTRANCE_UNLOAD));
+		employees.get(11).setAssignedEvent(new CEvent(Event.TRUCK_ENTRANCE_UNLOAD));
 		
 
 	}
@@ -100,7 +101,7 @@ public class Company {
 	
 	public void setupTrucks() {
 		truckEntrence = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 75);
-		truckEntrence.orderProducts(productType.PRODUCT_A, 1);
+		truckEntrence.orderProducts(productType.PRODUCT_A_PROCESSED, 2);
 		truckExit = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 575);
 		truckExit.soldProduct(1);
 	}
