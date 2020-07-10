@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.entities.*;
 import com.entities.Employee.ImageType;
 import com.entities.Product.productType;
+import com.event.CEvent;
+import com.event.CEvent.Event;
 import com.event.CEventListenerController;
 import com.gamelogic.ImageProvider.Imagefor;
 import com.gamelogic.MovementTask.Position;
@@ -66,8 +68,8 @@ public class Company {
 	}
 
 	public void setupEmployees() {
-		//hireEmployee(0, ImageType.EMPLOYEE_A,Position.MACHINE_B_SLOT6);
-		//hireEmployee(1, ImageType.EMPLOYEE_B, Position.MACHINE_B_SLOT5);
+		hireEmployee(0, ImageType.EMPLOYEE_A,Position.TRUCK_ENTRANCE);
+		hireEmployee(1, ImageType.EMPLOYEE_B, Position.TRUCK_EXIT);
 		hireEmployee(2, ImageType.EMPLOYEE_C, Position.STORAGE);
 		hireEmployee(3, ImageType.EMPLOYEE_C, Position.MACHINE_A_SLOT1);
 		hireEmployee(4, ImageType.EMPLOYEE_A, Position.MACHINE_A_SLOT2);
@@ -82,23 +84,23 @@ public class Company {
 		hireEmployee(13, ImageType.EMPLOYEE_B, Position.MACHINE_C_SLOT1);
 		hireEmployee(14, ImageType.EMPLOYEE_C, Position.MACHINE_C_SLOT2);
 		
-		employees.get(2).setCarryProduct(storage.pickUpItem(productType.PRODUCT_B, employees.get(2)));
-		employees.get(2).getMovementManager().setDestionation(Position.MACHINE_C);
-		
+		employees.get(2).setAssignedEvent(new CEvent(Event.TRUCK_ENTRANCE_UNLOAD));
+	//	storage.pickUpItem(productType.PRODUCT_A, employees.get(2));
+
 	}
 	
 	public void setupProducts() {
 		Product product = new Product(imageProvider.getImage(Imagefor.PRODUCT_A), 100, 100, productType.PRODUCT_A);
 		Product producta = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 100, 100, productType.PRODUCT_B);
 		Product productb = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 100, 100, productType.PRODUCT_B);
-		storage.storeProduct(product);
-		storage.storeProduct(producta);
-		storage.storeProduct(productb);
+		storage.storeProduct(product,null);
+		storage.storeProduct(producta,null);
+		storage.storeProduct(productb,null);
 	}
 	
 	public void setupTrucks() {
 		truckEntrence = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 75);
-		truckEntrence.orderProducts(productType.PRODUCT_A, 3);
+		truckEntrence.orderProducts(productType.PRODUCT_A, 1);
 	}
 	
 	

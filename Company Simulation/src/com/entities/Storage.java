@@ -8,6 +8,7 @@ import com.entities.Product.productType;
 import com.gamelogic.Company;
 import com.gamelogic.ImageProvider;
 import com.gamelogic.ImageProvider.Imagefor;
+import com.gamelogic.MovementTask.Position;
 
 public class Storage extends Entity {
 
@@ -30,11 +31,14 @@ public class Storage extends Entity {
 		g2d.drawImage(imageProvider.getImage(Imagefor.STORAGE), super.getxPos(), (super.getyPos()+3*offset), null);
 	}
 
-	public void storeProduct(Product product) {
+	public void storeProduct(Product product, Employee employee) {
 		if(isStorageAvailable()) {
 			updatePosition(product, findSpace());
 			storedProducts[findSpace()] = product;
 			numberOfStoredProducts++;
+			if(employee!=null) {
+				employee.increaseEventStep();
+			}	
 		}
 	}
 	
@@ -116,13 +120,15 @@ public class Storage extends Entity {
 	
 	public Product pickUpItem(productType productType, Employee employee) {
 		int i = checkForProductType(productType);
-		Product product = storedProducts[i];
+			if(employee.reachedPosition(Position.STORAGE)) {
+				Product product = storedProducts[i];
 		
-		if(i>=0) {
-			storedProducts[i] = null;
-			//employee.getAssignedEvent().increaseEventStep();
-			return product;
-		}
+					if(i>=0) {
+						storedProducts[i] = null;
+						employee.increaseEventStep();
+						employee.setCarryProduct(product);
+					}
+			}
 		return null;
 	}
 	

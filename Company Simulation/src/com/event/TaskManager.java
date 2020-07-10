@@ -30,6 +30,7 @@ public class TaskManager {
 		}
 	}
 	
+	
 	private void Machine_A_Refill() {					//Dest:Storage -> Pickup(A/B) -> Dest:Machine_A
 		switch(employee.getAssignedEvent().getEventStep()) {
 			case 0: employee.getMovementManager().setDestionation(Position.STORAGE); break;
@@ -66,6 +67,15 @@ public class TaskManager {
 		
 	}
 	private void Truck_Entrance_Unload() {				//Dest:Truck_Entrence -> Unload(A/B) -> Dest:Storage -> sort(A/B)
+		
+		switch(employee.getAssignedEvent().getEventStep()) {
+		case 0: employee.getMovementManager().setDestionation(Position.TRUCK_ENTRANCE);break;
+		case 1:	employee.getCompany().getTruckEntrence().unloadTruck(employee); break;
+		case 2: employee.getMovementManager().setDestionation(Position.STORAGE); break;
+		case 3: employee.getCompany().getStorage().storeProduct(employee.storeProduct(),employee); break;
+		case 4: employee.removeAssignedEvent();
+		}
+		
 		
 	}
 	private void Truck_Exit_Load() {					//Dest:Storage -> Pickup(C) -> Dest:Truck_Exit -> Unload(C)

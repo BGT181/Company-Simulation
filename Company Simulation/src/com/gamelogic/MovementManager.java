@@ -28,6 +28,7 @@ public class MovementManager {
 						employee.getCarryProduct().setxPos(employee.getxPos());
 						employee.getCarryProduct().setyPos(employee.getyPos());
 					}
+					
 					fetchDirection();
 				}
 		}
@@ -36,13 +37,14 @@ public class MovementManager {
 	private void fetchDirection() {
 		int oldDirX = dirX;
 		int oldDirY = dirY;
-		
+
 		switch(step ) {
 		
 		case 1: //Go to the next Checkpoint 
 			if(employee.getxPos()==movementTask.getXofPosition(Position.CHECKPOINT_A)) {
 				step++;
 				dirX = 0;
+				
 			} else {
 				if(employee.getxPos()>movementTask.getXofPosition(Position.CHECKPOINT_A)) {
 					dirX = -1;
@@ -70,9 +72,9 @@ public class MovementManager {
 			if(employee.getxPos()==movementTask.getXofPosition(movementTask.getDestination())) {
 				step = 0;
 				employee.setArrived(true);
-				if(employee.getAssignedEvent()!=null) {
-					employee.getAssignedEvent().increaseEventStep();
-				}
+				dirX = 0;
+				dirY = 0;
+				employee.increaseEventStep();
 			} else {
 				if(employee.getxPos()>movementTask.getXofPosition(movementTask.getDestination())) {
 					dirX = -1;
@@ -82,6 +84,7 @@ public class MovementManager {
 			}
 			break;	
 		}
+		
 		
 		if((dirX!=oldDirX)||(dirY!=oldDirY)) {
 			employee.changeImage(dirX, dirY);
@@ -102,7 +105,18 @@ public class MovementManager {
 	}
 
 	public void setDestionation(Position position) {
+		employee.setArrived(false);
+		step = 1;
 		movementTask.setDestination(position);
+		fetchDirection();
+	}
+	
+	public boolean reachedPosition(Position position) {
+		if((employee.getxPos()==movementTask.getXofPosition(position)&&(employee.getyPos()==movementTask.getYofPosition(position)))){
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }

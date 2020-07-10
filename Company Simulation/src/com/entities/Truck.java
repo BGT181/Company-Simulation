@@ -13,9 +13,10 @@ public class Truck extends Entity{
 
 	private boolean isArrived = true;
 	private boolean isFinished = false;
-	private Product[] container;
 	private ImageProvider ip = new ImageProvider();
 	private int amount;
+	private Imagefor img = null;
+	private productType productType = null;
 	
 	private int xStart = -250;
 	private int xEnd = 80;
@@ -24,21 +25,17 @@ public class Truck extends Entity{
 		super(image, xPos, yPos, 0);
 	}
 
-	public void orderProducts(productType type, int amount) {
-		container = new Product[amount];
+	public void orderProducts(productType type, int amount) {		
+		this.amount = amount; 
+		this.productType = type;
 		
-		Imagefor img = null;
 		if(type==productType.PRODUCT_A) {
 			img = Imagefor.PRODUCT_A;
 		}
 		if(type==productType.PRODUCT_B) {
 			img = Imagefor.PRODUCT_B;
 		}
-		
-		for (int i = 0; i < container.length; i++) {
-			container[i] = new Product(ip.getImage(img), 0, 0, type);
-		}
-		
+		//Call Events
 		isArrived = false;
 	}
 	
@@ -54,7 +51,6 @@ public class Truck extends Entity{
 				}
 				
 			} else {
-				
 				if(!isFinished) {
 					if(super.getxPos()==xEnd) {
 						isArrived = true;
@@ -66,7 +62,30 @@ public class Truck extends Entity{
 		}
 	}
 	
-	
+	public void unloadTruck(Employee employee) {
+		if(amount>0) {
+			employee.setCarryProduct(new Product(ip.getImage(img),80,60,productType));
+			employee.increaseEventStep();
+			amount--;
+			
+			
+			if(amount==0) {
+				isArrived = false;
+				isFinished = true;
+				amount = 0;
+				productType = null;
+				img = null;
+			}
+		} else {
+			if(amount==0) {
+				isArrived = false;
+				isFinished = true;
+				amount = 0;
+				productType = null;
+				img = null;
+			}
+		}
+	}
 	
 	/*
 	 * 	orderProducts() //isArrived = false

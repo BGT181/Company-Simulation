@@ -57,13 +57,31 @@ public class Employee extends Entity {
 		return assignedEvent;
 	}
 	public void setAssignedEvent(CEvent assignedEvent) {
+		setAvailability(false);
 		this.assignedEvent = assignedEvent;
+		taskManager.fetchTask();
+	}
+	public void removeAssignedEvent() {
+		setAvailability(true);
+		assignedEvent = null;
 	}
 	public Product getCarryProduct() {
 		return carryProduct;
 	}
 	public void setCarryProduct(Product carryProduct) {
 		this.carryProduct = carryProduct;
+	}
+	public void increaseEventStep() {
+		if(assignedEvent!=null) {
+			assignedEvent.increaseEventStep();
+			taskManager.fetchTask();
+		}
+	}
+
+	public Product storeProduct() {
+		Product product = carryProduct;
+		carryProduct = null;
+		return product; 
 	}
 	
 	//Position / Optic
@@ -143,7 +161,9 @@ public class Employee extends Entity {
 	public Company getCompany() {
 		return company;
 	}
-	
+	public boolean reachedPosition(Position position) {
+		return movementManager.reachedPosition(position);
+	}
 	
 	
 
