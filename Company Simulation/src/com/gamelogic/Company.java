@@ -41,7 +41,7 @@ public class Company {
 
 
 	private ImageProvider imageProvider = new ImageProvider();
-	private CEventListenerController ELC = new CEventListenerController();
+	private CEventListenerController ELC = new CEventListenerController(employees);
 	
 	public Company(boolean check) {
 		if(check) {
@@ -63,7 +63,6 @@ public class Company {
 		String name = "E"+val;
 		Employee employee = new Employee(imageType, position, name, this);
 		employees.add(employee);
-		ELC.addListener(employee);
 	}
 
 	public void setupEmployees() {

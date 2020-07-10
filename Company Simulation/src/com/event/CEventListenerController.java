@@ -7,19 +7,19 @@ import com.entities.Employee;
 public class CEventListenerController {
 
 	private CEventListener eventListener;
-	private CEventListenerList eventListenerList;
+	private ArrayList<Employee> eventListenerList;
 	
-	public CEventListenerController() {
+	public CEventListenerController(ArrayList<Employee> employees) {
 		eventListener = new CEventListener();
-		eventListenerList = new CEventListenerList();
+		eventListenerList = employees;
 	}
 	
 	public void checkForMatches() {
 		for(CEvent event : eventListener.getEventListener()) {
-			for (int i = 0; i < eventListenerList.getListenerList().size(); i++) {
-				if(checkEmployee(event,eventListenerList.getListenerList().get(i))) {
-					eventListenerList.getListenerList().get(i).setAssignedEvent(event);
-					eventListenerList.getListenerList().remove(i);
+			for (int i = 0; i < eventListenerList.size(); i++) {
+				if(checkEmployee(event,eventListenerList.get(i))) {
+					eventListenerList.get(i).setAssignedEvent(event);
+					eventListener.getEventListener().remove(event);
 				}
 			}
 		}
@@ -43,9 +43,5 @@ public class CEventListenerController {
 	
 	public void removeCEvent(CEvent cEvent) {
 		eventListener.removeCEvent(cEvent);
-	}
-	
-	public void addListener(Employee employee) {
-		eventListenerList.addListener(employee);
 	}
 }

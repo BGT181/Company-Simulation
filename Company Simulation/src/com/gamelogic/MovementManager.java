@@ -12,7 +12,6 @@ public class MovementManager {
 	
 	private int dirX;
 	private int dirY;
-	private int orientation;
 	
 	public MovementManager(Employee employee) {
 		this.employee = employee;

@@ -44,8 +44,20 @@ public class Machine extends Entity {
 		
 	}
 	
+	public void AddDedicatedStaff(Employee employee) {
+		
+	}
+	
+	public void removeDedicatedStaff(Employee employee) {
+		
+	}
+	
 	public void drawImage(Graphics2D g2d) {
 		g2d.drawImage(super.getImage(), super.getxPos(),super.getyPos(),null);
+	}
+	
+	public void loadMachine(Product product) {
+		
 	}
 	
 	public Product unloadMachine() {

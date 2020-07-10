@@ -82,12 +82,10 @@ public class MovementTask {
 		positions[position.ordinal()][3]=dirY;
 	}
 	
-
 	public Position getStart() {
 		return start;
 	}
 	
-
 	public void setStart(Position start) {
 		this.start = start;
 	}
