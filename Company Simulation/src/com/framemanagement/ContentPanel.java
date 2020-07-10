@@ -173,10 +173,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 	
 	private void drawImages(Graphics2D g2d) {
 		g2d.drawImage(ip.getImage(Imagefor.BUILDING), 0,0,null);
-        
-        company.getTruckEntrence().moveToDestination();
-        g2d.drawImage(company.getTruckEntrence().getImage(), company.getTruckEntrence().getxPos(),company.getTruckEntrence().getyPos(), null);
-    
+       
         company.getMachineA().drawImage(g2d);
         company.getMachineB().drawImage(g2d);
         company.getMachineC().drawImage(g2d);
@@ -196,7 +193,11 @@ public class ContentPanel extends JPanel implements ActionListener {
         		}
         	}
         
-        
+        	   company.getTruckEntrence().moveToDestination();
+               g2d.drawImage(company.getTruckEntrence().getImage(), company.getTruckEntrence().getxPos(),company.getTruckEntrence().getyPos(), null);
+               company.getTruckExit().moveToDestination();
+               g2d.drawImage(company.getTruckExit().getImage(), company.getTruckExit().getxPos(),company.getTruckExit().getyPos(), null);
+           
       }
 	
 	private void addButton(JButton button, int x, int y) {

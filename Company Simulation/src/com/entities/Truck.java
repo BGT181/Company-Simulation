@@ -17,6 +17,7 @@ public class Truck extends Entity{
 	private int amount;
 	private Imagefor img = null;
 	private productType productType = null;
+	private int i;
 	
 	private int xStart = -250;
 	private int xEnd = 80;
@@ -25,7 +26,7 @@ public class Truck extends Entity{
 		super(image, xPos, yPos, 0);
 	}
 
-	public void orderProducts(productType type, int amount) {		
+	public boolean orderProducts(productType type, int amount) {		
 		this.amount = amount; 
 		this.productType = type;
 		
@@ -37,6 +38,7 @@ public class Truck extends Entity{
 		}
 		//Call Events
 		isArrived = false;
+		return true;
 	}
 	
 	public void moveToDestination() {
@@ -87,57 +89,29 @@ public class Truck extends Entity{
 		}
 	}
 	
-	/*
-	 * 	orderProducts() //isArrived = false
-	 *  ->
-	 * 	moveToDesination() //direction depends
-	 * 	->
-	 * 	isArrived = true;
-	 * 	->
-	 * 	Call Events to clear the Truck;
-	 * 	->
-	 * 	exportProduct //!= null
-	 * 	->
-	 * 	container[i] = null; 
-	 * 	->
-	 * 	isArrived = false; 
-	 * 	isFinished = true; 
-	 * 	->
-	 * 	moveToDesition //depends on isFinished
-	 * 	-> 
-	 *	 //Clear for next Order
-	 * 	isFinished = false; //isArrived = true;
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * importSoldProducts() // isArrived = false;
-	 * -> 
-	 * moveToDestination()
-	 * -> 
-	 * isArrived = true;
-	 * ->
-	 * loadTruck() // i++
-	 * -> 
-	 * i = orderAmount
-	 * ->
-	 * isFinished = true;
-	 * isArrived = false;
-	 * ->
-	 * moveToDestination()
-	 * ->
-	 * isFinished = false //Cleared for next Task
-	 * isArrived = true;
-	 * 
-	 */
 	
+	public boolean soldProduct(int amount) {
+		this.amount = amount;
+		isArrived = false;
+		return true;
+	}
 	
+	public void loadTruck(Employee employee) {
+		if(amount>i) {
+			employee.setCarryProduct(null);
+			i++;
+			employee.increaseEventStep();
+			if(amount == i) {
+				isArrived = false;
+				isFinished = true;
+				i = 0;
+				amount = 0;
+				productType = null;
+				img = null;
+			}
+		}
+	}
 	
-	
-
 	public boolean isArrived() {
 		return isArrived;
 	}

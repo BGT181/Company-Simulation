@@ -70,7 +70,7 @@ public class Company {
 	public void setupEmployees() {
 		hireEmployee(0, ImageType.EMPLOYEE_A,Position.TRUCK_ENTRANCE);
 		hireEmployee(1, ImageType.EMPLOYEE_B, Position.TRUCK_EXIT);
-		hireEmployee(2, ImageType.EMPLOYEE_C, Position.STORAGE);
+		hireEmployee(2, ImageType.EMPLOYEE_C, Position.TRUCK_ENTRANCE);
 		hireEmployee(3, ImageType.EMPLOYEE_C, Position.MACHINE_A_SLOT1);
 		hireEmployee(4, ImageType.EMPLOYEE_A, Position.MACHINE_A_SLOT2);
 		hireEmployee(5, ImageType.EMPLOYEE_B, Position.MACHINE_A_SLOT3);
@@ -84,15 +84,15 @@ public class Company {
 		hireEmployee(13, ImageType.EMPLOYEE_B, Position.MACHINE_C_SLOT1);
 		hireEmployee(14, ImageType.EMPLOYEE_C, Position.MACHINE_C_SLOT2);
 		
-		employees.get(2).setAssignedEvent(new CEvent(Event.TRUCK_ENTRANCE_UNLOAD));
-	//	storage.pickUpItem(productType.PRODUCT_A, employees.get(2));
+		employees.get(2).setAssignedEvent(new CEvent(Event.TRUCK_EXIT_LOAD));
+		
 
 	}
 	
 	public void setupProducts() {
 		Product product = new Product(imageProvider.getImage(Imagefor.PRODUCT_A), 100, 100, productType.PRODUCT_A);
 		Product producta = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 100, 100, productType.PRODUCT_B);
-		Product productb = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 100, 100, productType.PRODUCT_B);
+		Product productb = new Product(imageProvider.getImage(Imagefor.PRODUCT_C_CERTIFIED), 100, 100, productType.PRODUCT_C_CERTIFIED);
 		storage.storeProduct(product,null);
 		storage.storeProduct(producta,null);
 		storage.storeProduct(productb,null);
@@ -101,6 +101,8 @@ public class Company {
 	public void setupTrucks() {
 		truckEntrence = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 75);
 		truckEntrence.orderProducts(productType.PRODUCT_A, 1);
+		truckExit = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 575);
+		truckExit.soldProduct(1);
 	}
 	
 	
