@@ -112,5 +112,20 @@ public class Storage extends Entity {
 	
 	public int getAmount() {
 		return numberOfStoredProducts;
+	}
+	
+	public Product pickUpItem(productType productType, Employee employee) {
+		int i = checkForProductType(productType);
+		Product product = storedProducts[i];
+		
+		if(i>=0) {
+			storedProducts[i] = null;
+			//employee.getAssignedEvent().increaseEventStep();
+			return product;
 		}
+		return null;
+	}
+	
+	
+	
 	}

@@ -43,26 +43,26 @@ public class MovementTask {
 		setupPosition(Position.TRUCK_ENTRANCE, 	210, 100, -1, 0);
 		setupPosition(Position.STORAGE, 		320, 350, -1, 0);
 		setupPosition(Position.TRUCK_EXIT, 		210, 600, -1, 0);
-		setupPosition(Position.CHECKPOINT_A, 	450, 100, 0, 0);
-		setupPosition(Position.CHECKPOINT_B, 	450, 350, 0, 0);
-		setupPosition(Position.CHECKPOINT_C, 	450, 600, 0, 0);
-		setupPosition(Position.MACHINE_A, 		580, 100, -1, 0);
-		setupPosition(Position.MACHINE_B, 		550, 350, -1, 0);
-		setupPosition(Position.MACHINE_C, 		580, 600, -1, 0);
+		setupPosition(Position.CHECKPOINT_A, 	450, 100, 0, 1);
+		setupPosition(Position.CHECKPOINT_B, 	450, 350, 0, 1);
+		setupPosition(Position.CHECKPOINT_C, 	450, 600, 0, 1);
+		setupPosition(Position.MACHINE_A, 		580, 100, 1, 0);
+		setupPosition(Position.MACHINE_B, 		550, 350, 1, 0);
+		setupPosition(Position.MACHINE_C, 		580, 600, 1, 0);
 		
 		
-		setupPosition(Position.MACHINE_A_SLOT1, 0, 0, 0, 0);
-		setupPosition(Position.MACHINE_A_SLOT2, 0, 0, 0, 0);
-		setupPosition(Position.MACHINE_A_SLOT3, 0, 0, 0, 0);
-		setupPosition(Position.MACHINE_A_SLOT4, 0, 0, 0, 0);
-		setupPosition(Position.MACHINE_B_SLOT1, 0, 0, 0, 0);
-		setupPosition(Position.MACHINE_B_SLOT2, 0, 0, 0, 0);
-		setupPosition(Position.MACHINE_B_SLOT3, 0, 0, 0, 0);
-		setupPosition(Position.MACHINE_B_SLOT4, 0, 0, 0, 0);
-		setupPosition(Position.MACHINE_B_SLOT5, 0, 0, 0, 0);
-		setupPosition(Position.MACHINE_B_SLOT6, 0, 0, 0, 0);
-		setupPosition(Position.MACHINE_C_SLOT1, 0, 0, 0, 0);
-		setupPosition(Position.MACHINE_C_SLOT2, 0, 0, 0, 0);
+		setupPosition(Position.MACHINE_A_SLOT1, 620, 220, 0, -1);
+		setupPosition(Position.MACHINE_A_SLOT2, 620, 45, 0, 1);
+		setupPosition(Position.MACHINE_A_SLOT3, 680, 220, 0, -1);
+		setupPosition(Position.MACHINE_A_SLOT4, 680, 45, 0, 1);
+		setupPosition(Position.MACHINE_B_SLOT1, 560, 275, 1, 0);
+		setupPosition(Position.MACHINE_B_SLOT2, 560, 425, 1, 0);
+		setupPosition(Position.MACHINE_B_SLOT3, 740, 275, -1, 0);
+		setupPosition(Position.MACHINE_B_SLOT4, 740, 425, -1, 0);
+		setupPosition(Position.MACHINE_B_SLOT5, 650, 470, 0, -1);
+		setupPosition(Position.MACHINE_B_SLOT6, 725, 350, -1, 0);
+		setupPosition(Position.MACHINE_C_SLOT1, 620, 660, 0, -1);
+		setupPosition(Position.MACHINE_C_SLOT2, 680, 660, 0, -1);
 	}
 	
 	public void setMovementTask(Position start, Position destination) {
@@ -108,5 +108,12 @@ public class MovementTask {
 		return positions[position.ordinal()][1];
 	}
 	
+	public int getDirXofPosition(Position position) {
+		return positions[position.ordinal()][2];
+	}
+	
+	public int getDirYofPosition(Position position) {
+		return positions[position.ordinal()][3];
+	}
 }
 

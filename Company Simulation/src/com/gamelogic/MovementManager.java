@@ -21,12 +21,17 @@ public class MovementManager {
 	}
 	
 	public void updatePosition() {
-		if(!employee.isArrived()){
-			employee.setxPos(employee.getxPos()+dirX);
-			employee.setyPos(employee.getyPos()+dirY);
-			fetchDirection();
+		if(movementTask.getDestination()!=null) {
+				if(!employee.isArrived()){
+					employee.setxPos(employee.getxPos()+dirX);
+					employee.setyPos(employee.getyPos()+dirY);
+					if(employee.getCarryProduct()!=null) {
+						employee.getCarryProduct().setxPos(employee.getxPos());
+						employee.getCarryProduct().setyPos(employee.getyPos());
+					}
+					fetchDirection();
+				}
 		}
-		
 	}
 
 	private void fetchDirection() {
@@ -66,6 +71,9 @@ public class MovementManager {
 			if(employee.getxPos()==movementTask.getXofPosition(movementTask.getDestination())) {
 				step = 0;
 				employee.setArrived(true);
+				if(employee.getAssignedEvent()!=null) {
+					employee.getAssignedEvent().increaseEventStep();
+				}
 			} else {
 				if(employee.getxPos()>movementTask.getXofPosition(movementTask.getDestination())) {
 					dirX = -1;
@@ -94,6 +102,9 @@ public class MovementManager {
 		employee.setPosition(start);
 	}
 
+	public void setDestionation(Position position) {
+		movementTask.setDestination(position);
+	}
 
 }
 

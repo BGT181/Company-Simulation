@@ -1,7 +1,5 @@
 package com.event;
 
-import com.entities.Entity;
-
 public class CEvent {
 
 	private Event currentEvent;
@@ -45,5 +43,7 @@ public class CEvent {
 		this.eventStep = eventStep;
 	}
 	
-	
+	public void increaseEventStep() {
+		this.eventStep++;
+	}
 }

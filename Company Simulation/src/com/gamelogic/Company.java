@@ -45,52 +45,62 @@ public class Company {
 	
 	public Company(boolean check) {
 		if(check) {
-			
-			setupCompany();
 			setupMachines();
+			
+			setupProducts();
+			setupTrucks();
+			setupEmployees();
 		}
 	}
 	
+	public void setupMachines() {
+		machineA = new MachineA(null, 625, 80,this);
+		machineB = new MachineB(null, 600, 275,this);
+		machineC = new MachineC(null, 625, 520,this);
+	}
 	
-	public void process() {
+	public void hireEmployee(int val, ImageType imageType, Position position) {
+		String name = "E"+val;
+		Employee employee = new Employee(imageType, position, name, this);
+		employees.add(employee);
+		ELC.addListener(employee);
+	}
+
+	public void setupEmployees() {
+		//hireEmployee(0, ImageType.EMPLOYEE_A,Position.MACHINE_B_SLOT6);
+		//hireEmployee(1, ImageType.EMPLOYEE_B, Position.MACHINE_B_SLOT5);
+		hireEmployee(2, ImageType.EMPLOYEE_C, Position.STORAGE);
+		hireEmployee(3, ImageType.EMPLOYEE_C, Position.MACHINE_A_SLOT1);
+		hireEmployee(4, ImageType.EMPLOYEE_A, Position.MACHINE_A_SLOT2);
+		hireEmployee(5, ImageType.EMPLOYEE_B, Position.MACHINE_A_SLOT3);
+		hireEmployee(6, ImageType.EMPLOYEE_C, Position.MACHINE_A_SLOT4);
+		hireEmployee(7, ImageType.EMPLOYEE_A, Position.MACHINE_B_SLOT1);
+		hireEmployee(8, ImageType.EMPLOYEE_B, Position.MACHINE_B_SLOT2);
+		hireEmployee(9, ImageType.EMPLOYEE_C, Position.MACHINE_B_SLOT3);
+		hireEmployee(10, ImageType.EMPLOYEE_C, Position.MACHINE_B_SLOT4);
+		hireEmployee(11, ImageType.EMPLOYEE_B, Position.MACHINE_B_SLOT5);
+		hireEmployee(12, ImageType.EMPLOYEE_A, Position.MACHINE_B_SLOT6);
+		hireEmployee(13, ImageType.EMPLOYEE_B, Position.MACHINE_C_SLOT1);
+		hireEmployee(14, ImageType.EMPLOYEE_C, Position.MACHINE_C_SLOT2);
+		
+		employees.get(2).setCarryProduct(storage.pickUpItem(productType.PRODUCT_B, employees.get(2)));
+		employees.get(2).getMovementManager().setDestionation(Position.MACHINE_C);
 		
 	}
 	
-	public void setupCompany() {
-		hireEmployee(0, ImageType.EMPLOYEE_A);
-		employees.get(0).getMovementManager().setMovementTask(Position.MACHINE_C, Position.TRUCK_ENTRANCE);
-		hireEmployee(1, ImageType.EMPLOYEE_B);
-		employees.get(1).getMovementManager().setMovementTask(Position.TRUCK_ENTRANCE, Position.TRUCK_EXIT);
-		
-		
-		
+	public void setupProducts() {
 		Product product = new Product(imageProvider.getImage(Imagefor.PRODUCT_A), 100, 100, productType.PRODUCT_A);
 		Product producta = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 100, 100, productType.PRODUCT_B);
 		Product productb = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 100, 100, productType.PRODUCT_B);
 		storage.storeProduct(product);
 		storage.storeProduct(producta);
 		storage.storeProduct(productb);
-		
-		
+	}
+	
+	public void setupTrucks() {
 		truckEntrence = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 75);
 		truckEntrence.orderProducts(productType.PRODUCT_A, 3);
 	}
-	
-	public void setupMachines() {
-		machineA = new MachineA(null, 625, 80);
-		machineB = new MachineB(null, 600, 275);
-		machineC = new MachineC(null, 625, 520);
-	}
-	
-	public void hireEmployee(int val, ImageType imageType) {
-		String name = "E"+val;
-		employees.add(new Employee(imageType, Position.STORAGE, name));
-
-	}
-
-	
-	
-	
 	
 	
 	
@@ -161,5 +171,11 @@ public class Company {
 	public void setTruckExit(Truck truckExit) {
 		this.truckExit = truckExit;
 	}
+	
+	public CEventListenerController getELC() {
+		return ELC;
+	}
+	
+	
 	
 }

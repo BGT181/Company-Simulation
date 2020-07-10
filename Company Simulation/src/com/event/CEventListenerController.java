@@ -44,4 +44,8 @@ public class CEventListenerController {
 	public void removeCEvent(CEvent cEvent) {
 		eventListener.removeCEvent(cEvent);
 	}
+	
+	public void addListener(Employee employee) {
+		eventListenerList.addListener(employee);
+	}
 }

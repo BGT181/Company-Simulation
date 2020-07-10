@@ -191,6 +191,9 @@ public class ContentPanel extends JPanel implements ActionListener {
         
         	for(Employee employee : company.getArrayListEmployee()){
         		g2d.drawImage(employee.getImage(), employee.getxPos(), employee.getyPos(), null);
+        		if(employee.getCarryProduct()!=null) {
+        			g2d.drawImage(employee.getCarryProduct().getImage(),employee.getCarryProduct().getxPos()+10,employee.getCarryProduct().getyPos()+10,null );
+        		}
         	}
         
         
@@ -209,8 +212,6 @@ public class ContentPanel extends JPanel implements ActionListener {
 				employee.getMovementManager().updatePosition();
 			}
 	    	
-	   
-	    	company.process();
 	      repaint();
 	    }
 	}
