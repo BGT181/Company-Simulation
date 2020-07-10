@@ -30,12 +30,10 @@ public class ContentPanel extends JPanel implements ActionListener {
 	Timer timer = new Timer(30, this);
 	Company company = new Company(true);
 	
-	//Logic for the Menu. An Enum to provide the values for the specific Design
 	public enum optionPanel { DASHBOARD, MANAGEMENT, EMPLOYEE }
 	private optionPanel currentOptionPanel = optionPanel.DASHBOARD;
 	private optionPanel feedbackOptionPanel;
 	
-	//Control-Button Logic - Init Buttons and creating the ActionListener
 	JButton buttonDashboard = new JButton("Dashboard");
 	JButton buttonManagement = new JButton("Management"); 
 	JButton buttonEmployees = new JButton("Employees");
@@ -100,7 +98,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 	menuEmployee.add(createLabel("Processing", 975, 91));
 	menuEmployee.add(createLabel("Qualitycheck", 1025, 111));
 		
-		int i = 140;
+	int i = 140;
 		for (Employee employee : company.getArrayListEmployee()) {
 			menuEmployee.add(new JEmployeeMenubar(this,employee, employee.getName(),i));
 			i+=20;
@@ -189,7 +187,7 @@ public class ContentPanel extends JPanel implements ActionListener {
         	for(Employee employee : company.getArrayListEmployee()){
         		g2d.drawImage(employee.getImage(), employee.getxPos(), employee.getyPos(), null);
         		if(employee.getCarryProduct()!=null) {
-        			g2d.drawImage(employee.getCarryProduct().getImage(),employee.getCarryProduct().getxPos()+10,employee.getCarryProduct().getyPos()+10,null );
+        			g2d.drawImage(employee.getCarryProduct().getImage(),employee.getCarryProduct().getxPos()+8,employee.getCarryProduct().getyPos()+8,null );
         		}
         	}
         

@@ -37,6 +37,7 @@ public class Storage extends Entity {
 			storedProducts[findSpace()] = product;
 			numberOfStoredProducts++;
 			if(employee!=null) {
+				employee.setCarryProduct(null);
 				employee.increaseEventStep();
 			}	
 		}

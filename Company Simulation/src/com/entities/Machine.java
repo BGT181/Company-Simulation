@@ -30,8 +30,9 @@ public class Machine extends Entity {
 	protected Employee[] dedicatedStaff;
 	protected int standardTaskPoints;
 	protected int taskPoints;
+	protected int varTaskPoints;
 	protected boolean isWorking;
-	protected boolean isSetup;
+	protected boolean isWaiting;
 	protected double efficiency;
 	protected ImageProvider imageProvider = new ImageProvider();
 	protected Company company;
@@ -40,15 +41,7 @@ public class Machine extends Entity {
 		super(image, xPos, yPos, 0);
 	}
 	
-	public boolean checkProductsAvailable() {
-		return false;
-	}
-	
 	public void process() {
-		
-	}
-	
-	protected void setupMachine() {
 		
 	}
 	
@@ -69,7 +62,7 @@ public class Machine extends Entity {
 	}
 	
 	public void unloadMachine(Employee empolyee) {
-		
+	
 	}
 	
 	protected void throwEvent(CEvent event) {
@@ -77,7 +70,7 @@ public class Machine extends Entity {
 	}
 	
 	protected void calculateTaskPoints() {
-		
+		taskPoints = standardTaskPoints + getRandomInt();
 	}
 	
 	protected int getRandomInt() {
@@ -86,7 +79,23 @@ public class Machine extends Entity {
 	}
 	
 	protected void calculateEfficiency() {
-		
+		for (int i = 0; i < dedicatedStaff.length; i++) {
+			if(dedicatedStaff[i]!=null) {
+				efficiency += dedicatedStaff[i].getEfficiencyLvl();
+			}
+		}
+		if(efficiency<=0) {
+			efficiency = 0.1;
+		}
+	}
+	
+	
+	protected boolean isProzessFinished() {
+		if(varTaskPoints>=taskPoints) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 }

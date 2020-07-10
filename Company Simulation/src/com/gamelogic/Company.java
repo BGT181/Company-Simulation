@@ -84,8 +84,8 @@ public class Company {
 		hireEmployee(13, ImageType.EMPLOYEE_B, Position.MACHINE_C_SLOT1);
 		hireEmployee(14, ImageType.EMPLOYEE_C, Position.MACHINE_C_SLOT2);
 		
-		employees.get(2).setAssignedEvent(new CEvent(Event.TRUCK_ENTRANCE_UNLOAD));
-		employees.get(11).setAssignedEvent(new CEvent(Event.TRUCK_ENTRANCE_UNLOAD));
+		employees.get(2).setAssignedEvent(new CEvent(Event.MACHINE_C_UNLOAD));
+		employees.get(7).setAssignedEvent(new CEvent(Event.MACHINE_C_REFILL));
 		
 
 	}
@@ -93,7 +93,7 @@ public class Company {
 	public void setupProducts() {
 		Product product = new Product(imageProvider.getImage(Imagefor.PRODUCT_A), 100, 100, productType.PRODUCT_A);
 		Product producta = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 100, 100, productType.PRODUCT_B);
-		Product productb = new Product(imageProvider.getImage(Imagefor.PRODUCT_C_CERTIFIED), 100, 100, productType.PRODUCT_C_CERTIFIED);
+		Product productb = new Product(imageProvider.getImage(Imagefor.PRODUCT_C), 100, 100, productType.PRODUCT_C);
 		storage.storeProduct(product,null);
 		storage.storeProduct(producta,null);
 		storage.storeProduct(productb,null);
