@@ -1,5 +1,6 @@
 package com.entities;
 
+import java.awt.Graphics2D;
 import java.awt.Image;
 
 import com.entities.Product.productType;
@@ -15,8 +16,8 @@ public class MachineC extends Machine{
 
 	private Product storageIn;
 	private Product storageOut;
-	private int pPosX = 651;
-	private int pPosY = 580;
+	private int pPosX = 659;
+	private int pPosY = 590;
 	private ImageProvider ip = new ImageProvider();
 	
 	public MachineC(Image image, int xPos, int yPos, Company company) {
@@ -35,7 +36,6 @@ public class MachineC extends Machine{
 	public void process() {
 		if(isWorking) {
 			varTaskPoints += efficiency;
-			System.out.println(varTaskPoints);
 			if(isProzessFinished()) {
 				isWorking = false;
 				storageOut = storageIn;
@@ -54,7 +54,7 @@ public class MachineC extends Machine{
 			storageIn = employee.getCarryProduct();
 			storageIn.setxPos(pPosX);
 			storageIn.setyPos(pPosY);
-			isRequested = false;
+			employee.setCarryProduct(null);
 			setupMachine();
 			employee.increaseEventStep();
 		}
@@ -65,6 +65,7 @@ public class MachineC extends Machine{
 			if(storageOut!=null) {
 				employee.setCarryProduct(storageOut);
 				storageOut = null;
+				isRequested = false;
 				employee.increaseEventStep();
 			}
 		}
@@ -78,8 +79,7 @@ public class MachineC extends Machine{
 					isRequested = true;
 				}
 			} else {
-				isRequested = false;
-				calculateTaskPoints();
+				calculateTaskPoints(1);
 				calculateEfficiency();
 				isWorking = true;
 			}		
@@ -101,5 +101,12 @@ public class MachineC extends Machine{
 		}
 	}
 
-
+	public void drawItems(Graphics2D g2d) {
+		if(storageIn!=null) {
+			g2d.drawImage(storageIn.getImage(),storageIn.getxPos(),storageIn.getyPos(),null);
+		}
+		if(storageOut!=null) {
+			g2d.drawImage(storageOut.getImage(),storageOut.getxPos(),storageOut.getyPos(),null);
+		}
+	}
 }

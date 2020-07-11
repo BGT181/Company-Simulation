@@ -77,12 +77,18 @@ public class Company {
 	}
 	
 	public void setupProducts() {
-		Product product = new Product(imageProvider.getImage(Imagefor.PRODUCT_C), 120, 120, productType.PRODUCT_C);
-		Product producta = new Product(imageProvider.getImage(Imagefor.PRODUCT_C), 120, 120, productType.PRODUCT_C);
-		Product productb = new Product(imageProvider.getImage(Imagefor.PRODUCT_C), 120, 120, productType.PRODUCT_C);
+		Product product = new Product(imageProvider.getImage(Imagefor.PRODUCT_A), 120, 120, productType.PRODUCT_A);
+		Product producta = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 120, 120, productType.PRODUCT_B);
+		Product productb = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 120, 120, productType.PRODUCT_B);
+		Product productc = new Product(imageProvider.getImage(Imagefor.PRODUCT_A), 120, 120, productType.PRODUCT_A);
+		Product productd = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 120, 120, productType.PRODUCT_B);
+		Product producte = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 120, 120, productType.PRODUCT_B);
 		storage.storeProduct(product,null);
 		storage.storeProduct(producta,null);
 		storage.storeProduct(productb,null);
+		storage.storeProduct(productc,null);
+		storage.storeProduct(productd,null);
+		storage.storeProduct(producte,null);
 	}
 	
 	public void setupTrucks() {

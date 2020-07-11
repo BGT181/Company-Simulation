@@ -22,12 +22,11 @@ public class CEventListenerController implements ActionListener{
 	public void actionPerformed(ActionEvent ev){
 		if(ev.getSource()==refreshTimer){
 			checkForMatches();
-			printEvents();
+			//printEvents();
 			
 		}
 	}
 	public void checkForMatches() {
-	//	for(CEvent event : eventListener.getEventListener()) {
 		for (int i = 0; i < eventListener.getEventListener().size(); i++) {
 			for (int j = 0; j < eventListenerList.size(); j++) {
 				if(checkEmployee(eventListener.getEventListener().get(i),eventListenerList.get(j))) {

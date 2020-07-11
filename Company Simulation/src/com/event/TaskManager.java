@@ -34,17 +34,34 @@ public class TaskManager {
 	
 	private void Machine_A_Refill() {					//Dest:Storage -> Pickup(A/B) -> Dest:Machine_A
 		switch(employee.getAssignedEvent().getEventStep()) {
-			case 0: employee.getMovementManager().setDestionation(Position.STORAGE); break;
-			//case 1: employee.setCarryProduct(employee.getCompany().getStorage().pickUpItem(productType.PRODUCT_A,employee)); break;
-			//case 2: movementManager.setDestionation(Position.MACHINE_A); break;
-			case 3: break;
+			case 0: employee.getMovementManager().setDestionation(Position.STORAGE);break;
+			case 1:	if(employee.getCompany().getStorage().checkForProductType(productType.PRODUCT_A)>=0) {
+						employee.getCompany().getStorage().pickUpItem(productType.PRODUCT_A, employee);
+					} else {
+						if(employee.getCompany().getStorage().checkForProductType(productType.PRODUCT_B)>=0) {
+							employee.getCompany().getStorage().pickUpItem(productType.PRODUCT_B, employee);
+						}
+					} break;
+			case 2: employee.getMovementManager().setDestionation(Position.MACHINE_A); break;
+			case 3: employee.getCompany().getMachineA().loadMachine(employee); break;
+			case 4: employee.removeAssignedEvent(); break;
 		}
 	}
 	private void Machine_A_Unload() {					//Dest:Machine_A -> Unload(Aa/Bb) -> Dest:Storage -> sort(Aa/Bb) 
-		
+		switch(employee.getAssignedEvent().getEventStep()) {
+			case 0: employee.getMovementManager().setDestionation(Position.MACHINE_A);break;
+			case 1:	employee.getCompany().getMachineA().unloadMachine(employee); break;
+			case 2: employee.getMovementManager().setDestionation(Position.STORAGE); break;
+			case 3: employee.getCompany().getStorage().storeProduct(employee.getCarryProduct(), employee); break;
+			case 4: employee.removeAssignedEvent(); break;
+		}
 	}
 	private void Machine_A_Request_Staff() {			//Dest:Machine_A -> Dest: Machine_A_SlotX
-		
+		switch(employee.getAssignedEvent().getEventStep()) {
+		case 0: employee.getMovementManager().setDestionation(Position.MACHINE_A);break;
+		case 1:	employee.getCompany().getMachineA().AddDedicatedStaff(employee);; break;
+		case 2: employee.removeAssignedEvent(); break;
+	}
 	}
 	private void Machine_B_Refill_A() {					//Dest:Storage -> Pickup(A) -> Dest:Machine_B
 		

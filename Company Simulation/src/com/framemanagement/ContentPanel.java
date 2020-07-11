@@ -173,8 +173,10 @@ public class ContentPanel extends JPanel implements ActionListener {
 		g2d.drawImage(ip.getImage(Imagefor.BUILDING), 0,0,null);
        
         company.getMachineA().drawImage(g2d);
+        company.getMachineA().drawItems(g2d);
         company.getMachineB().drawImage(g2d);
         company.getMachineC().drawImage(g2d);
+        company.getMachineC().drawItems(g2d);
         
         
         	company.getStorage().drawImage(g2d);
@@ -210,8 +212,6 @@ public class ContentPanel extends JPanel implements ActionListener {
 	    	for (Employee employee: company.getArrayListEmployee()) {
 				employee.getMovementManager().updatePosition();
 			}
-	    	
-	    	
 	      repaint();
 	    }
 	}

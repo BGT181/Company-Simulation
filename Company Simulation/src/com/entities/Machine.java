@@ -84,13 +84,13 @@ public class Machine extends Entity implements ActionListener{
 		company.getELC().cEventOccurred(event);
 	}
 	
-	protected void calculateTaskPoints() {
-		taskPoints = standardTaskPoints + getRandomInt();
+	protected void calculateTaskPoints(int x) {
+		taskPoints = (standardTaskPoints + getRandomInt())*x;
 	}
 	
 	protected int getRandomInt() {
 		Random ran = new Random();
-		return ran.nextInt(25);
+		return ran.nextInt(20);
 	}
 	
 	protected void calculateEfficiency() {
@@ -100,7 +100,7 @@ public class Machine extends Entity implements ActionListener{
 			}
 		}
 		if(efficiency<=0) {
-			efficiency = 10;
+			efficiency = 0.1;
 		}
 	}
 	
