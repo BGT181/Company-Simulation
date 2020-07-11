@@ -15,8 +15,8 @@ public class MachineC extends Machine{
 
 	private Product storageIn;
 	private Product storageOut;
-	private int pPosX = 650;
-	private int pPosY = 550;
+	private int pPosX = 651;
+	private int pPosY = 580;
 	private ImageProvider ip = new ImageProvider();
 	
 	public MachineC(Image image, int xPos, int yPos, Company company) {

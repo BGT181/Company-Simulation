@@ -28,7 +28,7 @@ public class Employee extends Entity {
 	private double loan = 3000;
 	private double efficiencyLvl = 1;
 	private boolean isAvailable = true;
-	private boolean isArrived = false;
+	private boolean isArrived = true;
 	private Product carryProduct;
 	private ImageType imageType;
 	private CEvent assignedEvent;

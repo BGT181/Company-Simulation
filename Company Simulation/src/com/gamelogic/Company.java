@@ -60,30 +60,20 @@ public class Company {
 		machineC = new MachineC(null, 625, 520,this);
 	}
 	
-	public void hireEmployee(int val, ImageType imageType, Position position) {
+	public void hireEmployee(int val, ImageType imageType, Position position, int qualification) {
 		String name = "E"+val;
 		Employee employee = new Employee(imageType, position, name, this);
-		employee.setQualification(0);
+		employee.setQualification(qualification);
 		employees.add(employee);
 	}
 
 	public void setupEmployees() {
-		hireEmployee(0, ImageType.EMPLOYEE_A,Position.TRUCK_ENTRANCE);
-		hireEmployee(1, ImageType.EMPLOYEE_B, Position.TRUCK_EXIT);
-		hireEmployee(2, ImageType.EMPLOYEE_C, Position.TRUCK_ENTRANCE);
-		hireEmployee(3, ImageType.EMPLOYEE_C, Position.MACHINE_A_SLOT1);
-		hireEmployee(4, ImageType.EMPLOYEE_A, Position.MACHINE_A_SLOT2);
-		hireEmployee(5, ImageType.EMPLOYEE_B, Position.MACHINE_A_SLOT3);
-		
-		employees.get(3).setAvailability(true);
-		employees.get(3).setArrived(true);
-		employees.get(4).setAvailability(true);
-		employees.get(4).setArrived(true);
-		employees.get(5).setAvailability(true);
-		employees.get(5).setArrived(true);
-		employees.get(1).setQualification(3);
-		employees.get(1).setAvailability(true);
-		employees.get(1).setArrived(true);
+		hireEmployee(0, ImageType.EMPLOYEE_A,Position.CHECKPOINT_A,1);
+		hireEmployee(1, ImageType.EMPLOYEE_B, Position.STORAGE,0);
+		hireEmployee(2, ImageType.EMPLOYEE_C, Position.MACHINE_B,2);
+		hireEmployee(3, ImageType.EMPLOYEE_C, Position.CHECKPOINT_B,0);
+		hireEmployee(4, ImageType.EMPLOYEE_A, Position.CHECKPOINT_C, 3);
+		hireEmployee(5, ImageType.EMPLOYEE_B, Position.MACHINE_C,3);
 	}
 	
 	public void setupProducts() {
