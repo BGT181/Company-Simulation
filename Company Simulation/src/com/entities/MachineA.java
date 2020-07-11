@@ -46,7 +46,6 @@ public class MachineA extends Machine{
 					}
 				}
 			} else {
-				System.out.println("Triggered");
 				if(previousProductType!=null) {
 					if(storageIn.getType()!=previousProductType) {
 						calculateTaskPoints(2);
@@ -66,7 +65,6 @@ public class MachineA extends Machine{
 	public void process() {
 		if(isWorking) {
 			varTaskPoints += efficiency; 
-			System.out.println(taskPoints+ " "+varTaskPoints);
 			if(isProzessFinished()) {
 				isWorking = false;
 				storageOut = storageIn;
