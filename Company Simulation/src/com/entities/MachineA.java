@@ -46,7 +46,14 @@ public class MachineA extends Machine{
 					}
 				}
 			} else {
-				calculateTaskPoints(1);
+				if(previousProductType!=null) {
+					if(storageIn.getType()!=previousProductType) {
+						calculateTaskPoints(2);
+					}
+				} else {
+					calculateTaskPoints(1);
+				}
+				this.previousProductType = storageIn.getType();
 				calculateEfficiency();
 				isWorking = true;
 			}		
@@ -55,8 +62,6 @@ public class MachineA extends Machine{
 	
 	public void process() {
 		if(isWorking) {
-			varTaskPoints += efficiency;
-			System.out.println(taskPoints);
 			if(isProzessFinished()) {
 				isWorking = false;
 				storageOut = storageIn;
@@ -84,13 +89,6 @@ public class MachineA extends Machine{
 				storageIn.setxPos(pPosX);
 				storageIn.setyPos(pPosY);
 				employee.setCarryProduct(null);
-					if(previousProductType!=null) {
-						if(storageIn.getType()!=previousProductType) {
-							calculateTaskPoints(2);
-							System.out.println("Triggered"+taskPoints);
-						}
-					}
-				previousProductType = storageIn.getType();
 				setupMachine();
 				employee.increaseEventStep();
 			}

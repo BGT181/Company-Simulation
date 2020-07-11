@@ -73,7 +73,8 @@ public class Company {
 		hireEmployee(2, ImageType.EMPLOYEE_C, Position.MACHINE_B,2);
 		hireEmployee(3, ImageType.EMPLOYEE_C, Position.CHECKPOINT_B,0);
 		hireEmployee(4, ImageType.EMPLOYEE_A, Position.CHECKPOINT_C, 3);
-		hireEmployee(5, ImageType.EMPLOYEE_B, Position.MACHINE_C,3);
+		hireEmployee(5, ImageType.EMPLOYEE_B, Position.CHECKPOINT_A,1);
+		hireEmployee(5, ImageType.EMPLOYEE_A, Position.CHECKPOINT_A,1);
 	}
 	
 	public void setupProducts() {
