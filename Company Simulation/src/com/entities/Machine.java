@@ -85,7 +85,7 @@ public class Machine extends Entity implements ActionListener{
 	}
 	
 	protected void calculateTaskPoints(int x) {
-		taskPoints = (standardTaskPoints + getRandomInt())*x;
+	
 	}
 	
 	protected int getRandomInt() {

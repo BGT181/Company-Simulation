@@ -46,9 +46,12 @@ public class MachineA extends Machine{
 					}
 				}
 			} else {
+				System.out.println("Triggered");
 				if(previousProductType!=null) {
 					if(storageIn.getType()!=previousProductType) {
 						calculateTaskPoints(2);
+					} else {
+						calculateTaskPoints(1);	
 					}
 				} else {
 					calculateTaskPoints(1);
@@ -62,6 +65,8 @@ public class MachineA extends Machine{
 	
 	public void process() {
 		if(isWorking) {
+			varTaskPoints += efficiency; 
+			System.out.println(taskPoints+ " "+varTaskPoints);
 			if(isProzessFinished()) {
 				isWorking = false;
 				storageOut = storageIn;
@@ -74,7 +79,6 @@ public class MachineA extends Machine{
 				}
 				storageIn = null;
 				varTaskPoints = 0;
-				taskPoints = 0;
 				efficiency = 0;
 				throwEvent(new CEvent(Event.MACHINE_A_UNLOAD));
 			}
@@ -106,6 +110,10 @@ public class MachineA extends Machine{
 		}
 	}
 	
+	protected void calculateTaskPoints(int x) {
+		this.taskPoints = 0;
+		this.taskPoints = (standardTaskPoints + getRandomInt())*x;
+	}
 	
 	public void AddDedicatedStaff(Employee employee) {
 		for (int i = 0; i < dedicatedStaff.length; i++) {

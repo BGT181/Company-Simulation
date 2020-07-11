@@ -79,7 +79,7 @@ public class MachineC extends Machine{
 					isRequested = true;
 				}
 			} else {
-				calculateTaskPoints(1);
+				this.taskPoints = standardTaskPoints + getRandomInt();
 				calculateEfficiency();
 				isWorking = true;
 			}		
