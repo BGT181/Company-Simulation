@@ -175,6 +175,7 @@ public class ContentPanel extends JPanel implements ActionListener {
         company.getMachineA().drawImage(g2d);
         company.getMachineA().drawItems(g2d);
         company.getMachineB().drawImage(g2d);
+        company.getMachineB().drawItems(g2d);
         company.getMachineC().drawImage(g2d);
         company.getMachineC().drawItems(g2d);
         

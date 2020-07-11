@@ -38,9 +38,12 @@ public class MovementManager {
 		int oldDirX = dirX;
 		int oldDirY = dirY;
 
-		switch(step ) {
+		switch(step) {
 		
 		case 1: //Go to the next Checkpoint 
+			if((employee.getxPos()==movementTask.getXofPosition(movementTask.getDestination())&&(employee.getyPos()==movementTask.getYofPosition(movementTask.getDestination())))){
+				step = 3;
+			}
 			if(employee.getxPos()==movementTask.getXofPosition(Position.CHECKPOINT_A)) {
 				step++;
 				dirX = 0;

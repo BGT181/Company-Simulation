@@ -17,17 +17,6 @@ import com.gamelogic.*;
 
 
 public class Machine extends Entity implements ActionListener{
-
-	
-	/*
-	 * TaskPoints are the value that need to be reached to make a product.
-	 * 
-	 * taskPoints(forTask) = standardTaskPoints + randomTaskPoints
-	 * time(for Task) = taskPoints - efficiency (Faktor per Tick)
-	 * 
-	 *  
-	 *  
-	 */
 	
 	protected Timer timer = new Timer(1000,this);
 	protected Employee[] dedicatedStaff;

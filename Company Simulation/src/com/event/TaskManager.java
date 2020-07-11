@@ -58,22 +58,44 @@ public class TaskManager {
 	}
 	private void Machine_A_Request_Staff() {			//Dest:Machine_A -> Dest: Machine_A_SlotX
 		switch(employee.getAssignedEvent().getEventStep()) {
-		case 0: employee.getMovementManager().setDestionation(Position.MACHINE_A);break;
-		case 1:	employee.getCompany().getMachineA().AddDedicatedStaff(employee);; break;
-		case 2: employee.removeAssignedEvent(); break;
-	}
+			case 0: employee.getMovementManager().setDestionation(Position.MACHINE_A);break;
+			case 1:	employee.getCompany().getMachineA().AddDedicatedStaff(employee);; break;
+			case 2: employee.removeAssignedEvent(); break;
+		}
 	}
 	private void Machine_B_Refill_A() {					//Dest:Storage -> Pickup(A) -> Dest:Machine_B
-		
+		switch(employee.getAssignedEvent().getEventStep()) {
+			case 0: employee.getMovementManager().setDestionation(Position.STORAGE);break;
+			case 1:	employee.getCompany().getStorage().pickUpItem(productType.PRODUCT_A_PROCESSED, employee); break;
+			case 2: employee.getMovementManager().setDestionation(Position.MACHINE_B); break;
+			case 3: employee.getCompany().getMachineB().loadMachine(employee); break;
+			case 4: employee.removeAssignedEvent(); break;
+		}	
 	}
 	private void Machine_B_Refill_B() {					//Dest:Storage -> Pickup(B) -> Dest:Machine_B
-		
+		switch(employee.getAssignedEvent().getEventStep()) {
+		case 0: employee.getMovementManager().setDestionation(Position.STORAGE);break;
+		case 1:	employee.getCompany().getStorage().pickUpItem(productType.PRODUCT_B_PROCESSED, employee); break;
+		case 2: employee.getMovementManager().setDestionation(Position.MACHINE_B); break;
+		case 3: employee.getCompany().getMachineB().loadMachine(employee); break;
+		case 4: employee.removeAssignedEvent(); break;
+	}		
 	}
 	private void Machine_B_Request_Staff() {			//Dest:Machine_B -> Dest: Machine_B_SlotX
-		
+		switch(employee.getAssignedEvent().getEventStep()) {
+			case 0: employee.getMovementManager().setDestionation(Position.MACHINE_B);break;
+			case 1:	employee.getCompany().getMachineB().AddDedicatedStaff(employee);; break;
+			case 2: employee.removeAssignedEvent(); break;
+		}
 	}
 	private void Machine_B_Unload() {					//Dest:Machine_B -> Unload(Cc) -> Dest:Storage -> sort(Cc)
-		
+		switch(employee.getAssignedEvent().getEventStep()) {
+			case 0: employee.getMovementManager().setDestionation(Position.MACHINE_B);break;
+			case 1:	employee.getCompany().getMachineB().unloadMachine(employee); break;
+			case 2: employee.getMovementManager().setDestionation(Position.STORAGE); break;
+			case 3: employee.getCompany().getStorage().storeProduct(employee.getCarryProduct(), employee); break;
+			case 4: employee.removeAssignedEvent(); break;
+		}
 	}
 	private void Machine_C_Refill() {					//Dest:Storage -> Pickup(Cc) -> Dest:Machine_C
 		switch(employee.getAssignedEvent().getEventStep()) {
@@ -83,10 +105,6 @@ public class TaskManager {
 			case 3: employee.getCompany().getMachineC().loadMachine(employee); break;
 			case 4: employee.removeAssignedEvent(); break;
 		}
-		
-		
-		
-		
 	}	
 	private void Machine_C_Request_Staff() {			//Dest:Machine_C -> Dest: Machine_C_SlotX
 		switch(employee.getAssignedEvent().getEventStep()) {

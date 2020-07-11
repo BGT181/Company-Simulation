@@ -22,8 +22,6 @@ public class CEventListenerController implements ActionListener{
 	public void actionPerformed(ActionEvent ev){
 		if(ev.getSource()==refreshTimer){
 			checkForMatches();
-			//printEvents();
-			
 		}
 	}
 	public void checkForMatches() {

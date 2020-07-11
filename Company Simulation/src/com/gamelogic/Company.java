@@ -68,13 +68,15 @@ public class Company {
 	}
 
 	public void setupEmployees() {
-		hireEmployee(0, ImageType.EMPLOYEE_A,Position.CHECKPOINT_A,1);
+		hireEmployee(0, ImageType.EMPLOYEE_A,Position.MACHINE_A,1);
 		hireEmployee(1, ImageType.EMPLOYEE_B, Position.STORAGE,0);
 		hireEmployee(2, ImageType.EMPLOYEE_C, Position.MACHINE_B,2);
 		hireEmployee(3, ImageType.EMPLOYEE_C, Position.CHECKPOINT_B,0);
 		hireEmployee(4, ImageType.EMPLOYEE_A, Position.CHECKPOINT_C, 3);
 		hireEmployee(5, ImageType.EMPLOYEE_B, Position.CHECKPOINT_A,1);
-		hireEmployee(5, ImageType.EMPLOYEE_A, Position.CHECKPOINT_A,1);
+		hireEmployee(6, ImageType.EMPLOYEE_A, Position.CHECKPOINT_A,2);
+		hireEmployee(7, ImageType.EMPLOYEE_C, Position.CHECKPOINT_A,2);
+		hireEmployee(8, ImageType.EMPLOYEE_B, Position.CHECKPOINT_A,2);
 	}
 	
 	public void setupProducts() {
@@ -82,8 +84,8 @@ public class Company {
 		Product producta = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 120, 120, productType.PRODUCT_B);
 		Product productb = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 120, 120, productType.PRODUCT_B);
 		Product productc = new Product(imageProvider.getImage(Imagefor.PRODUCT_A), 120, 120, productType.PRODUCT_A);
-		Product productd = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 120, 120, productType.PRODUCT_B);
-		Product producte = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 120, 120, productType.PRODUCT_B);
+		Product productd = new Product(imageProvider.getImage(Imagefor.PRODUCT_B_PROCESSED), 120, 120, productType.PRODUCT_B_PROCESSED);
+		Product producte = new Product(imageProvider.getImage(Imagefor.PRODUCT_B_PROCESSED), 120, 120, productType.PRODUCT_B_PROCESSED);
 		storage.storeProduct(product,null);
 		storage.storeProduct(producta,null);
 		storage.storeProduct(productb,null);
@@ -94,6 +96,7 @@ public class Company {
 	
 	public void setupTrucks() {
 		truckEntrence = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 75,this);
+		truckEntrence.orderProducts(productType.PRODUCT_A, 3);
 		truckExit = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 575,this);
 	}
 	
