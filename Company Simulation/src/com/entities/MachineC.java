@@ -6,7 +6,9 @@ import com.entities.Product.productType;
 import com.event.CEvent;
 import com.event.CEvent.Event;
 import com.gamelogic.Company;
+import com.gamelogic.ImageProvider;
 import com.gamelogic.ImageProvider.Imagefor;
+import com.gamelogic.MovementTask.Position;
 
 
 public class MachineC extends Machine{
@@ -15,62 +17,87 @@ public class MachineC extends Machine{
 	private Product storageOut;
 	private int pPosX = 650;
 	private int pPosY = 550;
+	private ImageProvider ip = new ImageProvider();
 	
 	public MachineC(Image image, int xPos, int yPos, Company company) {
 		super(null, xPos, yPos, company);
+		this.company = company;
 		super.setImage(super.imageProvider.getImage(Imagefor.MACHINE_C));
-		standardTaskPoints = 300;
-		isWorking = false;
+		standardTaskPoints = 50;
+		isRequested = false;
 		dedicatedStaff = new Employee[2];
+		isWorking = false;
+		for (int i = 0; i < dedicatedStaff.length; i++) {
+			throwEvent(new CEvent(Event.MACHINE_C_REQUEST_STAFF));
+		}
 	}
 
 	public void process() {
 		if(isWorking) {
 			varTaskPoints += efficiency;
-			
 			if(isProzessFinished()) {
 				isWorking = false;
-				storageIn = storageOut;
+				storageOut = storageIn;
+				storageOut.setType(productType.PRODUCT_C_CERTIFIED);
 				storageIn = null;
+				varTaskPoints = 0;
 				throwEvent(new CEvent(Event.MACHINE_C_UNLOAD));
 			}
+		} else {
+			setupMachine();
 		}
 	}
 	
 	public void loadMachine(Employee employee) {
 		if(employee.getCarryProduct()!=null) {
 			storageIn = employee.getCarryProduct();
-			
 			storageIn.setxPos(pPosX);
 			storageIn.setyPos(pPosY);
-			storageOut = storageIn;
-			storageOut.setImage(imageProvider.getImage(Imagefor.PRODUCT_C_CERTIFIED));
-			storageOut.setType(productType.PRODUCT_C_CERTIFIED);
+			isRequested = false;
 			setupMachine();
 			employee.increaseEventStep();
 		}
 	}
 	
 	public void unloadMachine(Employee employee) {
-		if(storageOut!=null) {
-			employee.setCarryProduct(storageOut);
-			storageOut = null;
-			employee.increaseEventStep();
+		if(employee.reachedPosition(Position.MACHINE_C)) {
+			if(storageOut!=null) {
+				employee.setCarryProduct(storageOut);
+				storageOut = null;
+				employee.increaseEventStep();
+			}
 		}
 	}
 	
 	protected void setupMachine() {
-		if(storageIn==null) {
-			if(company.getStorage().checkForProductType(productType.PRODUCT_C)>0) {
-				throwEvent(new CEvent(Event.MACHINE_C_REFILL));
-				isWaiting = false;
+		if(!isWorking) {
+			if(storageIn==null) {
+				if((company.getStorage().checkForProductType(productType.PRODUCT_C)>=0)&&!isRequested) {
+					throwEvent(new CEvent(Event.MACHINE_C_REFILL));
+					isRequested = true;
+				}
 			} else {
-				isWaiting = true;
-			}
-		} else {
-			calculateTaskPoints();
-			calculateEfficiency();
-			isWorking = true;
+				isRequested = false;
+				calculateTaskPoints();
+				calculateEfficiency();
+				isWorking = true;
+			}		
 		}
 	}
+
+	public void AddDedicatedStaff(Employee employee) {
+		for (int i = 0; i < dedicatedStaff.length; i++) {
+			if(dedicatedStaff[i]==null) {
+				dedicatedStaff[i] = employee;
+				if(i==0) {
+					employee.setPosition(Position.MACHINE_C_SLOT1);
+				} else {
+					employee.setPosition(Position.MACHINE_C_SLOT2);
+				}
+				employee.setAvailability(false);
+			}
+		}
+	}
+
+
 }

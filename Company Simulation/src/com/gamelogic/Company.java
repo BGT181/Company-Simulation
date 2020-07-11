@@ -48,7 +48,6 @@ public class Company {
 	public Company(boolean check) {
 		if(check) {
 			setupMachines();
-			
 			setupProducts();
 			setupTrucks();
 			setupEmployees();
@@ -64,6 +63,7 @@ public class Company {
 	public void hireEmployee(int val, ImageType imageType, Position position) {
 		String name = "E"+val;
 		Employee employee = new Employee(imageType, position, name, this);
+		employee.setQualification(0);
 		employees.add(employee);
 	}
 
@@ -84,26 +84,31 @@ public class Company {
 		hireEmployee(13, ImageType.EMPLOYEE_B, Position.MACHINE_C_SLOT1);
 		hireEmployee(14, ImageType.EMPLOYEE_C, Position.MACHINE_C_SLOT2);
 		
-		employees.get(2).setAssignedEvent(new CEvent(Event.MACHINE_C_UNLOAD));
-		employees.get(7).setAssignedEvent(new CEvent(Event.MACHINE_C_REFILL));
-		
+		//employees.get(2).setAssignedEvent(new CEvent(Event.MACHINE_C_UNLOAD));
+		//employees.get(7).setAssignedEvent(new CEvent(Event.MACHINE_C_REFILL));
+		employees.get(3).setAvailability(true);
+		employees.get(3).setArrived(true);
+		employees.get(4).setAvailability(true);
+		employees.get(4).setArrived(true);
+		employees.get(5).setAvailability(true);
+		employees.get(5).setArrived(true);
 
 	}
 	
 	public void setupProducts() {
-		Product product = new Product(imageProvider.getImage(Imagefor.PRODUCT_A), 100, 100, productType.PRODUCT_A);
-		Product producta = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 100, 100, productType.PRODUCT_B);
-		Product productb = new Product(imageProvider.getImage(Imagefor.PRODUCT_C), 100, 100, productType.PRODUCT_C);
+		Product product = new Product(imageProvider.getImage(Imagefor.PRODUCT_C), 120, 120, productType.PRODUCT_C);
+		Product producta = new Product(imageProvider.getImage(Imagefor.PRODUCT_C), 120, 120, productType.PRODUCT_C);
+		Product productb = new Product(imageProvider.getImage(Imagefor.PRODUCT_C), 120, 120, productType.PRODUCT_C);
 		storage.storeProduct(product,null);
 		storage.storeProduct(producta,null);
 		storage.storeProduct(productb,null);
 	}
 	
 	public void setupTrucks() {
-		truckEntrence = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 75);
-		truckEntrence.orderProducts(productType.PRODUCT_A_PROCESSED, 2);
-		truckExit = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 575);
-		truckExit.soldProduct(1);
+		truckEntrence = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 75,this);
+		//truckEntrence.orderProducts(productType.PRODUCT_A, 5);
+		truckExit = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 575,this);
+		//truckExit.soldProduct(3);
 	}
 	
 	

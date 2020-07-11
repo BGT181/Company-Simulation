@@ -72,7 +72,11 @@ public class TaskManager {
 		
 	}	
 	private void Machine_C_Request_Staff() {			//Dest:Machine_C -> Dest: Machine_C_SlotX
-		
+		switch(employee.getAssignedEvent().getEventStep()) {
+			case 0: employee.getMovementManager().setDestionation(Position.MACHINE_C);break;
+			case 1:	employee.getCompany().getMachineC().AddDedicatedStaff(employee);; break;
+			case 2: employee.removeAssignedEvent(); break;
+		}	
 	}
 	private void Machine_C_Unload() {					//Dest:Machine_C -> Unload(C) -> Dest:Storage -> sort(C) 
 		switch(employee.getAssignedEvent().getEventStep()) {
@@ -81,13 +85,7 @@ public class TaskManager {
 			case 2: employee.getMovementManager().setDestionation(Position.STORAGE); break;
 			case 3: employee.getCompany().getStorage().storeProduct(employee.getCarryProduct(), employee); break;
 			case 4: employee.removeAssignedEvent(); break;
-		}	
-		
-		
-		
-		
-		
-		
+		}		
 	}
 	private void Truck_Entrance_Unload() {				//Dest:Truck_Entrence -> Unload(A/B) -> Dest:Storage -> sort(A/B)
 		switch(employee.getAssignedEvent().getEventStep()) {

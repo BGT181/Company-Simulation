@@ -5,6 +5,8 @@ import java.awt.Image;
 import java.util.ArrayList;
 
 import com.entities.Product.productType;
+import com.event.CEvent;
+import com.event.CEvent.Event;
 import com.gamelogic.Company;
 import com.gamelogic.ImageProvider;
 import com.gamelogic.ImageProvider.Imagefor;
@@ -18,12 +20,14 @@ public class Truck extends Entity{
 	private Imagefor img = null;
 	private productType productType = null;
 	private int i;
+	private Company company;
 	
 	private int xStart = -250;
 	private int xEnd = 80;
 	
-	public Truck(Image image, int xPos, int yPos) {
+	public Truck(Image image, int xPos, int yPos, Company company) {
 		super(image, xPos, yPos, 0);
+		this.company = company;
 	}
 
 	public boolean orderProducts(productType type, int amount) {		
@@ -39,7 +43,11 @@ public class Truck extends Entity{
 		if(type==productType.PRODUCT_A_PROCESSED) {
 			img = Imagefor.PRODUCT_A_PROCESSED;
 		}
-		//Call Events
+		
+		for (int i = 0; i < amount; i++) {
+			company.getELC().cEventOccurred(new CEvent(Event.TRUCK_ENTRANCE_UNLOAD));
+		}
+		
 		isArrived = false;
 		return true;
 	}
@@ -59,6 +67,7 @@ public class Truck extends Entity{
 				if(!isFinished) {
 					if(super.getxPos()==xEnd) {
 						isArrived = true;
+						
 					} else {
 						super.setxPos(super.getxPos()+2);
 					}
@@ -69,7 +78,7 @@ public class Truck extends Entity{
 	
 	public void unloadTruck(Employee employee) {
 		if(amount>0) {
-			employee.setCarryProduct(new Product(ip.getImage(img),80,60,productType));
+			employee.setCarryProduct(new Product(ip.getImage(img),100,80,productType));
 			employee.increaseEventStep();
 			amount--;
 			
@@ -96,6 +105,9 @@ public class Truck extends Entity{
 	public boolean soldProduct(int amount) {
 		this.amount = amount;
 		isArrived = false;
+		for (int i = 0; i < amount; i++) {
+			company.getELC().cEventOccurred(new CEvent(Event.TRUCK_EXIT_LOAD));
+		}
 		return true;
 	}
 	

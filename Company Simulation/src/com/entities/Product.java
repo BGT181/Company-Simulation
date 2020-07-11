@@ -28,8 +28,20 @@ public class Product extends Entity {
 	
 	public void setType(productType type) {
 		this.type = type;
+		Imagefor image = null;
+		
+		switch (type) {
+			case PRODUCT_A: 			image = Imagefor.PRODUCT_A;				break;
+			case PRODUCT_A_PROCESSED:	image = Imagefor.PRODUCT_A_PROCESSED;	break;
+			case PRODUCT_B:				image = Imagefor.PRODUCT_B;				break;
+			case PRODUCT_B_PROCESSED:	image = Imagefor.PRODUCT_B_PROCESSED;	break;
+			case PRODUCT_C:				image = Imagefor.PRODUCT_C;				break;
+			case PRODUCT_C_CERTIFIED: 	image = Imagefor.PRODUCT_C_CERTIFIED;	break;
+		}
+		
+		setImage(images.getImage(image));
 	}
-
+	
 	public productType getType() {
 		return type;
 	}

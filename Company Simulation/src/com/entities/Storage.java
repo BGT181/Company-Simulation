@@ -45,8 +45,10 @@ public class Storage extends Entity {
 	
 	public int checkForProductType(productType productType) {
 		for (int i = 0; i < storedProducts.length; i++) {
-			if(storedProducts[i].getType()==productType) {
-				return i;	
+			if(storedProducts[i]!=null) {
+				if(storedProducts[i].getType()==productType) {
+					return i;	
+				}
 			}
 		}
 		return -1;

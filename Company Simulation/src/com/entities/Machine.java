@@ -3,17 +3,20 @@ package com.entities;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Timer;
 import java.util.TimerTask;
+
+import javax.swing.Timer;
 
 import com.entities.Product.productType;
 import com.event.CEvent;
 import com.gamelogic.*;
 
 
-public class Machine extends Entity {
+public class Machine extends Entity implements ActionListener{
 
 	
 	/*
@@ -26,19 +29,27 @@ public class Machine extends Entity {
 	 *  
 	 */
 	
-	
+	protected Timer timer = new Timer(1000,this);
 	protected Employee[] dedicatedStaff;
-	protected int standardTaskPoints;
-	protected int taskPoints;
-	protected int varTaskPoints;
+	protected double standardTaskPoints;
+	protected double taskPoints;
+	protected double varTaskPoints;
+	protected boolean isRequested;
 	protected boolean isWorking;
-	protected boolean isWaiting;
 	protected double efficiency;
 	protected ImageProvider imageProvider = new ImageProvider();
 	protected Company company;
 	
 	public Machine(Image image, int xPos, int yPos, Company company) {
 		super(image, xPos, yPos, 0);
+		timer.start();
+	}
+	
+	
+	public void actionPerformed(ActionEvent ev){
+		if(ev.getSource()==timer){
+			process();
+		}
 	}
 	
 	public void process() {
@@ -46,7 +57,11 @@ public class Machine extends Entity {
 	}
 	
 	public void AddDedicatedStaff(Employee employee) {
-		
+		for (int i = 0; i < dedicatedStaff.length; i++) {
+			if(dedicatedStaff[i]==null) {
+				dedicatedStaff[i] = employee;
+			}
+		}
 	}
 	
 	public void removeDedicatedStaff(Employee employee) {
@@ -75,7 +90,7 @@ public class Machine extends Entity {
 	
 	protected int getRandomInt() {
 		Random ran = new Random();
-		return ran.nextInt(20)*10;
+		return ran.nextInt(10)*10;
 	}
 	
 	protected void calculateEfficiency() {
@@ -85,7 +100,7 @@ public class Machine extends Entity {
 			}
 		}
 		if(efficiency<=0) {
-			efficiency = 0.1;
+			efficiency = 10;
 		}
 	}
 	
