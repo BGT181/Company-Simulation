@@ -90,7 +90,7 @@ public class Machine extends Entity implements ActionListener{
 	
 	protected int getRandomInt() {
 		Random ran = new Random();
-		return ran.nextInt(10)*10;
+		return ran.nextInt(25);
 	}
 	
 	protected void calculateEfficiency() {

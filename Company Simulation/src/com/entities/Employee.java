@@ -88,6 +88,7 @@ public class Employee extends Entity {
 	public void setPosition(Position position) {
 		super.setxPos(movementManager.getMovementTask().getXofPosition(position));
 		super.setyPos(movementManager.getMovementTask().getYofPosition(position));
+		changeImage(movementManager.getMovementTask().getDirXofPosition(position), movementManager.getMovementTask().getDirYofPosition(position));
 	}
 	public void changeImage(int dirX, int dirY) {
 		if(imageType == ImageType.EMPLOYEE_A) {

@@ -74,25 +74,16 @@ public class Company {
 		hireEmployee(3, ImageType.EMPLOYEE_C, Position.MACHINE_A_SLOT1);
 		hireEmployee(4, ImageType.EMPLOYEE_A, Position.MACHINE_A_SLOT2);
 		hireEmployee(5, ImageType.EMPLOYEE_B, Position.MACHINE_A_SLOT3);
-		hireEmployee(6, ImageType.EMPLOYEE_C, Position.MACHINE_A_SLOT4);
-		hireEmployee(7, ImageType.EMPLOYEE_A, Position.MACHINE_B_SLOT1);
-		hireEmployee(8, ImageType.EMPLOYEE_B, Position.MACHINE_B_SLOT2);
-		hireEmployee(9, ImageType.EMPLOYEE_C, Position.MACHINE_B_SLOT3);
-		hireEmployee(10, ImageType.EMPLOYEE_C, Position.MACHINE_B_SLOT4);
-		hireEmployee(11, ImageType.EMPLOYEE_B, Position.MACHINE_B_SLOT5);
-		hireEmployee(12, ImageType.EMPLOYEE_A, Position.MACHINE_B_SLOT6);
-		hireEmployee(13, ImageType.EMPLOYEE_B, Position.MACHINE_C_SLOT1);
-		hireEmployee(14, ImageType.EMPLOYEE_C, Position.MACHINE_C_SLOT2);
 		
-		//employees.get(2).setAssignedEvent(new CEvent(Event.MACHINE_C_UNLOAD));
-		//employees.get(7).setAssignedEvent(new CEvent(Event.MACHINE_C_REFILL));
 		employees.get(3).setAvailability(true);
 		employees.get(3).setArrived(true);
 		employees.get(4).setAvailability(true);
 		employees.get(4).setArrived(true);
 		employees.get(5).setAvailability(true);
 		employees.get(5).setArrived(true);
-
+		employees.get(1).setQualification(3);
+		employees.get(1).setAvailability(true);
+		employees.get(1).setArrived(true);
 	}
 	
 	public void setupProducts() {
@@ -106,9 +97,7 @@ public class Company {
 	
 	public void setupTrucks() {
 		truckEntrence = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 75,this);
-		//truckEntrence.orderProducts(productType.PRODUCT_A, 5);
 		truckExit = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 575,this);
-		//truckExit.soldProduct(3);
 	}
 	
 	

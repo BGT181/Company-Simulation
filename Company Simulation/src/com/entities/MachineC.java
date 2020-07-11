@@ -23,7 +23,7 @@ public class MachineC extends Machine{
 		super(null, xPos, yPos, company);
 		this.company = company;
 		super.setImage(super.imageProvider.getImage(Imagefor.MACHINE_C));
-		standardTaskPoints = 50;
+		standardTaskPoints = 20;
 		isRequested = false;
 		dedicatedStaff = new Employee[2];
 		isWorking = false;
@@ -35,6 +35,7 @@ public class MachineC extends Machine{
 	public void process() {
 		if(isWorking) {
 			varTaskPoints += efficiency;
+			System.out.println(varTaskPoints);
 			if(isProzessFinished()) {
 				isWorking = false;
 				storageOut = storageIn;
@@ -95,6 +96,7 @@ public class MachineC extends Machine{
 					employee.setPosition(Position.MACHINE_C_SLOT2);
 				}
 				employee.setAvailability(false);
+				break;
 			}
 		}
 	}
