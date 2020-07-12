@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import com.entities.Employee.ImageType;
 import com.entities.Product.productType;
 import com.framemanagement.ContentPanel;
+import com.framemanagement.ContentPanel.optionPanel;
 import com.gamelogic.MovementTask.Position;
 
 public class ConfirmBottonActionListener implements ActionListener{
@@ -80,13 +81,12 @@ public class ConfirmBottonActionListener implements ActionListener{
 			priceC = 0;
 		}
 		
-		
 		if((hireEmployee>0)&&(hireEmployee<=5)&&((hireEmployee+contentPanel.getCompany().getArrayListEmployee().size())<=20)) {
 			for (int i = 0; i < hireEmployee; i++) {
 				contentPanel.getCompany().hireEmployee(Position.CHECKPOINT_B);
 			}
 		}
 		
-		
+		this.contentPanel.setCurrentOptionPanel(optionPanel.DASHBOARD);
 	}
 }

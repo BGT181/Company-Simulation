@@ -76,7 +76,7 @@ public class Company {
 		
 		ImageType imagetype;
 		Random rand = new Random();
-		switch(rand.nextInt(2)) {
+		switch(rand.nextInt(3)) {
 			case 0: imagetype = ImageType.EMPLOYEE_A; break;
 			case 1: imagetype = ImageType.EMPLOYEE_B; break;
 			case 2: imagetype = ImageType.EMPLOYEE_C; break;

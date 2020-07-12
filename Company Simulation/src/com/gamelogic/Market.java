@@ -17,7 +17,6 @@ public class Market implements ActionListener{
 	private Company company;
 	private double payments;
 	private int normalPrice = 3750;
-	private int faktor = 25;
 	private int order = 0;
 	private int day;
 	
@@ -56,6 +55,8 @@ public class Market implements ActionListener{
 					setOrder(amount);
 				}	
 			}
+		
+			normalPrice = 3750;
 		}
 		
 		if(e.getSource()==dayTimer) {
