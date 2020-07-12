@@ -27,10 +27,10 @@ public class Company {
 	 */
 	
 	private double revenue;
-	private double cash;
+	private double cash = 50000;
 	private double ebit;
 	private int productssold;
-	private double runningcosts;
+	private double priceC;
 	
 	private int priceA = 200;
 	
@@ -46,6 +46,7 @@ public class Company {
 
 	private ImageProvider imageProvider = new ImageProvider();
 	private CEventListenerController ELC = new CEventListenerController(employees);
+	private Market market = new Market(this);
 	
 	public Company(boolean check) {
 		if(check) {
@@ -65,7 +66,6 @@ public class Company {
 	public void hireEmployee(int val, ImageType imageType, Position position, int qualification) {
 		String name = "E"+val;
 		Employee employee = new Employee(imageType, position, name, this);
-		//employee.setQualification(qualification);
 		employees.add(employee);
 	}
 	public void hireEmployee(Position position) {
@@ -188,6 +188,46 @@ public class Company {
 
 	public void setPriceA(int priceA) {
 		this.priceA = priceA;
+	}
+
+	public double getEbit() {
+		return ebit;
+	}
+
+	public void setEbit(double ebit) {
+		this.ebit += ebit;
+	}
+
+	public int getProductssold() {
+		return productssold;
+	}
+
+	public void setProductssold(int productssold) {
+		this.productssold += productssold;
+	}
+
+	public double getPriceC() {
+		return priceC;
+	}
+
+	public void setPriceC(double priceC) {
+		this.priceC = priceC;
+	}
+
+	public double getRevenue() {
+		return revenue;
+	}
+
+	public void setRevenue(double revenue) {
+		this.revenue += revenue;
+	}
+
+	public double getCash() {
+		return cash;
+	}
+
+	public void setCash(double cash) {
+		this.cash = cash;
 	}
 	
 	

@@ -32,9 +32,7 @@ public class Storage extends Entity {
 	}
 
 	public void storeProduct(Product product, Employee employee) {
-		System.out.println(numberOfStoredProducts);
 		if(isStorageAvailable()) {
-			System.out.println("checkedIn");
 			updatePosition(product, findSpace());
 			storedProducts[findSpace()] = product;
 			numberOfStoredProducts++;
