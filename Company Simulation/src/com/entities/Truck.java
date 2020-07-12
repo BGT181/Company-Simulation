@@ -115,6 +115,7 @@ public class Truck extends Entity{
 		if(amount>i) {
 			employee.setCarryProduct(null);
 			i++;
+			company.getMarket().setOrder(-1);
 			employee.increaseEventStep();
 			if(amount == i) {
 				isArrived = false;

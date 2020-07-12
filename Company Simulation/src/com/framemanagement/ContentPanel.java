@@ -119,6 +119,14 @@ public class ContentPanel extends JPanel implements ActionListener {
 		menuDashboard.add(createLabel("Products sold:", 825 , 180));	//#3
 		menuDashboard.add(createLabel("Employees:", 825 , 220));		//#4
 		menuDashboard.add(createLabel("Monthly loans:", 825 , 260));	//#5
+		
+		menuDashboard.add(createLabel(Double.toString(company.getRevenue()), 1000, 60));
+		menuDashboard.add(createLabel(Double.toString(company.getEbit()), 1000, 100));
+		menuDashboard.add(createLabel(Double.toString(company.getCash()), 1000, 140));
+		menuDashboard.add(createLabel(Integer.toString(company.getProductssold()), 1000, 180));
+		menuDashboard.add(createLabel(Integer.toString(company.getArrayListEmployee().size()), 1000, 220));
+		menuDashboard.add(createLabel(Double.toString(company.getMonthlyLoans()), 1000, 260));
+		
 	}
 	
 	private void initMenuManagement() {

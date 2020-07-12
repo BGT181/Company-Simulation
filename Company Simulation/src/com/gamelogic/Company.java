@@ -33,6 +33,7 @@ public class Company {
 	private int priceC = 2500;
 	private int priceA = 250;
 	private int priceB = 600;
+	private int monthlyLoans;
 	
 	
 	private Truck truckEntrence;
@@ -68,11 +69,13 @@ public class Company {
 		String name = "E"+val;
 		Employee employee = new Employee(imageType, position, name, this);
 		employees.add(employee);
+		refreshMonthlyLoan();
 	}
 	public void hireEmployee(Position position) {
 		String name = "E"+employees.size();
 		Employee employee = new Employee(ImageType.EMPLOYEE_A, position, name, this);
 		employees.add(employee);
+		refreshMonthlyLoan();
 	}
 
 	public void setupEmployees() {
@@ -92,8 +95,8 @@ public class Company {
 		Product producta = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 120, 120, productType.PRODUCT_B);
 		Product productb = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 120, 120, productType.PRODUCT_B);
 		Product productc = new Product(imageProvider.getImage(Imagefor.PRODUCT_A), 120, 120, productType.PRODUCT_A);
-		Product productd = new Product(imageProvider.getImage(Imagefor.PRODUCT_B_PROCESSED), 120, 120, productType.PRODUCT_B_PROCESSED);
-		Product producte = new Product(imageProvider.getImage(Imagefor.PRODUCT_B_PROCESSED), 120, 120, productType.PRODUCT_B_PROCESSED);
+		Product productd = new Product(imageProvider.getImage(Imagefor.PRODUCT_C_CERTIFIED), 120, 120, productType.PRODUCT_C_CERTIFIED);
+		Product producte = new Product(imageProvider.getImage(Imagefor.PRODUCT_C_CERTIFIED), 120, 120, productType.PRODUCT_C_CERTIFIED);
 		storage.storeProduct(product,null);
 		storage.storeProduct(producta,null);
 		storage.storeProduct(productb,null);
@@ -113,8 +116,16 @@ public class Company {
 			employee.increaseLoan(sp);
 			sp=(double) 0;
 		}
+		refreshMonthlyLoan();
 	}
 
+	public void refreshMonthlyLoan() {
+		monthlyLoans = 0;
+		for (Employee employee : employees) {
+			monthlyLoans += employee.getLoan();
+		}
+	}
+	
 	public ArrayList<Employee> getArrayListEmployee() {
 		return this.employees;
 	}
@@ -236,6 +247,18 @@ public class Company {
 
 	public void setPriceB(int priceB) {
 		this.priceB = priceB;
+	}
+
+	public Market getMarket() {
+		return market;
+	}
+
+	public int getMonthlyLoans() {
+		return monthlyLoans;
+	}
+
+	public void setMonthlyLoans(int monthlyLoans) {
+		this.monthlyLoans = monthlyLoans;
 	}
 	
 	
