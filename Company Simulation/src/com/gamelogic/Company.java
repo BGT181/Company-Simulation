@@ -68,6 +68,12 @@ public class Company {
 		employee.setQualification(qualification);
 		employees.add(employee);
 	}
+	public void hireEmployee(Position position) {
+		System.out.println(employees.size());
+		String name = "E"+employees.size();
+		Employee employee = new Employee(ImageType.EMPLOYEE_A, position, name, this);
+		employees.add(employee);
+	}
 
 	public void setupEmployees() {
 		hireEmployee(0, ImageType.EMPLOYEE_A,Position.MACHINE_A,1);
@@ -98,7 +104,7 @@ public class Company {
 	
 	public void setupTrucks() {
 		truckEntrence = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 75,this);
-		truckEntrence.orderProducts(productType.PRODUCT_A, 3);
+		//truckEntrence.orderProducts(productType.PRODUCT_A, 3);
 		truckExit = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 575,this);
 	}
 	

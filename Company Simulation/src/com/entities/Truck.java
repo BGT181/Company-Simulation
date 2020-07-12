@@ -134,6 +134,10 @@ public class Truck extends Entity{
 	public void setArrived(boolean isArrived) {
 		this.isArrived = isArrived;
 	}
+	
+	public boolean isFinish() {
+		return isFinished;
+	}
 }
 
 

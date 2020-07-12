@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.Timer;
 
 import com.actionlistener.ButtonActionListener;
+import com.actionlistener.ConfirmBottonActionListener;
 import com.entities.Employee;
 import com.entities.Product;
 import com.gamelogic.Company;
@@ -41,6 +42,8 @@ public class ContentPanel extends JPanel implements ActionListener {
 	ButtonActionListener buttonActionListener = new ButtonActionListener(this, buttonDashboard, buttonManagement, buttonEmployees);
 	
 	JButton buttonConfirm = new JButton("Confirm your input");
+	ConfirmBottonActionListener confirmButtonListener = new ConfirmBottonActionListener(buttonConfirm, this);
+	
 	
 	private ArrayList<JComponent> menuDashboard = new ArrayList<JComponent>();
 	private ArrayList<JComponent> menuManagement = new ArrayList<JComponent>();
@@ -55,6 +58,8 @@ public class ContentPanel extends JPanel implements ActionListener {
 			addButton(buttonDashboard, 800, 0);
 			addButton(buttonManagement, 931, 0);
 			addButton(buttonEmployees, 1062, 0);
+			
+			buttonConfirm.addActionListener(confirmButtonListener);
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -119,8 +124,8 @@ public class ContentPanel extends JPanel implements ActionListener {
 	private void initMenuManagement() {
 		menuManagement.add(createLabel("Buy x items of product A (as integer)", 825, 60));						//#0
 		menuManagement.add(createLabel("Buy x items of product B (as integer)", 825, 160));						//#1
-		menuManagement.add(createLabel("Set selling-price of product C (as double)", 825, 260));				//#2
-		menuManagement.add(createLabel("Increasing loan of all employees by x percent (as double)", 825, 360));	//#3
+		menuManagement.add(createLabel("Set selling-price of product C (as integer)", 825, 260));				//#2
+		menuManagement.add(createLabel("Increasing loan of all employees by x percent (as integer)", 825, 360));	//#3
 		menuManagement.add(createLabel("Hire x new employees (as int)",825,460));								//#4
 		
 		menuManagement.add(createTextField(0, 100,0));					//#5 - Buy product A
@@ -130,6 +135,7 @@ public class ContentPanel extends JPanel implements ActionListener {
  		menuManagement.add(createTextField(0, 500,0));					//#9 - Hire Employee
  		
  		buttonConfirm.setBounds(825, 600, 350, 50);
+
 		menuManagement.add(buttonConfirm);								//#10
 	}
 	
@@ -139,7 +145,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 		return label;
 	}
 	
-	private JTextField createTextField(int val, int yPos, double value) {
+	private JTextField createTextField(int val, int yPos, int value) {
 		JTextField textfield = new JTextField(val);
 		textfield.setText(String.valueOf(value));
 		textfield.setBounds(825, yPos, 150, 30);
@@ -238,4 +244,11 @@ public class ContentPanel extends JPanel implements ActionListener {
 		this.currentOptionPanel = currentOptionPanel;
 	}
 	
+	public ArrayList<JComponent> getMenuManagement(){
+		return this.menuManagement;
+	}
+	
+	public Company getCompany() {
+		return this.company;
+	}
 }

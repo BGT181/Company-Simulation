@@ -49,7 +49,7 @@ public class JEmployeeMenubar extends JComponent{
 	}
 	
 	private void placeComponents() {
-		labelName.setBounds(x, y, 20, 50);
+		labelName.setBounds(x, y, 35, 50);
 		checkboxLogistic.setBounds(x+75, y+10, 25, 25);
 		checkboxPreprocessing.setBounds(x+125, y+10, 25, 25);
 		checkboxProcessing.setBounds(x+175, y+10, 25, 25);
