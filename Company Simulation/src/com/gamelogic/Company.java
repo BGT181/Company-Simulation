@@ -30,9 +30,10 @@ public class Company {
 	private double cash = 50000;
 	private double ebit;
 	private int productssold;
-	private double priceC;
+	private int priceC = 2500;
+	private int priceA = 250;
+	private int priceB = 600;
 	
-	private int priceA = 200;
 	
 	private Truck truckEntrence;
 	private Truck truckExit;
@@ -69,7 +70,6 @@ public class Company {
 		employees.add(employee);
 	}
 	public void hireEmployee(Position position) {
-		System.out.println(employees.size());
 		String name = "E"+employees.size();
 		Employee employee = new Employee(ImageType.EMPLOYEE_A, position, name, this);
 		employees.add(employee);
@@ -206,11 +206,11 @@ public class Company {
 		this.productssold += productssold;
 	}
 
-	public double getPriceC() {
+	public int getPriceC() {
 		return priceC;
 	}
 
-	public void setPriceC(double priceC) {
+	public void setPriceC(int priceC) {
 		this.priceC = priceC;
 	}
 
@@ -227,7 +227,15 @@ public class Company {
 	}
 
 	public void setCash(double cash) {
-		this.cash = cash;
+		this.cash += cash;
+	}
+
+	public int getPriceB() {
+		return priceB;
+	}
+
+	public void setPriceB(int priceB) {
+		this.priceB = priceB;
 	}
 	
 	

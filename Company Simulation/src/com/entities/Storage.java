@@ -54,6 +54,18 @@ public class Storage extends Entity {
 		return -1;
 	}
 	
+	public int amountOfProduct(productType productType) {
+		int amount = 0;
+		for (int i = 0; i < storedProducts.length; i++) {
+			if(storedProducts[i]!=null) {
+				if(storedProducts[i].getType()==productType) {
+					amount++;
+				}	
+			}
+		}
+		return amount;
+	}
+	
 	public boolean isStorageAvailable() {
 		if(numberOfStoredProducts<20) {
 			return true;
