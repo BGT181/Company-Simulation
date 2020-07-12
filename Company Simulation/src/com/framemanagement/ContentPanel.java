@@ -119,10 +119,10 @@ public class ContentPanel extends JPanel implements ActionListener {
 		menuDashboard.add(createLabel("Products sold:", 825 , 180));	//#3
 		menuDashboard.add(createLabel("Employees:", 825 , 220));		//#4
 		menuDashboard.add(createLabel("Monthly loans:", 825 , 260));	//#5
-		menuDashboard.add(createLabel("EBIT/Product", 825 , 260));	//#5
-		menuDashboard.add(createLabel("Price Product A:", 825 , 260));	//#5
-		menuDashboard.add(createLabel("Price Product B:", 825 , 260));	//#5
-		menuDashboard.add(createLabel("Day:", 825 , 260));	//#5
+		menuDashboard.add(createLabel("EBIT/Product-ratio", 825 , 300));	//#6
+		menuDashboard.add(createLabel("Price Product A:", 825 , 340));	//#5
+		menuDashboard.add(createLabel("Price Product B:", 825 , 380));	//#5
+		menuDashboard.add(createLabel("Day:", 825 , 420));	//#5
 		
 		menuDashboard.add(createLabel(Double.toString(company.getRevenue()), 1000, 60));
 		menuDashboard.add(createLabel(Double.toString(company.getEbit()), 1000, 100));
@@ -130,7 +130,10 @@ public class ContentPanel extends JPanel implements ActionListener {
 		menuDashboard.add(createLabel(Integer.toString(company.getProductssold()), 1000, 180));
 		menuDashboard.add(createLabel(Integer.toString(company.getArrayListEmployee().size()), 1000, 220));
 		menuDashboard.add(createLabel(Double.toString(company.getMonthlyLoans()), 1000, 260));
-		
+		menuDashboard.add(createLabel(Double.toString(company.getEbit()/company.getProductssold()), 1000, 300));
+		menuDashboard.add(createLabel(Integer.toString(company.getPriceA()), 1000, 340));
+		menuDashboard.add(createLabel(Integer.toString(company.getPriceB()), 1000, 380));
+		menuDashboard.add(createLabel(Integer.toString(company.getMarket().getDay()), 1000, 420));
 	}
 	
 	private void initMenuManagement() {

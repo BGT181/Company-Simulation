@@ -13,15 +13,18 @@ public class Market implements ActionListener{
 
 	Timer employeePayment = new Timer(900000, this);
 	Timer marketRequest = new Timer(60000, this);
+	Timer dayTimer = new Timer(30000,this);
 	private Company company;
 	private double payments;
-	private int normalPrice = 3500;
+	private int normalPrice = 3750;
 	private int faktor = 25;
 	private int order = 0;
+	private int day;
 	
 	public Market(Company company) {
 		employeePayment.start();
 		marketRequest.start();
+		dayTimer.start();
 		this.company = company;
 	}
 
@@ -39,7 +42,9 @@ public class Market implements ActionListener{
 		
 		if(e.getSource()==marketRequest) {
 			Random rand = new Random();
-			normalPrice -= rand.nextInt(1000);
+			int faktorC = rand.nextInt(1000);
+			normalPrice -= faktorC;
+			System.out.println(faktorC);
 			if(company.getPriceC()<=normalPrice) {
 				if((company.getStorage().amountOfProduct(productType.PRODUCT_C_CERTIFIED)-order)>0) {
 					int amount = (company.getStorage().amountOfProduct(productType.PRODUCT_C_CERTIFIED)-order);
@@ -52,6 +57,10 @@ public class Market implements ActionListener{
 				}	
 			}
 		}
+		
+		if(e.getSource()==dayTimer) {
+			day++;
+		}
 	}
 
 	public int getOrder() {
@@ -60,6 +69,14 @@ public class Market implements ActionListener{
 
 	public void setOrder(int order) {
 		this.order += order;
+	}
+
+	public int getDay() {
+		return day;
+	}
+
+	public void setDay(int day) {
+		this.day = day;
 	}
 	
 	

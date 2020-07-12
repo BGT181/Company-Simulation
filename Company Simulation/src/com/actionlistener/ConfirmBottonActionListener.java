@@ -60,12 +60,14 @@ public class ConfirmBottonActionListener implements ActionListener{
 		if((amountA>0)&&(amountA<15)&&(!contentPanel.getCompany().getTruckEntrence().isFinish())&&(contentPanel.getCompany().getTruckEntrence().isArrived())){
 			contentPanel.getCompany().getTruckEntrence().orderProducts(productType.PRODUCT_A, amountA);
 			contentPanel.getCompany().setEbit(-(amountA*contentPanel.getCompany().getPriceA()));
+			contentPanel.getCompany().setCash(-(amountA*contentPanel.getCompany().getPriceA()));
 			amountA = 0;
 		}
 		
 		if((amountB>0)&&(amountB<15)&&(!contentPanel.getCompany().getTruckEntrence().isFinish())&&(contentPanel.getCompany().getTruckEntrence().isArrived())){
 			contentPanel.getCompany().getTruckEntrence().orderProducts(productType.PRODUCT_B, amountB);
 			contentPanel.getCompany().setEbit(-(amountB*contentPanel.getCompany().getPriceB()));
+			contentPanel.getCompany().setCash(-(amountA*contentPanel.getCompany().getPriceA()));
 			amountB = 0;
 		}
 		
@@ -73,7 +75,7 @@ public class ConfirmBottonActionListener implements ActionListener{
 			contentPanel.getCompany().increaseLoans(increaseLoans);
 			increaseLoans = 0;
 		}
-		if((priceC>2000)&&(priceC<5000)) {
+		if((priceC>2000)&&(priceC<3750)) {
 			contentPanel.getCompany().setPriceC(priceC);
 			priceC = 0;
 		}

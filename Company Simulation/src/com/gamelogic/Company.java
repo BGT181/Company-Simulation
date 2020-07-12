@@ -33,7 +33,7 @@ public class Company {
 	private int productssold;
 	private int priceC = 2995;
 	private int priceA = 250;
-	private int priceB = 500;
+	private int priceB = 300;
 	private int monthlyLoans;
 	
 	
