@@ -238,7 +238,7 @@ public class Company {
 	}
 
 	public void setCash(double cash) {
-		this.cash += cash;
+		this.cash += (cash*0.95);
 	}
 
 	public int getPriceB() {

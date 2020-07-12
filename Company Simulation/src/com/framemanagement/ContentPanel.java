@@ -138,11 +138,11 @@ public class ContentPanel extends JPanel implements ActionListener {
 		
 		menuManagement.add(createTextField(0, 100,0));					//#5 - Buy product A
 		menuManagement.add(createTextField(0, 200,0));					//#6 - Buy product B
-		menuManagement.add(createTextField(0, 300,company.getPriceC()));					//#7 - Price for C
+		menuManagement.add(createTextField(0, 300,company.getPriceC()));	//#7 - Price for C
  		menuManagement.add(createTextField(0, 400,0));					//#8 - Increase loans
  		menuManagement.add(createTextField(0, 500,0));					//#9 - Hire Employee
  		
- 		buttonConfirm.setBounds(825, 600, 350, 50);
+ 		buttonConfirm.setBounds(825, 550, 350, 50);
 
 		menuManagement.add(buttonConfirm);								//#10
 	}
