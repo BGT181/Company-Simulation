@@ -95,10 +95,14 @@ public class Employee extends Entity {
 			switch(dirX) {
 			case 1:		setImage(ip.getImage(Imagefor.EMPLOYEE_A_RIGHT));	break;
 			case -1:	setImage(ip.getImage(Imagefor.EMPLOYEE_A_LEFT));	break;
+			case 2:		setImage(ip.getImage(Imagefor.EMPLOYEE_A_RIGHT));	break;
+			case -2:	setImage(ip.getImage(Imagefor.EMPLOYEE_A_LEFT));	break;
 			}
 			switch(dirY) {
 			case 1:		setImage(ip.getImage(Imagefor.EMPLOYEE_A_DOWN));	break;
 			case -1:	setImage(ip.getImage(Imagefor.EMPLOYEE_A_UP));		break;
+			case 2:		setImage(ip.getImage(Imagefor.EMPLOYEE_A_DOWN));	break;
+			case -2:	setImage(ip.getImage(Imagefor.EMPLOYEE_A_UP));		break;
 			}
 		}
 		
@@ -106,10 +110,14 @@ public class Employee extends Entity {
 			switch(dirX) {
 			case 1:		setImage(ip.getImage(Imagefor.EMPLOYEE_B_RIGHT));	break;
 			case -1:	setImage(ip.getImage(Imagefor.EMPLOYEE_B_LEFT));	break;
+			case 2:		setImage(ip.getImage(Imagefor.EMPLOYEE_B_RIGHT));	break;
+			case -2:	setImage(ip.getImage(Imagefor.EMPLOYEE_B_LEFT));	break;
 			}
 			switch(dirY) {
 			case 1:		setImage(ip.getImage(Imagefor.EMPLOYEE_B_DOWN));	break;
 			case -1:	setImage(ip.getImage(Imagefor.EMPLOYEE_B_UP));		break;
+			case 2:		setImage(ip.getImage(Imagefor.EMPLOYEE_B_DOWN));	break;
+			case -2:	setImage(ip.getImage(Imagefor.EMPLOYEE_B_UP));		break;
 			}
 		}
 		
@@ -117,10 +125,14 @@ public class Employee extends Entity {
 			switch(dirX) {
 			case 1:		setImage(ip.getImage(Imagefor.EMPLOYEE_C_RIGHT));	break;
 			case -1:	setImage(ip.getImage(Imagefor.EMPLOYEE_C_LEFT));	break;
+			case 2:		setImage(ip.getImage(Imagefor.EMPLOYEE_C_RIGHT));	break;
+			case -2:	setImage(ip.getImage(Imagefor.EMPLOYEE_C_LEFT));	break;
 			}
 			switch(dirY) {
 			case 1:		setImage(ip.getImage(Imagefor.EMPLOYEE_C_DOWN));	break;
 			case -1:	setImage(ip.getImage(Imagefor.EMPLOYEE_C_UP));		break;
+			case 2:		setImage(ip.getImage(Imagefor.EMPLOYEE_C_DOWN));	break;
+			case -2:	setImage(ip.getImage(Imagefor.EMPLOYEE_C_UP));		break;
 			}
 		}	
 	}

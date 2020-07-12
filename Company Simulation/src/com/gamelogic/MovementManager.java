@@ -12,6 +12,7 @@ public class MovementManager {
 	
 	private int dirX;
 	private int dirY;
+	private int faktor = 1;
 	
 	public MovementManager(Employee employee) {
 		this.employee = employee;
@@ -35,6 +36,9 @@ public class MovementManager {
 	}
 
 	private void fetchDirection() {
+		if(employee.getEfficiencyLvl()>2) {
+			faktor = 2;
+		}
 		int oldDirX = dirX;
 		int oldDirY = dirY;
 
@@ -50,9 +54,9 @@ public class MovementManager {
 				
 			} else {
 				if(employee.getxPos()>movementTask.getXofPosition(Position.CHECKPOINT_A)) {
-					dirX = -1;
+					dirX = (-1*faktor);
 				} else {
-					dirX = 1;
+					dirX = (1*faktor);
 				}
 			}
 			break;
@@ -63,9 +67,9 @@ public class MovementManager {
 				dirY = 0;
 			} else {
 				if(employee.getyPos()>movementTask.getYofPosition(movementTask.getDestination())) {
-					dirY = -1;
+					dirY = (-1*faktor);
 				} else {
-					dirY = 1;
+					dirY = (1*faktor);
 				}
 			}
 			
@@ -80,9 +84,9 @@ public class MovementManager {
 				employee.increaseEventStep();
 			} else {
 				if(employee.getxPos()>movementTask.getXofPosition(movementTask.getDestination())) {
-					dirX = -1;
+					dirX = (-1*faktor);
 				} else {
-					dirX = 1;
+					dirX = (1*faktor);
 				}
 			}
 			break;	
