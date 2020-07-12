@@ -146,7 +146,7 @@ public class Employee extends Entity {
 		return this.loan;
 	}
 	public void increaseEfficiencyLvl(double increasementEfficiency) {
-		this.efficiencyLvl = efficiencyLvl +(efficiencyLvl * increasementEfficiency * 3);
+		this.efficiencyLvl = efficiencyLvl +(efficiencyLvl * increasementEfficiency * 5);
 	}
 	public double getEfficiencyLvl() {
 		return this.efficiencyLvl;

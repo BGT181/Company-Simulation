@@ -24,7 +24,7 @@ public class MachineB extends Machine{
 		super(null, xPos, yPos, company);
 		super.setImage(super.imageProvider.getImage(Imagefor.MACHINE_B));
 		this.company = company;
-		standardTaskPoints = 60;
+		standardTaskPoints = 80;
 		isRequested = false;
 		dedicatedStaff = new Employee[6];
 		isWorking = false;

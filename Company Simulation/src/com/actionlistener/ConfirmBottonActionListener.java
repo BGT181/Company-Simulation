@@ -72,7 +72,7 @@ public class ConfirmBottonActionListener implements ActionListener{
 			amountB = 0;
 		}
 		
-		if((increaseLoans>0)&&(increaseLoans<20)) {
+		if((increaseLoans>0)&&(increaseLoans<=20)) {
 			contentPanel.getCompany().increaseLoans(increaseLoans);
 			increaseLoans = 0;
 		}

@@ -31,7 +31,7 @@ public class Company {
 	private double cash = 50000;
 	private double ebit;
 	private int productssold;
-	private int priceC = 2995;
+	private int priceC = 3000;
 	private int priceA = 150;
 	private int priceB = 200;
 	private int monthlyLoans;

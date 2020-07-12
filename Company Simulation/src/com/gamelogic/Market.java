@@ -43,7 +43,6 @@ public class Market implements ActionListener{
 			Random rand = new Random();
 			int faktorC = rand.nextInt(1000);
 			normalPrice -= faktorC;
-			System.out.println(normalPrice);
 			if(company.getPriceC()<=normalPrice) {
 				if((company.getStorage().amountOfProduct(productType.PRODUCT_C_CERTIFIED)-order)>0) {
 					int amount = (company.getStorage().amountOfProduct(productType.PRODUCT_C_CERTIFIED)-order);
