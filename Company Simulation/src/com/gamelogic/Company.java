@@ -32,6 +32,8 @@ public class Company {
 	private int productssold;
 	private double runningcosts;
 	
+	private int priceA = 200;
+	
 	private Truck truckEntrence;
 	private Truck truckExit;
 	private MachineA machineA;
@@ -172,6 +174,14 @@ public class Company {
 	
 	public CEventListenerController getELC() {
 		return ELC;
+	}
+
+	public int getPriceA() {
+		return priceA;
+	}
+
+	public void setPriceA(int priceA) {
+		this.priceA = priceA;
 	}
 	
 	

@@ -94,10 +94,8 @@ public class MachineB extends Machine{
 	}
 	
 	public void unloadMachine(Employee employee) {
-		System.out.println("Test");
 		if(employee.reachedPosition(Position.MACHINE_B)) {
 			if(storageOut!=null) {
-				System.out.println("Got Item");
 				employee.setCarryProduct(storageOut);
 				storageOut = null;
 				isRequested = false;

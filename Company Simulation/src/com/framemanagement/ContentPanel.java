@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -39,7 +40,7 @@ public class ContentPanel extends JPanel implements ActionListener {
 	JButton buttonEmployees = new JButton("Employees");
 	ButtonActionListener buttonActionListener = new ButtonActionListener(this, buttonDashboard, buttonManagement, buttonEmployees);
 	
-	JButton 	buttonConfirm = new JButton("Confirm your input");
+	JButton buttonConfirm = new JButton("Confirm your input");
 	
 	private ArrayList<JComponent> menuDashboard = new ArrayList<JComponent>();
 	private ArrayList<JComponent> menuManagement = new ArrayList<JComponent>();
@@ -59,8 +60,6 @@ public class ContentPanel extends JPanel implements ActionListener {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        
-        
         drawMenu();
     	drawImages(g2d);
 	}
@@ -70,18 +69,21 @@ public class ContentPanel extends JPanel implements ActionListener {
 			removeComponents();
 			switch (currentOptionPanel) {
 				case DASHBOARD:	
+					removeComponents(menuDashboard);
 					initMenuDasboard();
 					addArrayListToPanel(menuDashboard);
 					repaint();
 					feedbackOptionPanel = currentOptionPanel;
 					break;
 				case MANAGEMENT:
+					removeComponents(menuManagement);
 					initMenuManagement();
 					addArrayListToPanel(menuManagement);
 					repaint();
 					feedbackOptionPanel = currentOptionPanel;
 					break;
 				case EMPLOYEE:
+					removeComponents(menuEmployee);
 					initMenuEmployee();
 					addArrayListToPanel(menuEmployee);
 					repaint();
@@ -119,14 +121,16 @@ public class ContentPanel extends JPanel implements ActionListener {
 		menuManagement.add(createLabel("Buy x items of product B (as integer)", 825, 160));						//#1
 		menuManagement.add(createLabel("Set selling-price of product C (as double)", 825, 260));				//#2
 		menuManagement.add(createLabel("Increasing loan of all employees by x percent (as double)", 825, 360));	//#3
+		menuManagement.add(createLabel("Hire x new employees (as int)",825,460));								//#4
 		
-		menuManagement.add(createTextField(0, 100));					//#4 - Buy product A
-		menuManagement.add(createTextField(0, 200));					//#5 - Buy product B
-		menuManagement.add(createTextField(0, 300));					//#6 - Price for C
- 		menuManagement.add(createTextField(0, 400));					//#7 - Increase loans
+		menuManagement.add(createTextField(0, 100,0));					//#5 - Buy product A
+		menuManagement.add(createTextField(0, 200,0));					//#6 - Buy product B
+		menuManagement.add(createTextField(0, 300,company.getPriceA()));					//#7 - Price for C
+ 		menuManagement.add(createTextField(0, 400,0));					//#8 - Increase loans
+ 		menuManagement.add(createTextField(0, 500,0));					//#9 - Hire Employee
  		
- 		buttonConfirm.setBounds(825, 500, 350, 50);
-		menuManagement.add(buttonConfirm);								//#8
+ 		buttonConfirm.setBounds(825, 600, 350, 50);
+		menuManagement.add(buttonConfirm);								//#10
 	}
 	
 	private JLabel createLabel(String text, int xPos, int yPos) {
@@ -135,8 +139,9 @@ public class ContentPanel extends JPanel implements ActionListener {
 		return label;
 	}
 	
-	private JTextField createTextField(int val, int yPos) {
+	private JTextField createTextField(int val, int yPos, double value) {
 		JTextField textfield = new JTextField(val);
+		textfield.setText(String.valueOf(value));
 		textfield.setBounds(825, yPos, 150, 30);
 		return textfield;
 	}
@@ -146,6 +151,14 @@ public class ContentPanel extends JPanel implements ActionListener {
 			add(component);
 		}
 	}
+	
+	
+	private void removeComponents(ArrayList<JComponent> arrayList) {
+		for (int i = arrayList.size()-1; i >= 0; i--) {
+			arrayList.remove(arrayList.get(i));
+		}
+	}
+	
 	
 	private void removeComponents() {
 		if(feedbackOptionPanel==optionPanel.DASHBOARD) {
@@ -209,10 +222,10 @@ public class ContentPanel extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent ev){
 	    if(ev.getSource()==timer){
-	    	
 	    	for (Employee employee: company.getArrayListEmployee()) {
 				employee.getMovementManager().updatePosition();
 			}
+	    
 	      repaint();
 	    }
 	}
