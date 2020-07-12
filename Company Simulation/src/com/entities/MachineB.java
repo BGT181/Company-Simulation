@@ -36,7 +36,9 @@ public class MachineB extends Machine{
 	public void process() {
 		if(isWorking) {
 			varTaskPoints += efficiency;
-				
+			if(efficiency<=0.5) {
+				calculateEfficiency();
+			}
 			if(isProzessFinished()) {
 				isWorking = false;
 				storageOut = new Product(imageProvider.getImage(Imagefor.PRODUCT_C), 660, 400, productType.PRODUCT_C);

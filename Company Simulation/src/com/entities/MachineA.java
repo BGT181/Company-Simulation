@@ -65,6 +65,9 @@ public class MachineA extends Machine{
 	public void process() {
 		if(isWorking) {
 			varTaskPoints += efficiency; 
+			if(efficiency<=0.5) {
+				calculateEfficiency();
+			}
 			if(isProzessFinished()) {
 				isWorking = false;
 				storageOut = storageIn;
