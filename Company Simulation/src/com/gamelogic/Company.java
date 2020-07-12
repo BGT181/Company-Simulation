@@ -31,9 +31,9 @@ public class Company {
 	private double cash = 50000;
 	private double ebit;
 	private int productssold;
-	private int priceC = 2500;
+	private int priceC = 2995;
 	private int priceA = 250;
-	private int priceB = 600;
+	private int priceB = 500;
 	private int monthlyLoans;
 	
 	
@@ -54,7 +54,6 @@ public class Company {
 	public Company(boolean check) {
 		if(check) {
 			setupMachines();
-			setupProducts();
 			setupTrucks();
 			setupEmployees();
 		}
@@ -81,7 +80,7 @@ public class Company {
 			case 0: imagetype = ImageType.EMPLOYEE_A; break;
 			case 1: imagetype = ImageType.EMPLOYEE_B; break;
 			case 2: imagetype = ImageType.EMPLOYEE_C; break;
-			default: imagetype = ImageType.EMPLOYEE_A; break;
+			default: imagetype = ImageType.EMPLOYEE_C; break;
 		}
 		Employee employee = new Employee(imagetype, position, name, this);
 		employees.add(employee);
@@ -97,21 +96,6 @@ public class Company {
 		hireEmployee(Position.CHECKPOINT_B);
 		hireEmployee(Position.CHECKPOINT_B);
 		hireEmployee(Position.CHECKPOINT_B);
-	}
-	
-	public void setupProducts() {
-		Product product = new Product(imageProvider.getImage(Imagefor.PRODUCT_A), 120, 120, productType.PRODUCT_A);
-		Product producta = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 120, 120, productType.PRODUCT_B);
-		Product productb = new Product(imageProvider.getImage(Imagefor.PRODUCT_B), 120, 120, productType.PRODUCT_B);
-		Product productc = new Product(imageProvider.getImage(Imagefor.PRODUCT_A), 120, 120, productType.PRODUCT_A);
-		Product productd = new Product(imageProvider.getImage(Imagefor.PRODUCT_C_CERTIFIED), 120, 120, productType.PRODUCT_C_CERTIFIED);
-		Product producte = new Product(imageProvider.getImage(Imagefor.PRODUCT_C_CERTIFIED), 120, 120, productType.PRODUCT_C_CERTIFIED);
-		storage.storeProduct(product,null);
-		storage.storeProduct(producta,null);
-		storage.storeProduct(productb,null);
-		storage.storeProduct(productc,null);
-		storage.storeProduct(productd,null);
-		storage.storeProduct(producte,null);
 	}
 	
 	public void setupTrucks() {

@@ -2,6 +2,7 @@ package com.gamelogic;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.Timer;
 
@@ -11,10 +12,10 @@ import com.entities.Product.productType;
 public class Market implements ActionListener{
 
 	Timer employeePayment = new Timer(900000, this);
-	Timer marketRequest = new Timer(150000, this);
+	Timer marketRequest = new Timer(60000, this);
 	private Company company;
 	private double payments;
-	private int normalPrice = 3000;
+	private int normalPrice = 3500;
 	private int faktor = 25;
 	private int order = 0;
 	
@@ -37,7 +38,8 @@ public class Market implements ActionListener{
 		}
 		
 		if(e.getSource()==marketRequest) {
-			normalPrice -= faktor;
+			Random rand = new Random();
+			normalPrice -= rand.nextInt(1000);
 			if(company.getPriceC()<=normalPrice) {
 				if((company.getStorage().amountOfProduct(productType.PRODUCT_C_CERTIFIED)-order)>0) {
 					int amount = (company.getStorage().amountOfProduct(productType.PRODUCT_C_CERTIFIED)-order);

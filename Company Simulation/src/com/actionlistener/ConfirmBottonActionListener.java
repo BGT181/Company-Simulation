@@ -59,17 +59,23 @@ public class ConfirmBottonActionListener implements ActionListener{
 	private void process() {
 		if((amountA>0)&&(amountA<15)&&(!contentPanel.getCompany().getTruckEntrence().isFinish())&&(contentPanel.getCompany().getTruckEntrence().isArrived())){
 			contentPanel.getCompany().getTruckEntrence().orderProducts(productType.PRODUCT_A, amountA);
+			contentPanel.getCompany().setEbit(-(amountA*contentPanel.getCompany().getPriceA()));
 			amountA = 0;
 		}
 		
 		if((amountB>0)&&(amountB<15)&&(!contentPanel.getCompany().getTruckEntrence().isFinish())&&(contentPanel.getCompany().getTruckEntrence().isArrived())){
 			contentPanel.getCompany().getTruckEntrence().orderProducts(productType.PRODUCT_B, amountB);
+			contentPanel.getCompany().setEbit(-(amountB*contentPanel.getCompany().getPriceB()));
 			amountB = 0;
 		}
 		
 		if((increaseLoans>0)&&(increaseLoans<20)) {
 			contentPanel.getCompany().increaseLoans(increaseLoans);
 			increaseLoans = 0;
+		}
+		if((priceC>2000)&&(priceC<5000)) {
+			contentPanel.getCompany().setPriceC(priceC);
+			priceC = 0;
 		}
 		
 		
