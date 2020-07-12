@@ -1,6 +1,7 @@
 package com.gamelogic;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.entities.*;
 import com.entities.Employee.ImageType;
@@ -73,21 +74,29 @@ public class Company {
 	}
 	public void hireEmployee(Position position) {
 		String name = "E"+employees.size();
-		Employee employee = new Employee(ImageType.EMPLOYEE_A, position, name, this);
+		
+		ImageType imagetype;
+		Random rand = new Random();
+		switch(rand.nextInt(2)) {
+			case 0: imagetype = ImageType.EMPLOYEE_A; break;
+			case 1: imagetype = ImageType.EMPLOYEE_B; break;
+			case 2: imagetype = ImageType.EMPLOYEE_C; break;
+			default: imagetype = ImageType.EMPLOYEE_A; break;
+		}
+		Employee employee = new Employee(imagetype, position, name, this);
 		employees.add(employee);
 		refreshMonthlyLoan();
 	}
 
 	public void setupEmployees() {
-		hireEmployee(0, ImageType.EMPLOYEE_A,Position.MACHINE_A,1);
-		hireEmployee(1, ImageType.EMPLOYEE_B, Position.STORAGE,0);
-		hireEmployee(2, ImageType.EMPLOYEE_C, Position.MACHINE_B,2);
-		hireEmployee(3, ImageType.EMPLOYEE_C, Position.CHECKPOINT_B,0);
-		hireEmployee(4, ImageType.EMPLOYEE_A, Position.CHECKPOINT_C, 3);
-		hireEmployee(5, ImageType.EMPLOYEE_B, Position.CHECKPOINT_A,1);
-		hireEmployee(6, ImageType.EMPLOYEE_A, Position.CHECKPOINT_A,2);
-		hireEmployee(7, ImageType.EMPLOYEE_C, Position.CHECKPOINT_A,2);
-		hireEmployee(8, ImageType.EMPLOYEE_B, Position.CHECKPOINT_A,2);
+		hireEmployee(Position.CHECKPOINT_B);
+		hireEmployee(Position.CHECKPOINT_B);
+		hireEmployee(Position.CHECKPOINT_B);
+		hireEmployee(Position.CHECKPOINT_B);
+		hireEmployee(Position.CHECKPOINT_B);
+		hireEmployee(Position.CHECKPOINT_B);
+		hireEmployee(Position.CHECKPOINT_B);
+		hireEmployee(Position.CHECKPOINT_B);
 	}
 	
 	public void setupProducts() {

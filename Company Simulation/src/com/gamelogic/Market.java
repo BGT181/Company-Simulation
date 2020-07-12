@@ -15,7 +15,7 @@ public class Market implements ActionListener{
 	private Company company;
 	private double payments;
 	private int normalPrice = 3000;
-	private int faktor = 50;
+	private int faktor = 25;
 	private int order = 0;
 	
 	public Market(Company company) {
