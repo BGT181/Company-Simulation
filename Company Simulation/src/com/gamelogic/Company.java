@@ -65,7 +65,7 @@ public class Company {
 	public void hireEmployee(int val, ImageType imageType, Position position, int qualification) {
 		String name = "E"+val;
 		Employee employee = new Employee(imageType, position, name, this);
-		employee.setQualification(qualification);
+		//employee.setQualification(qualification);
 		employees.add(employee);
 	}
 	public void hireEmployee(Position position) {
@@ -104,17 +104,17 @@ public class Company {
 	
 	public void setupTrucks() {
 		truckEntrence = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 75,this);
-		//truckEntrence.orderProducts(productType.PRODUCT_A, 3);
 		truckExit = new Truck(imageProvider.getImage(Imagefor.TRUCK), -250, 575,this);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
+	public void increaseLoans(int x) {
+		for (Employee employee : employees) {
+			Double sp = (double)x/100; 
+			employee.increaseLoan(sp);
+			sp=(double) 0;
+		}
+	}
+
 	public ArrayList<Employee> getArrayListEmployee() {
 		return this.employees;
 	}

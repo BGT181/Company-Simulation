@@ -54,7 +54,7 @@ public class JEmployeeMenubar extends JComponent{
 		checkboxPreprocessing.setBounds(x+125, y+10, 25, 25);
 		checkboxProcessing.setBounds(x+175, y+10, 25, 25);
 		checkboxQualitycheck.setBounds(x+225, y+10, 25, 25);
-		labelEfficiency.setBounds(x+300, y, 20, 50);
+		labelEfficiency.setBounds(x+300, y, 40, 50);
 		
 		CheckBoxActionListener boxActionListener = new CheckBoxActionListener(employee, checkboxLogistic, checkboxPreprocessing, checkboxProcessing, checkboxQualitycheck);
 

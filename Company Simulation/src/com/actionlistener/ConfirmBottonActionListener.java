@@ -42,7 +42,6 @@ public class ConfirmBottonActionListener implements ActionListener{
 		priceC = getValue(7);
 		increaseLoans = getValue(8);
 		hireEmployee = getValue(9);
-		System.out.println(amountA + " "+amountB+" "+priceC+" "+increaseLoans+" "+hireEmployee);
 	}
 	
 	private int getValue(int index) {
@@ -58,9 +57,19 @@ public class ConfirmBottonActionListener implements ActionListener{
 
 	
 	private void process() {
-		if((amountA>0)&&(amountA<20)&&(contentPanel.getCompany().getTruckEntrence().isFinish())&&(contentPanel.getCompany().getTruckEntrence().isArrived())){
+		if((amountA>0)&&(amountA<15)&&(!contentPanel.getCompany().getTruckEntrence().isFinish())&&(contentPanel.getCompany().getTruckEntrence().isArrived())){
 			contentPanel.getCompany().getTruckEntrence().orderProducts(productType.PRODUCT_A, amountA);
 			amountA = 0;
+		}
+		
+		if((amountB>0)&&(amountB<15)&&(!contentPanel.getCompany().getTruckEntrence().isFinish())&&(contentPanel.getCompany().getTruckEntrence().isArrived())){
+			contentPanel.getCompany().getTruckEntrence().orderProducts(productType.PRODUCT_B, amountB);
+			amountB = 0;
+		}
+		
+		if((increaseLoans>0)&&(increaseLoans<20)) {
+			contentPanel.getCompany().increaseLoans(increaseLoans);
+			increaseLoans = 0;
 		}
 		
 		

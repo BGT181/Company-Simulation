@@ -250,5 +250,6 @@ public class ContentPanel extends JPanel implements ActionListener {
 	
 	public Company getCompany() {
 		return this.company;
-	}
+	}	
+	
 }

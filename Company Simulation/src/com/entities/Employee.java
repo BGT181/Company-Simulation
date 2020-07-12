@@ -25,7 +25,7 @@ public class Employee extends Entity {
 	}
 
 	private String name;
-	private double loan = 3000;
+	private double loan = 1750;
 	private double efficiencyLvl = 1;
 	private boolean isAvailable = true;
 	private boolean isArrived = true;
@@ -127,13 +127,14 @@ public class Employee extends Entity {
 	
 	//Game-Logik
 	public void increaseLoan(double increasementLoan) {
-		this.loan = loan * increasementLoan;
+		this.loan = loan+(loan * increasementLoan);
+		this.increaseEfficiencyLvl(increasementLoan);
 	}
 	public double getLoan() {
 		return this.loan;
 	}
 	public void increaseEfficiencyLvl(double increasementEfficiency) {
-		this.efficiencyLvl = efficiencyLvl * increasementEfficiency;
+		this.efficiencyLvl = efficiencyLvl +(efficiencyLvl * increasementEfficiency * 2);
 	}
 	public double getEfficiencyLvl() {
 		return this.efficiencyLvl;

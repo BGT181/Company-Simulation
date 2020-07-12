@@ -32,7 +32,9 @@ public class Storage extends Entity {
 	}
 
 	public void storeProduct(Product product, Employee employee) {
+		System.out.println(numberOfStoredProducts);
 		if(isStorageAvailable()) {
+			System.out.println("checkedIn");
 			updatePosition(product, findSpace());
 			storedProducts[findSpace()] = product;
 			numberOfStoredProducts++;
@@ -55,7 +57,7 @@ public class Storage extends Entity {
 	}
 	
 	public boolean isStorageAvailable() {
-		if(numberOfStoredProducts<=20) {
+		if(numberOfStoredProducts<20) {
 			return true;
 		} else {
 			return false;
@@ -127,6 +129,7 @@ public class Storage extends Entity {
 				Product product = storedProducts[i];
 		
 					if(i>=0) {
+						numberOfStoredProducts--;
 						storedProducts[i] = null;
 						employee.increaseEventStep();
 						employee.setCarryProduct(product);
